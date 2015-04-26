@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <NSDate+DateTools.h>
+#import <DTTimePeriod.h>
 
 @interface JSMTask : NSObject
 
@@ -17,7 +18,7 @@
 
 @property (strong, nonatomic) NSDate *dateCreated;
 @property (strong, nonatomic) NSDate *dateDue;
-@property ( nonatomic) NSTimeInterval timeTilDue;
+@property (strong, nonatomic) DTTimePeriod *timeUntiDueDate;
 
 
 @property (nonatomic) NSInteger userPriority;
@@ -34,7 +35,6 @@
                  andDetails:(NSString *)details
                 andCategory:(NSString *)category
                  andDateDue:(NSDate *)dateDue
-            andTimeInterval:(NSTimeInterval)timeTilDue
             andUserPriority:(NSInteger)userPriority
                   andIsGoal:(BOOL)isGoal;
 

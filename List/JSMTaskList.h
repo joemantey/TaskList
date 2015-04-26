@@ -10,6 +10,6 @@
 
 @interface JSMTaskList : NSObject
 
-@property (strong, nonatomic) NSMutableArray *dummyName;
+@property (strong, nonatomic) NSMutableArray *taskList;
 
 @end

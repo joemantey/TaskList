@@ -12,4 +12,6 @@
 
 @property (strong, nonatomic) NSMutableArray *taskList;
 
++ (instancetype)sharedDataManager;
+
 @end
