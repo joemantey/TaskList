@@ -30,8 +30,10 @@
         _dateDue = dateDue;
         if (_dateDue) {
             _timeUntiDueDate = [[DTTimePeriod alloc]initWithStartDate:[NSDate date] endDate:dateDue];
+            _isDueToday = [dateDue isToday];
         }else {
             _timeUntiDueDate = nil;
+            _isDueToday = NO;
         }
         _userPriority = userPriority;
         _currentPriority = userPriority;

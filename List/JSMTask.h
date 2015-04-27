@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSDate *dateCreated;
 @property (strong, nonatomic) NSDate *dateDue;
 @property (strong, nonatomic) DTTimePeriod *timeUntiDueDate;
+@property (nonatomic) BOOL isDueToday;
 
 
 @property (nonatomic) NSInteger userPriority;
