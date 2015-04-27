@@ -10,6 +10,13 @@
 
 @implementation JSMTaskList
 
-//organize trask list
+//organize task list by due date
+
+//build array of tasks list which has events organized by due date
+
+//build array of tasks for today
+
+//build array of task for tomorrow and on
+
 
 @end
