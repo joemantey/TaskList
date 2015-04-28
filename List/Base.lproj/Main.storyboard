@@ -179,19 +179,19 @@
                                 <sections>
                                     <tableViewSection id="4Fz-V1-2S7">
                                         <cells>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="113" id="BPV-A4-yb2">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="113" id="BPV-A4-yb2" userLabel="0. Name">
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BPV-A4-yb2" id="VEg-lZ-Ghx">
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="88" id="PTM-C3-HpN">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="88" id="PTM-C3-HpN" userLabel="1. Date Due">
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PTM-C3-HpN" id="fO0-tj-j93">
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="66" id="FlH-rv-qdZ">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="66" id="FlH-rv-qdZ" userLabel="2. DatePicker">
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FlH-rv-qdZ" id="hDx-Af-Hax">
                                                     <autoresizingMask key="autoresizingMask"/>
@@ -211,33 +211,67 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="56" id="paw-UE-1Ku">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="WyN-QN-8un" userLabel="3. Alarm">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WyN-QN-8un" id="dGD-ry-4jV">
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="YUk-Fu-2WL" userLabel="4. Alarm Picker">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YUk-Fu-2WL" id="jJy-IK-ZYo">
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="gDR-B1-ear">
+                                                            <rect key="frame" x="0.0" y="-60" width="584" height="162"/>
+                                                            <date key="date" timeIntervalSinceReferenceDate="451951292.18121803">
+                                                                <!--2015-04-28 22:01:32 +0000-->
+                                                            </date>
+                                                        </datePicker>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="gDR-B1-ear" firstAttribute="top" secondItem="jJy-IK-ZYo" secondAttribute="top" id="94c-yY-aDm"/>
+                                                        <constraint firstItem="gDR-B1-ear" firstAttribute="leading" secondItem="jJy-IK-ZYo" secondAttribute="leading" id="CMg-jB-Xwe"/>
+                                                        <constraint firstItem="gDR-B1-ear" firstAttribute="trailing" secondItem="jJy-IK-ZYo" secondAttribute="trailing" id="DW8-dH-Qfa"/>
+                                                        <constraint firstItem="gDR-B1-ear" firstAttribute="bottom" secondItem="jJy-IK-ZYo" secondAttribute="bottom" id="EkD-Q3-DD5"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="56" id="paw-UE-1Ku" userLabel="5. Category">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="paw-UE-1Ku" id="siw-Hz-7t4">
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="93" id="zOK-ZL-grk">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="93" id="zOK-ZL-grk" userLabel="6. CategoryPicker">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zOK-ZL-grk" id="erE-Wj-4FN">
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fMH-rS-B6p">
-                                                            <rect key="frame" x="73" y="-59" width="584" height="162"/>
+                                                        <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fMH-rS-B6p">
+                                                            <rect key="frame" x="0.0" y="-35" width="584" height="162"/>
                                                         </pickerView>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="fMH-rS-B6p" firstAttribute="leading" secondItem="erE-Wj-4FN" secondAttribute="leading" id="D4i-WQ-NUa"/>
+                                                        <constraint firstItem="fMH-rS-B6p" firstAttribute="trailing" secondItem="erE-Wj-4FN" secondAttribute="trailing" id="KOl-ic-uDG"/>
+                                                        <constraint firstItem="fMH-rS-B6p" firstAttribute="top" secondItem="erE-Wj-4FN" secondAttribute="top" id="QAQ-dv-FSJ"/>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="fMH-rS-B6p" secondAttribute="bottom" id="WVe-tN-K6S"/>
+                                                    </constraints>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="49" id="5cm-Cj-XKP">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="49" id="5cm-Cj-XKP" userLabel="7. Priority">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5cm-Cj-XKP" id="dbI-fY-zFI">
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="42" id="Dn3-mb-upL">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="42" id="Dn3-mb-upL" userLabel="8. ">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dn3-mb-upL" id="jvB-pk-KaB">
