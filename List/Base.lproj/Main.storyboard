@@ -196,13 +196,19 @@
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FlH-rv-qdZ" id="hDx-Af-Hax">
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Mie-A6-ow2">
-                                                            <rect key="frame" x="54" y="-59" width="584" height="162"/>
+                                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Mie-A6-ow2">
+                                                            <rect key="frame" x="0.0" y="-49" width="584" height="162"/>
                                                             <date key="date" timeIntervalSinceReferenceDate="451948434.201895">
                                                                 <!--2015-04-28 21:13:54 +0000-->
                                                             </date>
                                                         </datePicker>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="Mie-A6-ow2" firstAttribute="bottom" secondItem="hDx-Af-Hax" secondAttribute="bottom" id="Zrj-5Y-hD3"/>
+                                                        <constraint firstItem="Mie-A6-ow2" firstAttribute="leading" secondItem="hDx-Af-Hax" secondAttribute="leading" id="egy-Cw-uWX"/>
+                                                        <constraint firstItem="Mie-A6-ow2" firstAttribute="top" secondItem="hDx-Af-Hax" secondAttribute="top" id="ezE-fh-WAg"/>
+                                                        <constraint firstItem="Mie-A6-ow2" firstAttribute="trailing" secondItem="hDx-Af-Hax" secondAttribute="trailing" id="ry3-Yh-8X6"/>
+                                                    </constraints>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="56" id="paw-UE-1Ku">
