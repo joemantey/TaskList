@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14A379b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1zL-aT-fmn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1zL-aT-fmn">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -271,6 +271,7 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cW8-jS-AL1" userLabel="ReminderField">
+
                                                                             <rect key="frame" x="94" y="1" width="374" height="77"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                             <textInputTraits key="textInputTraits"/>
@@ -527,7 +528,21 @@
                             <constraint firstItem="lK4-Gt-pIG" firstAttribute="top" secondItem="lqc-Vn-1Ls" secondAttribute="bottom" id="sDw-te-wMx"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="SPm-UK-WAt"/>
+                    <navigationItem key="navigationItem" id="SPm-UK-WAt">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="tQP-2I-iNr"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ULr-b8-n5Z"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="categoryField" destination="wxW-3f-JuZ" id="Y5n-JM-iDl"/>
+                        <outlet property="categoryPicker" destination="fMH-rS-B6p" id="cka-Br-75q"/>
+                        <outlet property="dueDateField" destination="xOq-Tp-5WF" id="LCL-05-bDo"/>
+                        <outlet property="dueDatePicker" destination="Mie-A6-ow2" id="fyc-NO-JO1"/>
+                        <outlet property="nameField" destination="SO8-vq-zjS" id="ZrK-YK-8U1"/>
+                        <outlet property="noteField" destination="rX6-0P-Lbx" id="Vdp-SZ-YmD"/>
+                        <outlet property="prioritySegmentedControl" destination="cXr-eD-X1Z" id="hJJ-jg-aTf"/>
+                        <outlet property="reminderDatePicker" destination="gDR-B1-ear" id="74w-Hq-c7I"/>
+                        <outlet property="reminderField" destination="cW8-jS-AL1" id="OdA-vE-UqF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KP3-j8-6cW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
