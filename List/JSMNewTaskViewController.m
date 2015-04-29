@@ -9,6 +9,15 @@
 #import "JSMNewTaskViewController.h"
 
 @interface JSMNewTaskViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *nameField;
+@property (weak, nonatomic) IBOutlet UITextField *dueDateField;
+@property (weak, nonatomic) IBOutlet UIDatePicker *dueDatePicker;
+@property (weak, nonatomic) IBOutlet UITextField *reminderField;
+@property (weak, nonatomic) IBOutlet UIDatePicker *reminderDatePicker;
+@property (weak, nonatomic) IBOutlet UITextField *categoryField;
+@property (weak, nonatomic) IBOutlet UIPickerView *categoryPicker;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *prioritySegmentedControl;
+@property (weak, nonatomic) IBOutlet UITextView *noteField;
 
 @end
 
