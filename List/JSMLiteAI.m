@@ -27,7 +27,7 @@
 
 -(void)setPriority:(JSMTask *)task{
 
-    if (task.dateDue)
+    if (task.dueDate)
     //if something has a due date
     {
         //calculate how far it is from the due date

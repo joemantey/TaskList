@@ -17,18 +17,20 @@
 
 -(instancetype)initWithName:(NSString *)name
                  andDetails:(NSString *)details
-                andCategory:(NSString *)category
+                andList:(NSString *)list
                  andDateDue:(NSDate *)dateDue
+            andReminderDate:(NSDate *)reminderDate
             andUserPriority:(NSInteger)userPriority
                   andIsGoal:(BOOL)isGoal{
     
     if (self = [super init]) {
         _name = name;
         _details = details;
-        _category = category;
+        _list = list;
         _dateCreated = [NSDate date];
-        _dateDue = dateDue;
-        if (_dateDue) {
+        _dueDate = dateDue;
+        _reminderDate = reminderDate;
+        if (_dueDate) {
             _timeUntiDueDate = [[DTTimePeriod alloc]initWithStartDate:[NSDate date] endDate:dateDue];
             _isDueToday = [dateDue isToday];
         }else {
@@ -48,8 +50,9 @@
     
     self = [ self initWithName:@""
                     andDetails:@""
-                   andCategory:@""
+                       andList:@""
                     andDateDue:nil
+               andReminderDate:nil
                andUserPriority:30
                      andIsGoal:NO ];
     

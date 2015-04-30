@@ -40,7 +40,7 @@
     NSMutableArray *buildArray =[[NSMutableArray alloc]init];
     
     for (JSMTask *task in taskArray) {
-        if (task.dateDue) {
+        if (task.dueDate) {
             [buildArray addObject:task];
         }
     }
@@ -63,7 +63,7 @@
     NSMutableArray *buildArray =[[NSMutableArray alloc]init];
 
     for (JSMTask *task in taskArray) {
-        if ([task.dateDue isToday])
+        if ([task.dueDate isToday])
         {
             [buildArray addObject:task];
         }
@@ -85,7 +85,7 @@
     NSMutableArray *buildArray =[[NSMutableArray alloc]init];
     
     for (JSMTask *task in taskArray) {
-        if (![task.dateDue isTomorrow])
+        if (![task.dueDate isTomorrow])
         {
             [buildArray addObject:task];
         }
@@ -107,7 +107,7 @@
     NSMutableArray *buildArray =[[NSMutableArray alloc]init];
     
     for (JSMTask *task in taskArray) {
-        if (![task.dateDue isToday] && ![task.dateDue isTomorrow])
+        if (![task.dueDate isToday] && ![task.dueDate isTomorrow])
         {
             [buildArray addObject:task];
         }

@@ -528,16 +528,24 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="SPm-UK-WAt">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="tQP-2I-iNr"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ULr-b8-n5Z"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="tQP-2I-iNr">
+                            <connections>
+                                <action selector="cancelButton:" destination="9na-hw-S8f" id="LsT-h9-i5r"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ULr-b8-n5Z">
+                            <connections>
+                                <action selector="saveButton:" destination="9na-hw-S8f" id="gLG-iX-N4e"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="categoryField" destination="wxW-3f-JuZ" id="Y5n-JM-iDl"/>
-                        <outlet property="categoryPicker" destination="fMH-rS-B6p" id="cka-Br-75q"/>
+                        <outlet property="detailField" destination="rX6-0P-Lbx" id="Uf5-EM-U3c"/>
                         <outlet property="dueDateField" destination="xOq-Tp-5WF" id="LCL-05-bDo"/>
                         <outlet property="dueDatePicker" destination="Mie-A6-ow2" id="fyc-NO-JO1"/>
+                        <outlet property="listField" destination="wxW-3f-JuZ" id="3nG-6C-OZv"/>
+                        <outlet property="listPicker" destination="fMH-rS-B6p" id="aQn-fW-eXE"/>
                         <outlet property="nameField" destination="SO8-vq-zjS" id="ZrK-YK-8U1"/>
-                        <outlet property="noteField" destination="rX6-0P-Lbx" id="Vdp-SZ-YmD"/>
                         <outlet property="prioritySegmentedControl" destination="cXr-eD-X1Z" id="hJJ-jg-aTf"/>
                         <outlet property="reminderDatePicker" destination="gDR-B1-ear" id="74w-Hq-c7I"/>
                         <outlet property="reminderField" destination="cW8-jS-AL1" id="OdA-vE-UqF"/>

@@ -14,10 +14,11 @@
 
 @property (strong,nonatomic) NSString *name;
 @property (strong,nonatomic) NSString *details;
-@property (strong, nonatomic) NSString *category;
+@property (strong, nonatomic) NSString *list;
 
 @property (strong, nonatomic) NSDate *dateCreated;
-@property (strong, nonatomic) NSDate *dateDue;
+@property (strong, nonatomic) NSDate *dueDate;
+@property (strong, nonatomic) NSDate *reminderDate;
 @property (strong, nonatomic) DTTimePeriod *timeUntiDueDate;
 @property (nonatomic) BOOL isDueToday;
 
@@ -34,8 +35,9 @@
 
 -(instancetype)initWithName:(NSString *)name
                  andDetails:(NSString *)details
-                andCategory:(NSString *)category
+                andList:(NSString *)list
                  andDateDue:(NSDate *)dateDue
+            andReminderDate:(NSDate *)reminderDate
             andUserPriority:(NSInteger)userPriority
                   andIsGoal:(BOOL)isGoal;
 
