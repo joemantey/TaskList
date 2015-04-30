@@ -24,6 +24,12 @@
 @property (nonatomic) BOOL reminderDatePickerIsShowing;
 @property (nonatomic) BOOL listPickerIsShowing;
 
+@property (strong,nonatomic) NSString *name;
+@property (strong,nonatomic) NSString *details;
+@property (strong, nonatomic) NSString *category;
+@property (strong, nonatomic) NSDate *dateDue;
+@property (nonatomic) NSInteger userPriority;
+
 
 @end
 
@@ -56,7 +62,6 @@
 #define pickerCellHeight 162
 
 
-//If datePickerIsShowing, set the height of the cell to 164 (the hieght of a date picker). If !datePickerIsShowing, set the height of the cell to 0
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     CGFloat height = fieldCellHeight;
@@ -79,6 +84,9 @@
     return height;
 }
 
+
+
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
@@ -97,5 +105,86 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+
+#pragma mark - helper methods
+
+- (void)showDatePickerCell:(UIDatePicker *)picker andupdateBool:(BOOL)isShowingBool {
+    
+    
+    BOOL pickerIsShowing = isShowingBool;
+    //...change the BOOLEAN to indicate the the date picker is (about to be) shown...
+    pickerIsShowing = YES;
+    
+    UIDatePicker *datePicker = picker;
+    
+    //...refresh the tableview...
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+    
+    //...seems like a good time to stop hiding the date picker...
+    datePicker.hidden = NO;
+    
+    //Now some setup. Turn the date picker clear so we can have it fade in during our animation.
+    datePicker.alpha = 0.0f;
+    
+    //Let's get our Walt Disney on and animate the appearance of this date picker.
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        datePicker.alpha = 1.0f;
+        
+    }];
+}
+
+- (void)showPickerCell:(UIPickerView *)picker andupdateBool:(BOOL)isShowingBool {
+    
+    
+    BOOL pickerIsShowing = isShowingBool;
+    
+    pickerIsShowing = YES;
+    
+    UIPickerView *pickerView = picker;
+    
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+    
+    pickerView.hidden = NO;
+    
+    pickerView.alpha = 0.0f;
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        pickerView.alpha = 1.0f;
+        
+    }];
+}
+
+- (void)hideDatePickerCell:(UIDatePicker *)picker andupdateBool:(BOOL)isShowingBool {
+    
+    BOOL pickerIsShowing = isShowingBool;
+    UIDatePicker *p
+    //...change the BOOLEAN to indicate the the date picker is (about to be) shown...
+    pickerIsShowing = NO;
+    
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+    
+    //Animation time again. This time were turning the date picker clear.
+    [UIView animateWithDuration:0.25
+     
+                     animations:^{
+                         datePicker.alpha = 0.0f;
+                     }
+                     completion:^(BOOL finished){
+                         //when we're done animating, hide the picker
+                         datePicker.hidden = YES;
+                         //update picker to show date
+                         self.dateDue = [self.datePicker date];
+                     }];
+}
+
+
+
 
 @end
