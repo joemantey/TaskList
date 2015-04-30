@@ -8,6 +8,7 @@
 
 #import "JSMNewTaskViewController.h"
 #import "JSMTask.h"
+#import "JSMTaskDataManager.h"
 
 @interface JSMNewTaskViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -21,14 +22,6 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *prioritySegmentedControl;
 @property (weak, nonatomic) IBOutlet UITextView *detailField;
 
-- (IBAction)cancelButton:(id)sender;
-- (IBAction)saveButton:(id)sender;
-
-
-@property (nonatomic) BOOL dueDatePickerIsShowing;
-@property (nonatomic) BOOL reminderDatePickerIsShowing;
-@property (nonatomic) BOOL listPickerIsShowing;
-
 @property (strong,nonatomic) NSString *name;
 @property (strong,nonatomic) NSString *details;
 @property (strong, nonatomic) NSString *list;
@@ -37,6 +30,17 @@
 @property (nonatomic) NSInteger userPriority;
 @property (nonatomic) BOOL isGoal;
 
+- (IBAction)cancelButton:(id)sender;
+- (IBAction)saveButton:(id)sender;
+
+@property (nonatomic) BOOL dueDatePickerIsShowing;
+@property (nonatomic) BOOL reminderDatePickerIsShowing;
+@property (nonatomic) BOOL listPickerIsShowing;
+
+@property (strong, nonatomic) JSMTaskDataManager *dataManager;
+
+
+
 
 @end
 
@@ -44,7 +48,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+   
+    self.dataManager = [JSMTaskDataManager sharedDataManager];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -79,7 +85,7 @@
                                     andUserPriority:self.userPriority
                                           andIsGoal:self.isGoal];
     
-    
+    [self.dataManager.taskList addObject:newTask];
     
 }
 
