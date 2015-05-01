@@ -8,6 +8,7 @@
 
 
 #import "JSMTask.h"
+#import "JSMConstants.h"
 #import <DTTimePeriod.h>
 
 
@@ -55,7 +56,7 @@
                        andList:@""
                     andDateDue:nil
                andReminderDate:nil
-               andUserPriority:30
+               andUserPriority:LowPriorityInteger
                      andIsGoal:NO ];
     
     return self;
@@ -69,10 +70,7 @@
 
 /*  Priority is based on a number system. Text labels are generated from the currentPriority propery which is the numeric score manipulated AILite to provide an indication of task priority.
  
- 0-30 Low
- 31-60 Medium
- 60-90 High
- 91-100 Imediate */
+
 
 -(void)setPriority{
     
@@ -99,6 +97,6 @@
     self.currentPriorityString = outputString;
 }
 
-
+*/
 
 @end

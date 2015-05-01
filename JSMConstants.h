@@ -10,6 +10,9 @@
 
 @interface JSMConstants : NSObject
 
+extern NSInteger const HighPriorityInteger;
+extern NSInteger const MedPriorityInteger;
+extern NSInteger const LowPriorityInteger;
 
 extern NSInteger const MaxBasePriority;
 extern NSInteger const HighBasePriority;
