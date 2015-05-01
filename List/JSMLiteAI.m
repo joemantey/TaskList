@@ -16,6 +16,7 @@
 #import "JSMLiteAI.h"
 #import "JSMTask.h"
 #import "JSMConstants.h"
+#import <DateTools.h>
 
 
 
@@ -25,40 +26,58 @@
 //Create some sample data in app delegate
 
 
--(void)setPriority:(JSMTask *)task{
-
+-(void)setPriority:(JSMTask *)task fromArray:(NSMutableArray *)taskArray {
+    
+    JSMTask *adjustedTask = task;
+    
     if (task.dueDate)
-    //if something has a due date
+    //if something has a due date, update the time until due date for that object
     {
-        //calculate how far it is from the due date
-        
+        adjustedTask.timeUntiDueDate = [[DTTimePeriod alloc]initWithStartDate:[NSDate date] endDate:task.dueDate];
 
-    }
-    
-        //if it is due that da
-    
-            //get all of the items do today, and distribute them based on when they are due that day
-    
-            // and distribute by assigned importnace
-    
+        
+        //if it is due that day
+        
+        if ([task.dueDate isToday]) {
+            
+            
+            //Build an array of all of the task for today
+            NSMutableArray *todaysTasksArray = [[NSMutableArray alloc] init];
+            for (JSMTask *taskToAddToToday in taskArray) {
+                
+                if ([todaysTaskTask.dueDate isToday]) {
+                    [todaysTasksArray addObject:taskToAddToToday];
+                }
+            }
+            
+            
+            //Count the amount of items in the array to set the 
+        }
+        
+        //get all of the items do today, and distribute them based on when they are due that day
+        
+        // and distribute by assigned importnace
+        
         //if it is due in the next 2 days, set the priority to to high
-    
-            //get all of the items do for the next two days, and distribute them based on when they are due within those two days
-    
-            // and distribute by assigned importance
-    
+        
+        //get all of the items do for the next two days, and distribute them based on when they are due within those two days
+        
+        // and distribute by assigned importance
+        
         //if it is due in the next 7 days, set the priority to medium
-    
-            //get all of the items do for the next two days, and distribute them based on when they are due within those two days
-    
-            // and distribute by assigned importance
-    
+        
+        //get all of the items do for the next two days, and distribute them based on when they are due within those two days
+        
+        // and distribute by assigned importance
+        
         //if it is due in the in more than 7 days, set the priority to low
-    
-    
-            //get all of the items do in more than 7 days, and distribute them based on when they are due within those two days
-    
-            // and distribute by assigned importance
+        
+        
+        //get all of the items do in more than 7 days, and distribute them based on when they are due within those two days
+        
+        // and distribute by assigned importance
+        
+    }
     
     
     

@@ -288,7 +288,7 @@
 
                          pickerView.hidden = YES;
                          
-                         self.category = self.listField.text;
+                         self.list = self.listField.text;
                      }];
 }
 

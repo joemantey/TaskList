@@ -13,7 +13,9 @@
 
 @implementation JSMTask
 
-//add time period
+//NEEDS START PERIOD AND END PERIOD FOR GOALS
+
+
 
 -(instancetype)initWithName:(NSString *)name
                  andDetails:(NSString *)details
