@@ -53,9 +53,12 @@
  
  */
 
--(NSInteger *)getPercentageOfTimeElapsedBetweenMilestonesForTask:(JSMTask)task andMilestone:(NSDate *){
+-(NSInteger )getPercentageOfTimeElapsedBetweenMilestonesForTask:(JSMTask)task andMilestone:(NSDate *){
     
-    return
+    NSInteger percentage = 0;
+    
+    return percentage;
+    
 }
 
 
