@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface JSMTaskList : NSArray
+@interface JSMTaskList : NSMutableArray
 
-@property (strong, nonatomic) NSMutableArray *taskList;
+
 
 @end
