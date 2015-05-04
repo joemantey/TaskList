@@ -11,4 +11,6 @@
 
 @interface JSMLiteAI : NSObject
 
+-(double )getPercentageOfTimeElapsedBetweenMilestonesForTask:(JSMTask *)task;
+
 @end

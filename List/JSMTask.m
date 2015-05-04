@@ -8,27 +8,30 @@
 
 
 #import "JSMTask.h"
+#import "JSMConstants.h"
 #import <DTTimePeriod.h>
 
 
 @implementation JSMTask
 
-//add time period
+//NEEDS START PERIOD AND END PERIOD FOR GOALS
 
 -(instancetype)initWithName:(NSString *)name
                  andDetails:(NSString *)details
-                andCategory:(NSString *)category
+                andList:(NSString *)list
                  andDateDue:(NSDate *)dateDue
+            andReminderDate:(NSDate *)reminderDate
             andUserPriority:(NSInteger)userPriority
                   andIsGoal:(BOOL)isGoal{
     
     if (self = [super init]) {
         _name = name;
         _details = details;
-        _category = category;
+        _list = list;
         _dateCreated = [NSDate date];
-        _dateDue = dateDue;
-        if (_dateDue) {
+        _dueDate = dateDue;
+        _reminderDate = reminderDate;
+        if (_dueDate) {
             _timeUntiDueDate = [[DTTimePeriod alloc]initWithStartDate:[NSDate date] endDate:dateDue];
             _isDueToday = [dateDue isToday];
         }else {
@@ -48,26 +51,70 @@
     
     self = [ self initWithName:@""
                     andDetails:@""
-                   andCategory:@""
+                       andList:@""
                     andDateDue:nil
-               andUserPriority:30
+               andReminderDate:nil
+               andUserPriority:LowPriorityInteger
                      andIsGoal:NO ];
     
     return self;
 }
 
-#pragma mark 
+#pragma mark - Prioritization Helper Methods
 
-#define LOWBound 31
-#define MEDIUMBound 61
-#define HIGHBound 91
+-(double)getPercentageOfTimeElapsedSincePeriodStartDate:(NSInteger)periodStartDateAdjuster andPeriodEndDate:(NSInteger)periodEndDateAdjuster usingTask:(JSMTask *)task{
+    
+    NSDate *todaysDate      = [NSDate date];
+    NSDate *dueDate         =  task.dueDate;
+    NSDate *periodStartDate = [dueDate dateBySubtractingDays:periodStartDateAdjuster];
+    NSDate *periodEndDate   = [dueDate dateBySubtractingDays:periodEndDateAdjuster];
+    
+    DTTimePeriod *taskTimePeriod = [[DTTimePeriod alloc] init];
+    taskTimePeriod.StartDate     = periodStartDate;
+    taskTimePeriod.EndDate       = periodEndDate;
+    
+    DTTimePeriod *timeSinceStartofPeriod = [[DTTimePeriod alloc]init];
+    timeSinceStartofPeriod.StartDate     = periodStartDate;
+    timeSinceStartofPeriod.EndDate       = todaysDate;
+    
+    
+    double taskTimePeriodInMinutes                  = [taskTimePeriod durationInMinutes];
+    double taskTimePeriodBeforeEndOfPeriodinMinutes = [timeSinceStartofPeriod durationInMinutes];
+    
+    double perecentaageOfTimeElapsedSincePeriodStartDate = taskTimePeriodBeforeEndOfPeriodinMinutes/taskTimePeriodInMinutes;
+    
+    return perecentaageOfTimeElapsedSincePeriodStartDate;
+    
+}
 
-/*  Priority is based on a number system. Text labels are generated from the currentPriority propery which is the numeric score manipulated AILite to provide an indication of task priority.
- 
- 0-30 Low
- 31-60 Medium
- 60-90 High
- 91-100 Imediate */
+
+-(double )getPercentageOfTimeElapsedBetweenMilestonesForTask:(JSMTask *)task {
+    
+    
+    NSDate *taskCreationDate = task.dateCreated;
+    NSDate *taskDueDate = task.dueDate;
+    NSDate *milestoneDate = [NSDate date];
+    
+    
+    DTTimePeriod *taskTimePeriod = [[DTTimePeriod alloc] init];
+    taskTimePeriod.startDate = taskCreationDate;
+    taskTimePeriod.endDate = taskDueDate;
+    
+    DTTimePeriod *taskTimeElapsed = [[DTTimePeriod alloc] init];
+    taskTimeElapsed.startDate = taskCreationDate;
+    taskTimeElapsed.endDate =milestoneDate;
+    
+    
+    double totalTime = [taskTimePeriod durationInMinutes];
+    double timeElapsed = [taskTimeElapsed durationInMinutes];
+    
+    double percentComplete = timeElapsed/totalTime;
+    
+    return percentComplete;
+    
+}
+
+
 
 -(void)setPriority{
     
@@ -93,7 +140,5 @@
     
     self.currentPriorityString = outputString;
 }
-
-
 
 @end
