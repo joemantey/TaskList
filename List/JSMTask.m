@@ -70,6 +70,9 @@
 
 /*  Priority is based on a number system. Text labels are generated from the currentPriority propery which is the numeric score manipulated AILite to provide an indication of task priority.
  
+*/
+
+
 
 
 -(void)setPriority{
@@ -97,6 +100,57 @@
     self.currentPriorityString = outputString;
 }
 
-*/
+-(double)getPercentageOfTimeElapsedBetweenpPeriodStartDate:(NSInteger)periodStartDateAdjuster andPeriodEndDate:(NSInteger)periodEndDateAdjuster usingTask:(JSMTask *)task{
+    
+    NSDate *todaysDate       = [NSDate date];
+    NSDate *dueDate         =  task.dueDate;
+    NSDate *periodStartDate = [dueDate dateBySubtractingDays:periodStartDateAdjuster];
+    NSDate *periodEndDate   = [dueDate dateBySubtractingDays:periodEndDateAdjuster];
+    
+    DTTimePeriod *taskTimePeriod = [[DTTimePeriod alloc] init];
+    taskTimePeriod.StartDate = periodStartDate;
+    taskTimePeriod.EndDate = periodEndDate;
+    
+    DTTimePeriod *timeUntilDueDate = [[DTTimePeriod alloc]init];
+    timeUntilDueDate.StartDate = todaysDate;
+    timeUntilDueDate.EndDate = dueDate;
+    
+    DTTimePeriod *timeBetweenThenEndOfPeriodAndDueDate= [[DTTimePeriod alloc] init];
+    timeUntilDueDate.StartDate = dueDate;
+    timeUntilDueDate.EndDate = periodEndDate;
+    
+    
+    
+    
+    
+}
+
+
+-(double )getPercentageOfTimeElapsedBetweenMilestonesForTask:(JSMTask *)task {
+    
+    
+    NSDate *taskCreationDate = task.dateCreated;
+    NSDate *taskDueDate = task.dueDate;
+    NSDate *milestoneDate = [NSDate date];
+    
+    
+    DTTimePeriod *taskTimePeriod = [[DTTimePeriod alloc] init];
+    taskTimePeriod.startDate = taskCreationDate;
+    taskTimePeriod.endDate = taskDueDate;
+    
+    DTTimePeriod *taskTimeElapsed = [[DTTimePeriod alloc] init];
+    taskTimeElapsed.startDate = taskCreationDate;
+    taskTimeElapsed.endDate =milestoneDate;
+    
+    
+    double totalTime = [taskTimePeriod durationInMinutes];
+    double timeElapsed = [taskTimeElapsed durationInMinutes];
+    
+    double percentComplete = timeElapsed/totalTime;
+    
+    return percentComplete;
+    
+}
+
 
 @end

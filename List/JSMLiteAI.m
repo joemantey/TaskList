@@ -50,31 +50,6 @@
 
 
 
--(double )getPercentageOfTimeElapsedBetweenMilestonesForTask:(JSMTask *)task {
-    
-    
-    NSDate *taskCreationDate = task.dateCreated;
-    NSDate *taskDueDate = task.dueDate;
-    NSDate *milestoneDate = [NSDate date];
-    
-    
-    DTTimePeriod *taskTimePeriod = [[DTTimePeriod alloc] init];
-    taskTimePeriod.startDate = taskCreationDate;
-    taskTimePeriod.endDate = taskDueDate;
-    
-    DTTimePeriod *taskTimeElapsed = [[DTTimePeriod alloc] init];
-    taskTimeElapsed.startDate = taskCreationDate;
-    taskTimeElapsed.endDate =milestoneDate;
-    
-    
-    double totalTime = [taskTimePeriod durationInSeconds];
-    double timeElapsed = [taskTimeElapsed durationInSeconds];
-    
-    double percentComplete = timeElapsed/totalTime;
-    
-    return percentComplete;
-    
-}
 
 
 -(NSInteger)getTaskPercentilefromArray:(NSMutableArray *)array usingTask:(JSMTask *)task{
