@@ -48,11 +48,7 @@
 
 #pragma mark Helper Methods
 
-/*
- 
-  Today's Date |--[ % of time between]--| Date Due
- 
- */
+
 
 -(double )getPercentageOfTimeElapsedBetweenMilestonesForTask:(JSMTask *)task {
     
