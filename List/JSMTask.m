@@ -62,6 +62,70 @@
 
 #pragma mark - Prioritization Helper Methods
 
+-(NSDictionary *)buildDictionaryOfTaskPriortyValues{
+    
+    //Dictionaries for the events with due date set
+    
+    NSDictionary *dueDateHigh = @{
+                                  @1:@9,
+                                  @2:@7.5,
+                                  @3:@6.5,
+                                  @7:@5.5,
+                                  @14:@4.5,
+                                  @21:@3,
+                                  @56:@0,
+                                  };
+    
+    NSDictionary *dueDateMedium = @{
+                                  @1:@8.5,
+                                  @2:@7,
+                                  @3:@6,
+                                  @7:@4.5,
+                                  @14:@3.5,
+                                  @21:@2,
+                                  @56:@0,
+                                  };
+    
+    NSDictionary *dueDateLow = @{
+                                    @1:@8,
+                                    @2:@6.5,
+                                    @3:@6,
+                                    @7:@3.5,
+                                    @14:@2,
+                                    @21:@0.5,
+                                    @56:@0,
+                                    };
+    
+    //Dictionaries for events with no due date set
+    
+    NSDictionary *noDueDateHigh = @{
+                                    @42:@9.5,
+                                    @28:@9.5,
+                                    @21:@9.5,
+                                    @14:@9,
+                                    @7:@8,
+                                    @0:@5
+                                    };
+    
+    NSDictionary *noDueDateMedium= @{
+                                    @42:@9.5,
+                                    @28:@9.5,
+                                    @21:@9,
+                                    @14:@8,
+                                    @7:@6,
+                                    @0:@3
+                                    };
+    NSDictionary *noDueDateLow= @{
+                                 @42:@9.5,
+                                 @28:@9,
+                                 @21:@8,
+                                 @14:@6,
+                                 @7:@4,
+                                 @0:@1
+                                 };
+    
+}
+
 -(double)getPercentageOfTimeElapsedSincePeriodStartDate:(NSInteger)periodStartDateAdjuster andPeriodEndDate:(NSInteger)periodEndDateAdjuster usingTask:(JSMTask *)task{
     
     NSDate *todaysDate      = [NSDate date];
