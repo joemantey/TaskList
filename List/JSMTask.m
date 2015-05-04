@@ -97,12 +97,12 @@
     
     
     DTTimePeriod *taskTimePeriod = [[DTTimePeriod alloc] init];
-    taskTimePeriod.startDate = taskCreationDate;
-    taskTimePeriod.endDate = taskDueDate;
+    taskTimePeriod.StartDate = taskCreationDate;
+    taskTimePeriod.EndDate = taskDueDate;
     
     DTTimePeriod *taskTimeElapsed = [[DTTimePeriod alloc] init];
-    taskTimeElapsed.startDate = taskCreationDate;
-    taskTimeElapsed.endDate =milestoneDate;
+    taskTimeElapsed.StartDate = taskCreationDate;
+    taskTimeElapsed.EndDate =milestoneDate;
     
     
     double totalTime = [taskTimePeriod durationInMinutes];
@@ -113,6 +113,29 @@
     return percentComplete;
     
 }
+
+-(void)setTaskPriorityWithTask:(JSMTask *)task{
+    
+    if (task.userPriority==0) {
+        
+        
+    }else if ([task.userPriority ==0]!){
+        
+    }
+    
+}
+
+-(void)setPriorityForTask:(JSMTask *)task{
+    
+
+}
+
+-(void)setPriorityForTaskWithUserPriority:(JSMTask *)task{
+    
+
+    
+}
+
 
 
 
