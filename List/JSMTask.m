@@ -16,8 +16,6 @@
 
 //NEEDS START PERIOD AND END PERIOD FOR GOALS
 
-
-
 -(instancetype)initWithName:(NSString *)name
                  andDetails:(NSString *)details
                 andList:(NSString *)list
@@ -62,66 +60,30 @@
     return self;
 }
 
-#pragma mark 
+#pragma mark - Prioritization Helper Methods
 
-#define LOWBound 31
-#define MEDIUMBound 61
-#define HIGHBound 91
-
-/*  Priority is based on a number system. Text labels are generated from the currentPriority propery which is the numeric score manipulated AILite to provide an indication of task priority.
- 
-*/
-
-
-
-
--(void)setPriority{
+-(double)getPercentageOfTimeElapsedSincePeriodStartDate:(NSInteger)periodStartDateAdjuster andPeriodEndDate:(NSInteger)periodEndDateAdjuster usingTask:(JSMTask *)task{
     
-    NSInteger priorityInteger = self.currentPriority;
-    NSString *outputString = [[NSString alloc]init];
-    
-    if (priorityInteger < LOWBound )
-    {
-        outputString = @"Low";
-    }
-    else if ( priorityInteger < MEDIUMBound)
-    {
-        outputString = @"Medium";
-    }
-    else if ( priorityInteger < HIGHBound)
-    {
-        outputString = @"High";
-    }
-    else if (priorityInteger > HIGHBound)
-    {
-        outputString = @"Immediate";
-    }
-    
-    self.currentPriorityString = outputString;
-}
-
--(double)getPercentageOfTimeElapsedBetweenpPeriodStartDate:(NSInteger)periodStartDateAdjuster andPeriodEndDate:(NSInteger)periodEndDateAdjuster usingTask:(JSMTask *)task{
-    
-    NSDate *todaysDate       = [NSDate date];
+    NSDate *todaysDate      = [NSDate date];
     NSDate *dueDate         =  task.dueDate;
     NSDate *periodStartDate = [dueDate dateBySubtractingDays:periodStartDateAdjuster];
     NSDate *periodEndDate   = [dueDate dateBySubtractingDays:periodEndDateAdjuster];
     
     DTTimePeriod *taskTimePeriod = [[DTTimePeriod alloc] init];
-    taskTimePeriod.StartDate = periodStartDate;
-    taskTimePeriod.EndDate = periodEndDate;
+    taskTimePeriod.StartDate     = periodStartDate;
+    taskTimePeriod.EndDate       = periodEndDate;
     
-    DTTimePeriod *timeUntilDueDate = [[DTTimePeriod alloc]init];
-    timeUntilDueDate.StartDate = todaysDate;
-    timeUntilDueDate.EndDate = dueDate;
-    
-    DTTimePeriod *timeBetweenThenEndOfPeriodAndDueDate= [[DTTimePeriod alloc] init];
-    timeUntilDueDate.StartDate = dueDate;
-    timeUntilDueDate.EndDate = periodEndDate;
+    DTTimePeriod *timeSinceStartofPeriod = [[DTTimePeriod alloc]init];
+    timeSinceStartofPeriod.StartDate     = periodStartDate;
+    timeSinceStartofPeriod.EndDate       = todaysDate;
     
     
+    double taskTimePeriodInMinutes                  = [taskTimePeriod durationInMinutes];
+    double taskTimePeriodBeforeEndOfPeriodinMinutes = [timeSinceStartofPeriod durationInMinutes];
     
+    double perecentaageOfTimeElapsedSincePeriodStartDate = taskTimePeriodBeforeEndOfPeriodinMinutes/taskTimePeriodInMinutes;
     
+    return perecentaageOfTimeElapsedSincePeriodStartDate;
     
 }
 
@@ -152,5 +114,31 @@
     
 }
 
+
+
+-(void)setPriority{
+    
+    NSInteger priorityInteger = self.currentPriority;
+    NSString *outputString = [[NSString alloc]init];
+    
+    if (priorityInteger < LOWBound )
+    {
+        outputString = @"Low";
+    }
+    else if ( priorityInteger < MEDIUMBound)
+    {
+        outputString = @"Medium";
+    }
+    else if ( priorityInteger < HIGHBound)
+    {
+        outputString = @"High";
+    }
+    else if (priorityInteger > HIGHBound)
+    {
+        outputString = @"Immediate";
+    }
+    
+    self.currentPriorityString = outputString;
+}
 
 @end
