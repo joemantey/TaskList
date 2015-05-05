@@ -201,7 +201,11 @@
     
     NSDictionary *algorithmDictionary = [self buildDictionaryOfTaskPriortyValues];
     
-    NSArray *algorithmDictionaryKeys = [self getMilestonesForTasksWithDueDate:task];
+    NSArray *algorithmKeys = [self getMilestonesForTasksWithDueDate:task];
+    
+    double adjuster = [self getPercentageOfTimeElapsedSincePeriodStartDate:[algorithmKeys[0] integerValue]
+                                                          andPeriodEndDate:[algorithmKeys[1] integerValue]
+                                                                 usingTask:task];
     
     //get values from dictionary
     
@@ -214,17 +218,36 @@
     
     NSDate *todaysDate = [NSDate date];
     
-    NSInteger daysFromDueDate = [todaysDate daysFrom:task.dueDate];
+    NSInteger daysFromDateCreated = [todaysDate daysFrom:task.dateCreated];
     
-    if ([self checkIf:daysFromDueDate isBetween:0 and:1])
+    if ([self checkIf:daysFromDateCreated isBetween:42 and:1000000])
     {
-        NSArray *outputArray = @[@0,@1];
+        NSArray *outputArray = @[@42,@42];
         return outputArray;
     }
-    
-    else if ([self checkIf:daysFromDueDate isBetween:1 and:2])
+    else if ([self checkIf:daysFromDateCreated isBetween:28 and:42])
     {
-        NSArray *outputArray = @[@1,@2]; return outputArray;
+        NSArray *outputArray = @[@42,@28];
+        return outputArray;
+    }
+    else if ([self checkIf:daysFromDateCreated isBetween:28 and:21])
+    {
+        NSArray *outputArray = @[@28,@21];
+        return outputArray;
+    }
+    else if ([self checkIf:daysFromDateCreated isBetween:21 and:14])
+    {
+        NSArray *outputArray = @[@21,@14];
+        return outputArray;
+    }
+    else if ([self checkIf:daysFromDateCreated isBetween:14 and:7])
+    {
+        NSArray *outputArray = @[@14,@7];
+        return outputArray;
+    }
+    else
+    {
+        NSArray *outputArray = @[@7,@0];
         return outputArray;
     }
 }
