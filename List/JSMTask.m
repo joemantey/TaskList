@@ -66,7 +66,7 @@
     
     //Dictionaries for the events with due date set
     
-    NSDictionary *dueDateHigh = @{
+    NSDictionary *dueDateHigh = @{@0:@10,
                                   @1:@9,
                                   @2:@7.5,
                                   @3:@6.5,
@@ -77,6 +77,7 @@
                                   };
     
     NSDictionary *dueDateMedium = @{
+                                  @0:@10,
                                   @1:@8.5,
                                   @2:@7,
                                   @3:@6,
@@ -87,13 +88,14 @@
                                   };
     
     NSDictionary *dueDateLow = @{
-                                    @1:@8,
-                                    @2:@6.5,
-                                    @3:@6,
-                                    @7:@3.5,
-                                    @14:@2,
-                                    @21:@0.5,
-                                    @56:@0,
+                                 @0:@10,
+                                 @1:@8,
+                                 @2:@6.5,
+                                 @3:@6,
+                                 @7:@3.5,
+                                @14:@2,
+                                @21:@0.5,
+                                @56:@0,
                                     };
     
     //Dictionaries for events with no due date set
@@ -124,6 +126,24 @@
                                  @0:@1
                                  };
     
+    //Goal dictionary
+    
+    NSDictionary *isAGoal= @{
+                             @1:@10,
+                             @0.75:@8,
+                             @0.5:@6,
+                             @0.25:@4,
+                             };
+    
+    NSDictionary *algorithmDictionary =  @{@"dueDateHigh":dueDateHigh,
+                                         @"dueDateMedium":dueDateMedium,
+                                            @"dueDateLow":dueDateLow,
+                                         @"noDueDateHigh":noDueDateHigh,
+                                       @"noDueDateMedium":noDueDateMedium,
+                                          @"noDueDateLow":noDueDateLow,
+                                               @"isAGoal":isAGoal
+                                      };
+    return algorithmDictionary;
 }
 
 -(double)getPercentageOfTimeElapsedSincePeriodStartDate:(NSInteger)periodStartDateAdjuster andPeriodEndDate:(NSInteger)periodEndDateAdjuster usingTask:(JSMTask *)task{
@@ -140,7 +160,6 @@
     DTTimePeriod *timeSinceStartofPeriod = [[DTTimePeriod alloc]init];
     timeSinceStartofPeriod.StartDate     = periodStartDate;
     timeSinceStartofPeriod.EndDate       = todaysDate;
-    
     
     double taskTimePeriodInMinutes                  = [taskTimePeriod durationInMinutes];
     double taskTimePeriodBeforeEndOfPeriodinMinutes = [timeSinceStartofPeriod durationInMinutes];
@@ -180,52 +199,102 @@
 
 -(void)setTaskPriorityWithTask:(JSMTask *)task{
     
-    if (task.userPriority==0) {
+    NSDictionary *algorithmDictionary = [self buildDictionaryOfTaskPriortyValues];
+    
+    
+    
+    
+}
+
+-(NSArray *)getCategoryForMileStonesForTasksWithDueDate:(JSMTask *)task{
+    
+   
+    NSDate *todaysDate = [NSDate date];
+    
+    NSInteger daysFromDueDate = [todaysDate daysFrom:task.dueDate];
+    
+    if ([self checkIf:daysFromDueDate isBetween:0 and:1]){
         
+        NSArray *outputArray = @[@0,@1];
+    }
+    else if ([self checkIf:daysFromDueDate isBetween:1 and:2])
+    {
+        NSArray *outputArray = @[@1,@2]; return outputArray;
         
-    }else if ([task.userPriority ==0]!){
-        
+    }
+    else if ([self checkIf:daysFromDueDate isBetween:2 and:3])
+    {
+        NSArray *outputArray = @[@2,@3];
+         return outputArray;
+    }
+    else if ([self checkIf:daysFromDueDate isBetween:3 and:7])
+    {
+        NSArray *outputArray = @[@3,@7];
+         return outputArray;
+    }
+    else if ([self checkIf:daysFromDueDate isBetween:7 and:14])
+    {
+        NSArray *outputArray = @[@7,@14];
+         return outputArray;
+    }
+    else if ([self checkIf:daysFromDueDate isBetween:14 and:21])
+    {
+        NSArray *outputArray = @[@14,@21];
+         return outputArray;
+    }
+    else if ([self checkIf:daysFromDueDate isBetween:21 and:28])
+    {
+        NSArray *outputArray = @[@21,@28];
+         return outputArray;
+    }
+    else if ([self checkIf:daysFromDueDate isBetween:28 and:56])
+    {
+        NSArray *outputArray = @[@28,@56];
+         return outputArray;
+    }
+    else
+    {
+        NSArray *outputArray = @[@56, @56];
+         return outputArray;
     }
     
+   
 }
 
--(void)setPriorityForTask:(JSMTask *)task{
-    
 
+-(BOOL)checkIf:(NSInteger)integer isBetween:(NSInteger)integerOne and:(NSInteger)integerTwo{
+ 
+    if (integer > integerOne) {
+        if (integer < integerTwo) {
+            return YES;
+        }
+    }
 }
 
--(void)setPriorityForTaskWithUserPriority:(JSMTask *)task{
-    
 
-    
-}
-
-
-
-
--(void)setPriority{
-    
-    NSInteger priorityInteger = self.currentPriority;
-    NSString *outputString = [[NSString alloc]init];
-    
-    if (priorityInteger < LOWBound )
-    {
-        outputString = @"Low";
-    }
-    else if ( priorityInteger < MEDIUMBound)
-    {
-        outputString = @"Medium";
-    }
-    else if ( priorityInteger < HIGHBound)
-    {
-        outputString = @"High";
-    }
-    else if (priorityInteger > HIGHBound)
-    {
-        outputString = @"Immediate";
-    }
-    
-    self.currentPriorityString = outputString;
-}
+//-(void)setPriority{
+//    
+//    NSInteger priorityInteger = self.currentPriority;
+//    NSString *outputString = [[NSString alloc]init];
+//    
+//    if (priorityInteger < LOWBound )
+//    {
+//        outputString = @"Low";
+//    }
+//    else if ( priorityInteger < MEDIUMBound)
+//    {
+//        outputString = @"Medium";
+//    }
+//    else if ( priorityInteger < HIGHBound)
+//    {
+//        outputString = @"High";
+//    }
+//    else if (priorityInteger > HIGHBound)
+//    {
+//        outputString = @"Immediate";
+//    }
+//    
+//    self.currentPriorityString = outputString;
+//}
 
 @end

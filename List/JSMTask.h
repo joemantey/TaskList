@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSDate *dueDate;
 @property (strong, nonatomic) NSDate *reminderDate;
 @property (strong, nonatomic) DTTimePeriod *timeUntiDueDate;
+@property (nonatomic) NSInteger *timeIndex;
 @property (nonatomic) BOOL isDueToday;
 
 
