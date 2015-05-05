@@ -13,21 +13,21 @@
 NSString *const MyThingNotificationKey = @"MyThingNotificationKey";
 
 
-NSInteger const HighPriorityInteger = 3;
-NSInteger const MedPriorityInteger = 2;
-NSInteger const LowPriorityInteger = 1;
+NSInteger const highPriorityInteger = 3;
+NSInteger const medPriorityInteger = 2;
+NSInteger const lowPriorityInteger = 1;
 
-NSInteger const MaxBasePriority = 1000;
-NSInteger const HighBasePriority = 800;
-NSInteger const MediumBaseValue = 600;
-NSInteger const LowBaseValue = 400;
+NSInteger const maxBasePriority = 1000;
+NSInteger const highBasePriority = 800;
+NSInteger const mediumBaseValue = 600;
+NSInteger const lowBaseValue = 400;
 
-NSInteger const HighPriorityAdjuster = 100;
-NSInteger const MediumPriorityAdjuster = 0;
-NSInteger const LowPriorityAdjuster = -100;
+NSInteger const highPriorityAdjuster = 100;
+NSInteger const mediumPriorityAdjuster = 0;
+NSInteger const lowPriorityAdjuster = -100;
 
-NSTimeInterval const ImmediateInterval = 1440;
-NSTimeInterval const HighPriorityInterval = 4320;
-NSTimeInterval const MediumPriorityInterval = 10080;
+NSTimeInterval const immediateInterval = 1440;
+NSTimeInterval const highPriorityInterval = 4320;
+NSTimeInterval const mediumPriorityInterval = 10080;
 
 @end

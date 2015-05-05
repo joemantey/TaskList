@@ -54,7 +54,7 @@
                        andList:@""
                     andDateDue:nil
                andReminderDate:nil
-               andUserPriority:LowPriorityInteger
+               andUserPriority:lowPriorityInteger
                      andIsGoal:NO ];
     
     return self;
@@ -146,6 +146,63 @@
     return algorithmDictionary;
 }
 
+-(NSInteger)calculatePriorityForTask:(JSMTask *)task usingKeyString:(NSString *)keyString andKeys:(NSArray *)keyArray andAdjuster:(double)adjuster andAlgorithmDictionary:(NSDictionary *)algorithmDictionary{
+    
+    
+    //get the bottom of the range
+    NSDictionary *currentAlgorithmDictionary = algorithmDictionary[keyString];
+    
+    NSInteger bottomOfRangeKey = [keyArray[1] integerValue];
+    NSInteger topOfRangeKey = [keyArray[0] integerValue];
+    
+    NSInteger bottomOfPriorityRange = currentAlgorithmDictionary[bottomOfRangeKey];
+    NSInteger topOfPriorityRange = currentAlgorithmDictionary[topOfRangeKey];
+    NSInteger range = topOfPriorityRange - bottomOfPriorityRange;
+    
+    NSInteger basePriority = bottomOfPriorityRange;
+    
+    NSInteger adjustedPriority = basePriority + ( (NSInteger)adjuster * range);
+    
+    task.currentPriority = adjustedPriority;
+    
+    
+    
+}
+
+-(NSString *)getDictionaryKeyStringforTask:(JSMTask *)task{
+    
+    if (task.isGoal) {
+        return @"isAGoal";
+    }
+    else if (task.dueDate) {
+        if (task.userPriority == highPriorityInteger) {
+            return @"dueDateHigh";
+        }
+        else if (task.userPriority == medPriorityInteger) {
+            return @"dueDateMedium";
+        }
+        else if (task.userPriority == lowPriorityInteger) {
+            return @"dueDateLow";
+        }
+        else {
+            return @"dueDateLow";
+        }
+    }
+    else{
+        if (task.userPriority == highPriorityInteger) {
+            return @"noDueDateHigh";
+        }
+        if (task.userPriority == medPriorityInteger) {
+            return @"noDueDateMedium";
+        }
+        if (task.userPriority == lowPriorityInteger) {
+            return @"noDueDateLow";
+        }else{
+            return @"noDueDateLow";
+        }
+    }
+}
+
 -(double)getPercentageOfTimeElapsedSincePeriodStartDate:(NSInteger)periodStartDateAdjuster andPeriodEndDate:(NSInteger)periodEndDateAdjuster usingTask:(JSMTask *)task{
     
     NSDate *todaysDate      = [NSDate date];
@@ -171,45 +228,39 @@
 }
 
 
--(double )getPercentageOfTimeElapsedBetweenMilestonesForTask:(JSMTask *)task {
-    
-    
-    NSDate *taskCreationDate = task.dateCreated;
-    NSDate *taskDueDate = task.dueDate;
-    NSDate *milestoneDate = [NSDate date];
-    
-    
-    DTTimePeriod *taskTimePeriod = [[DTTimePeriod alloc] init];
-    taskTimePeriod.StartDate = taskCreationDate;
-    taskTimePeriod.EndDate = taskDueDate;
-    
-    DTTimePeriod *taskTimeElapsed = [[DTTimePeriod alloc] init];
-    taskTimeElapsed.StartDate = taskCreationDate;
-    taskTimeElapsed.EndDate =milestoneDate;
-    
-    
-    double totalTime = [taskTimePeriod durationInMinutes];
-    double timeElapsed = [taskTimeElapsed durationInMinutes];
-    
-    double percentComplete = timeElapsed/totalTime;
-    
-    return percentComplete;
-    
-}
+
 
 -(void)setTaskPriorityWithTask:(JSMTask *)task{
     
     NSDictionary *algorithmDictionary = [self buildDictionaryOfTaskPriortyValues];
     
-    NSArray *algorithmKeys = [self getMilestonesForTasksWithDueDate:task];
-    
-    double adjuster = [self getPercentageOfTimeElapsedSincePeriodStartDate:[algorithmKeys[0] integerValue]
-                                                          andPeriodEndDate:[algorithmKeys[1] integerValue]
+    //if task has due date
+    if (task.dueDate) {
+     
+        NSArray *algorithmKeys = [self getMilestonesForTasksWithDueDate:task];
+        NSString *algorithmKeyString = [self getDictionaryKeyStringforTask:task];
+        
+        double adjuster = [self getPercentageOfTimeElapsedSincePeriodStartDate:[algorithmKeys[1] integerValue]
+                                                          andPeriodEndDate:[algorithmKeys[0] integerValue]
                                                                  usingTask:task];
+        
+        
     
-    //get values from dictionary
+        
     
+    }
     
+    //if task doesn't have due date
+    else {
+        
+        NSArray *algorithmKeys = [self getMilestonesForTasksWithoutDueDate:task];
+        NSString *algorithmKeyString = [self getDictionaryKeyStringforTask:task];
+        double adjuster = [self getPercentageOfTimeElapsedSincePeriodStartDate:[algorithmKeys[0] integerValue]
+                                                              andPeriodEndDate:[algorithmKeys[1] integerValue]
+                                                                     usingTask:task];
+        
+    }
+
     
 }
 
@@ -297,18 +348,11 @@
          return outputArray;
     }
     
-    else if ([self checkIf:daysFromDueDate isBetween:21 and:28])
+    else if ([self checkIf:daysFromDueDate isBetween:21 and:56])
     {
-        NSArray *outputArray = @[@21,@28];
+        NSArray *outputArray = @[@21,@56];
          return outputArray;
     }
-    
-    else if ([self checkIf:daysFromDueDate isBetween:28 and:56])
-    {
-        NSArray *outputArray = @[@28,@56];
-         return outputArray;
-    }
-    
     else
     {
         NSArray *outputArray = @[@56, @56];
@@ -338,6 +382,32 @@
         }
 }
 
+
+//-(double )getPercentageOfTimeElapsedBetweenMilestonesForTask:(JSMTask *)task {
+//    
+//    
+//    NSDate *taskCreationDate = task.dateCreated;
+//    NSDate *taskDueDate = task.dueDate;
+//    NSDate *milestoneDate = [NSDate date];
+//    
+//    
+//    DTTimePeriod *taskTimePeriod = [[DTTimePeriod alloc] init];
+//    taskTimePeriod.StartDate = taskCreationDate;
+//    taskTimePeriod.EndDate = taskDueDate;
+//    
+//    DTTimePeriod *taskTimeElapsed = [[DTTimePeriod alloc] init];
+//    taskTimeElapsed.StartDate = taskCreationDate;
+//    taskTimeElapsed.EndDate =milestoneDate;
+//    
+//    
+//    double totalTime = [taskTimePeriod durationInMinutes];
+//    double timeElapsed = [taskTimeElapsed durationInMinutes];
+//    
+//    double percentComplete = timeElapsed/totalTime;
+//    
+//    return percentComplete;
+//    
+//}
 //-(NSArray *)getDictionaryValuesUsingKeysFromArray:(NSArray *)keyArray{
 //
 //    NSInteger keyOne = keyArray[0];
