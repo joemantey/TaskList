@@ -201,57 +201,91 @@
     
     NSDictionary *algorithmDictionary = [self buildDictionaryOfTaskPriortyValues];
     
+    NSArray *algorithmDictionaryKeys = [self getMilestonesForTasksWithDueDate:task];
+    
+    //get values from dictionary
     
     
     
 }
 
--(NSArray *)getCategoryForMileStonesForTasksWithDueDate:(JSMTask *)task{
+-(NSArray *)getMilestonesForTasksWithoutDueDate:(JSMTask *)task{
+    
+    
+    NSDate *todaysDate = [NSDate date];
+    
+    NSInteger daysFromDueDate = [todaysDate daysFrom:task.dueDate];
+    
+    if ([self checkIf:daysFromDueDate isBetween:0 and:1])
+    {
+        NSArray *outputArray = @[@0,@1];
+        return outputArray;
+    }
+    
+    else if ([self checkIf:daysFromDueDate isBetween:1 and:2])
+    {
+        NSArray *outputArray = @[@1,@2]; return outputArray;
+        return outputArray;
+    }
+}
+
+
+
+-(NSArray *)getMilestonesForTasksWithDueDate:(JSMTask *)task{
     
    
     NSDate *todaysDate = [NSDate date];
     
     NSInteger daysFromDueDate = [todaysDate daysFrom:task.dueDate];
     
-    if ([self checkIf:daysFromDueDate isBetween:0 and:1]){
-        
+    if ([self checkIf:daysFromDueDate isBetween:0 and:1])
+    {
         NSArray *outputArray = @[@0,@1];
+        return outputArray;
     }
+    
     else if ([self checkIf:daysFromDueDate isBetween:1 and:2])
     {
         NSArray *outputArray = @[@1,@2]; return outputArray;
-        
+        return outputArray;
     }
+    
     else if ([self checkIf:daysFromDueDate isBetween:2 and:3])
     {
         NSArray *outputArray = @[@2,@3];
          return outputArray;
     }
+    
     else if ([self checkIf:daysFromDueDate isBetween:3 and:7])
     {
         NSArray *outputArray = @[@3,@7];
          return outputArray;
     }
+    
     else if ([self checkIf:daysFromDueDate isBetween:7 and:14])
     {
         NSArray *outputArray = @[@7,@14];
          return outputArray;
     }
+    
     else if ([self checkIf:daysFromDueDate isBetween:14 and:21])
     {
         NSArray *outputArray = @[@14,@21];
          return outputArray;
     }
+    
     else if ([self checkIf:daysFromDueDate isBetween:21 and:28])
     {
         NSArray *outputArray = @[@21,@28];
          return outputArray;
     }
+    
     else if ([self checkIf:daysFromDueDate isBetween:28 and:56])
     {
         NSArray *outputArray = @[@28,@56];
          return outputArray;
     }
+    
     else
     {
         NSArray *outputArray = @[@56, @56];
@@ -264,13 +298,33 @@
 
 -(BOOL)checkIf:(NSInteger)integer isBetween:(NSInteger)integerOne and:(NSInteger)integerTwo{
  
-    if (integer > integerOne) {
-        if (integer < integerTwo) {
-            return YES;
-        }
+    if (integer > integerOne)
+    {
+        if (integer < integerTwo)
+            {
+                return YES;
+            }
+        else
+            {
+                return NO;
+            }
     }
+    else
+        {
+            return NO;
+        }
 }
 
+//-(NSArray *)getDictionaryValuesUsingKeysFromArray:(NSArray *)keyArray{
+//
+//    NSInteger keyOne = keyArray[0];
+//    NSInteger keyTwo = keyArray[1];
+//
+//    NSArray *returnArray = @[[NSNumber numberWithInteger:keyOne], [NSNumber numberWithInteger:keyTwo]];
+//
+//    return returnArray;
+//
+//}
 
 //-(void)setPriority{
 //    
