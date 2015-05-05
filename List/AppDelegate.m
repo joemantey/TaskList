@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "JSMTask.h"
-#import "JSMTaskManager.h"
 
 @interface AppDelegate ()
 
@@ -19,20 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    JSMTask *taskOne = [[JSMTask alloc] initWithName:@"Build App"
-                                    andDetails:@""
-                                   andCategory:@"Work"
-                                    andDateDue:[NSDate date]
-                               andUserPriority:35 andIsGoal:NO];
-    
-    JSMTask *taskTwo = [[JSMTask alloc] initWithName:@"Eat"
-                                    andDetails:@""
-                                   andCategory:@"Work"
-                                    andDateDue:[NSDate date]
-                               andUserPriority:35 andIsGoal:NO];
-    
-    
-    
+
     
     
     return YES;
