@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JSMNewTaskTableViewController : UITableViewController
+@interface JSMNewTaskTableViewController : UITableViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 
 @end

@@ -10,6 +10,7 @@
 
 @interface JSMTaskList : NSMutableArray
 
+@property (strong, nonatomic) NSMutableArray *categories;
 
 
 @end

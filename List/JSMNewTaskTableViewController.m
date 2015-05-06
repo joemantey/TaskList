@@ -32,8 +32,15 @@
 @property (nonatomic) NSInteger userPriority;
 @property (nonatomic) BOOL isGoal;
 
+@property (strong, nonatomic) NSArray *categoryPickerItems;
+
 - (IBAction)cancelButton:(id)sender;
 - (IBAction)saveButton:(id)sender;
+
+- (IBAction)datePickerValueChanged:(id)sender;
+- (IBAction)reminderPickerValueChanged:(id)sender;
+
+@property (strong, nonatomic) NSDateFormatter *dateFormatter;
 
 @property (nonatomic) BOOL dueDatePickerIsShowing;
 @property (nonatomic) BOOL reminderDatePickerIsShowing;
@@ -44,25 +51,66 @@
 @end
 
 @implementation JSMNewTaskTableViewController
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    [self populateCategoryArray];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     
+    [self setUpTimeProperties];
+    
+    
+    self.dueDatePickerIsShowing = NO;
+    self.reminderDatePickerIsShowing = NO;
+    self.listPickerIsShowing =  NO;
     
     self.dataManager = [JSMTaskDataManager sharedDataManager];
     
+    self.listPicker.dataSource = self;
+    self.listPicker.delegate = self;
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+
+- (void)setUpTimeProperties{
+    
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    [self.dateFormatter setDateStyle:NSDateFormatterLongStyle];
+    [self.dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    
+    self.dueDateField.text = [self.dateFormatter stringFromDate:[self.dueDatePicker date]];
+    self.reminderField.text = [self.dateFormatter stringFromDate:[self.reminderDatePicker date]];
+    
+    NSInteger row = [self.listPicker selectedRowInComponent:0];
+    self.listField.text = [self.categoryPickerItems objectAtIndex:row];
 }
+
+
+
+- (IBAction)datePickerValueChanged:(id)sender {
+    
+    self.dueDateField.text = [self.dateFormatter stringFromDate:[self.dueDatePicker date]];
+}
+
+
+
+- (IBAction)reminderPickerValueChanged:(id)sender {
+    
+    self.reminderField.text = [self.dateFormatter stringFromDate:[self.reminderDatePicker date]];
+}
+
+
 
 - (IBAction)cancelButton:(id)sender {
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+
 
 - (IBAction)saveButton:(id)sender {
     
@@ -90,6 +138,29 @@
     
 }
 
+#pragma mark - PickerViewDelegate
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return [self.categoryPickerItems count];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    self.listField.text= self.categoryPickerItems[row];
+    return self.categoryPickerItems[row];
+}
+
+
 #pragma mark - TableViewDelegate
 
 //Constants for static tableview
@@ -106,6 +177,11 @@
 #define fieldCellHeight 64
 #define pickerCellHeight 162
 
+-(void)populateCategoryArray{
+    
+    self.categoryPickerItems = @[@"To Do's", @"Shopping List", @"Assignments", @"Goals"];
+    
+}
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -113,16 +189,16 @@
     
     if (indexPath.row == dateDuePickerIndex){
         
-        height = self.dueDatePickerIsShowing ? pickerCellHeight : 0.0f;
+        height = pickerCellHeight;
         
     } else if (indexPath.row == reminderPickerIndex){
         
-        height = self.reminderDatePickerIsShowing ? pickerCellHeight : 0.0f;
+        height = pickerCellHeight;
         
     }
     else if (indexPath.row == listPickerIndex){
         
-        height = self.listPickerIsShowing ? pickerCellHeight : 0.0f;
+        height = pickerCellHeight;
         
     }
     
@@ -135,41 +211,164 @@
 }
 
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (indexPath.row == dateDueFieldIndex){
-        
-        //If the datePickerIsShowing...
-        if (self.dueDatePickerIsShowing){
-            //...hide it!
-            [self hideDatePickerCell:self.dueDatePicker andupdateBool:self.dueDatePickerIsShowing];
-        }else {
-            //...show it!
-            [self showDatePickerCell:self.dueDatePicker andupdateBool:self.dueDatePickerIsShowing];
-        }
-        
-    } else if (indexPath.row == reminderFieldIndex){
-        
-        if (self.reminderDatePickerIsShowing){
-            
-            [self hideDatePickerCell:self.reminderDatePicker andupdateBool:self.reminderDatePickerIsShowing];
-        }else {
-            
-            [self showDatePickerCell:self.reminderDatePicker andupdateBool:self.reminderDatePickerIsShowing];
-        }
-        
-    } else if (indexPath.row == listFieldIndex){
-        
-        if (self.listPickerIsShowing){
-            
-            [self hidePickerCell:self.listPicker andupdateBool:self.listPickerIsShowing];
-        }else {
-            
-            [self showPickerCell:self.listPicker andupdateBool:self.listPickerIsShowing];
-        }
-    }
-    
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//   
+//    
+//    
+//    if (indexPath.row == dateDueFieldIndex){
+//        
+//        //If the datePickerIsShowing...
+//        if (self.dueDatePickerIsShowing){
+//            //...hide it!
+//            [self hideDatePickerCell:self.dueDatePicker andupdateBool:self.dueDatePickerIsShowing];
+//          
+//        }else {
+//            //...show it!
+//            [self showDatePickerCell:self.dueDatePicker andupdateBool:self.dueDatePickerIsShowing];
+//;
+//        }
+//        
+//    } else if (indexPath.row == reminderFieldIndex){
+//        
+//        if (self.reminderDatePickerIsShowing){
+//            
+//            [self hideDatePickerCell:self.reminderDatePicker andupdateBool:self.reminderDatePickerIsShowing];
+//        }else {
+//            
+//            [self showDatePickerCell:self.reminderDatePicker andupdateBool:self.reminderDatePickerIsShowing];
+//        }
+//        
+//    }else if (indexPath.row == listFieldIndex){
+//        
+//        if (self.listPickerIsShowing){
+//            
+//            [self hidePickerCell:self.listPicker andupdateBool:self.listPickerIsShowing];
+//        }else {
+//            
+//            [self showPickerCell:self.listPicker andupdateBool:self.listPickerIsShowing];
+//        }
+//    }
+//    
+//    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+//}
+
+
+
+
+
+#pragma mark - helper methods
+
+//- (void)showDatePickerCell:(UIDatePicker *)picker andupdateBool:(BOOL)isShowingBool {
+//    
+//    
+//    //...change the BOOLEAN to indicate the the date picker is (about to be) shown...
+//    isShowingBool = YES;
+//    
+//    UIDatePicker *datePicker = picker;
+//    
+//    //...refresh the tableview...
+//    [self.tableView beginUpdates];
+//    [self.tableView endUpdates];
+//    
+//    //...seems like a good time to stop hiding the date picker...
+//    picker.hidden = NO;
+//    
+//    //Now some setup. Turn the date picker clear so we can have it fade in during our animation.
+//    picker.alpha = 0.0f;
+//    
+//    //Let's get our Walt Disney on and animate the appearance of this date picker.
+//    [UIView animateWithDuration:0.25 animations:^{
+//        
+//        datePicker.alpha = 1.0f;
+//        
+//    }];
+//}
+//
+//- (void)showPickerCell:(UIPickerView *)picker andupdateBool:(BOOL)isShowingBool {
+//    
+//    
+//    isShowingBool = YES;
+//    
+//    UIPickerView *pickerView = picker;
+//    
+//    [self.tableView beginUpdates];
+//    [self.tableView endUpdates];
+//    
+//    pickerView.hidden = NO;
+//    
+//    pickerView.alpha = 0.0f;
+//    
+//    [UIView animateWithDuration:0.25 animations:^{
+//        
+//        pickerView.alpha = 1.0f;
+//        
+//    }];
+//}
+//
+//- (void)hideDatePickerCell:(UIDatePicker *)picker andupdateBool:(BOOL)isShowingBool {
+//    
+//    
+//    UIDatePicker *datePicker = picker;
+//    
+//    //...change the BOOLEAN to indicate the the date picker is (about to be) shown...
+//    isShowingBool = NO;
+//    
+//    [self.tableView beginUpdates];
+//    [self.tableView endUpdates];
+//    
+//    //Animation time again. This time were turning the date picker clear.
+//    [UIView animateWithDuration:0.25
+//     
+//                     animations:^{
+//                         datePicker.alpha = 0.0f;
+//                     }
+//                     completion:^(BOOL finished){
+//                         //when we're done animating, hide the picker
+//                         datePicker.hidden = YES;
+//                         //update picker to show date
+//                         
+//                         if (datePicker == self.dueDatePicker) {
+//                             self.dueDate = [datePicker date];
+//                         }else if (datePicker == self.reminderDatePicker) {
+//                             self.reminderDate = [datePicker date];
+//                         }
+//                         
+//                     }];
+//}
+//
+//
+//- (void)hidePickerCell:(UIPickerView *)picker andupdateBool:(BOOL)isShowingBool {
+//    
+//    UIPickerView *pickerView = picker;
+//    
+//    isShowingBool = NO;
+//    
+//    [self.tableView beginUpdates];
+//    [self.tableView endUpdates];
+//    
+//    [UIView animateWithDuration:0.25
+//     
+//                     animations:^{
+//                         pickerView.alpha = 0.0f;
+//                     }
+//                     completion:^(BOOL finished){
+//                         
+//                         pickerView.hidden = YES;
+//                         
+//                         self.list = self.listField.text;
+//                     }];
+//}
+
+
+
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
 }
 
 
@@ -184,125 +383,6 @@
  }
  */
 
-
-
-#pragma mark - helper methods
-
-- (void)showDatePickerCell:(UIDatePicker *)picker andupdateBool:(BOOL)isShowingBool {
-    
-    
-    BOOL pickerIsShowing = isShowingBool;
-    //...change the BOOLEAN to indicate the the date picker is (about to be) shown...
-    pickerIsShowing = YES;
-    
-    UIDatePicker *datePicker = picker;
-    
-    //...refresh the tableview...
-    [self.tableView beginUpdates];
-    [self.tableView endUpdates];
-    
-    //...seems like a good time to stop hiding the date picker...
-    datePicker.hidden = NO;
-    
-    //Now some setup. Turn the date picker clear so we can have it fade in during our animation.
-    datePicker.alpha = 0.0f;
-    
-    //Let's get our Walt Disney on and animate the appearance of this date picker.
-    [UIView animateWithDuration:0.25 animations:^{
-        
-        datePicker.alpha = 1.0f;
-        
-    }];
-}
-
-- (void)showPickerCell:(UIPickerView *)picker andupdateBool:(BOOL)isShowingBool {
-    
-    
-    BOOL pickerIsShowing = isShowingBool;
-    
-    pickerIsShowing = YES;
-    
-    UIPickerView *pickerView = picker;
-    
-    [self.tableView beginUpdates];
-    [self.tableView endUpdates];
-    
-    pickerView.hidden = NO;
-    
-    pickerView.alpha = 0.0f;
-    
-    [UIView animateWithDuration:0.25 animations:^{
-        
-        pickerView.alpha = 1.0f;
-        
-    }];
-}
-
-- (void)hideDatePickerCell:(UIDatePicker *)picker andupdateBool:(BOOL)isShowingBool {
-    
-    BOOL pickerIsShowing = isShowingBool;
-    UIDatePicker *datePicker = picker;
-    
-    //...change the BOOLEAN to indicate the the date picker is (about to be) shown...
-    pickerIsShowing = NO;
-    
-    [self.tableView beginUpdates];
-    [self.tableView endUpdates];
-    
-    //Animation time again. This time were turning the date picker clear.
-    [UIView animateWithDuration:0.25
-     
-                     animations:^{
-                         datePicker.alpha = 0.0f;
-                     }
-                     completion:^(BOOL finished){
-                         //when we're done animating, hide the picker
-                         datePicker.hidden = YES;
-                         //update picker to show date
-                         
-                         if (datePicker == self.dueDatePicker) {
-                             self.dueDate = [datePicker date];
-                         }else if (datePicker == self.reminderDatePicker) {
-                             self.reminderDate = [datePicker date];
-                         }
-                         
-                     }];
-}
-
-
-- (void)hidePickerCell:(UIPickerView *)picker andupdateBool:(BOOL)isShowingBool {
-    
-    BOOL pickerIsShowing = isShowingBool;
-    UIPickerView *pickerView = picker;
-    
-    pickerIsShowing = NO;
-    
-    [self.tableView beginUpdates];
-    [self.tableView endUpdates];
-    
-    [UIView animateWithDuration:0.25
-     
-                     animations:^{
-                         pickerView.alpha = 0.0f;
-                     }
-                     completion:^(BOOL finished){
-                         
-                         pickerView.hidden = YES;
-                         
-                         self.list = self.listField.text;
-                     }];
-}
-
-
-
-
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
 
 
 @end
