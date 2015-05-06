@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JSMTaskListViewController : UIViewController
+@interface JSMTaskListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

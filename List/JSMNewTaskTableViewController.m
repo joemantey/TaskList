@@ -136,6 +136,8 @@
     
     [self.dataManager.taskList addObject:newTask];
     
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 #pragma mark - PickerViewDelegate

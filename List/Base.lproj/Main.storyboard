@@ -157,7 +157,7 @@
                                                                     <textInputTraits key="textInputTraits"/>
                                                                 </textField>
                                                             </subviews>
-                                                            <color key="backgroundColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstItem="Fby-Sg-MWw" firstAttribute="top" secondItem="Z1j-Tb-YJQ" secondAttribute="top" id="7cW-Gf-wWP"/>
                                                                 <constraint firstItem="SO8-vq-zjS" firstAttribute="trailing" secondItem="Z1j-Tb-YJQ" secondAttribute="trailing" id="Aau-Wh-ESh"/>
@@ -211,7 +211,7 @@
                                                                     <textInputTraits key="textInputTraits"/>
                                                                 </textField>
                                                             </subviews>
-                                                            <color key="backgroundColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstItem="RS3-GB-nBe" firstAttribute="top" secondItem="0f2-By-kDs" secondAttribute="top" id="0vJ-EO-Qa3"/>
                                                                 <constraint firstItem="xOq-Tp-5WF" firstAttribute="trailing" secondItem="0f2-By-kDs" secondAttribute="trailing" id="8jh-cU-jxl"/>
@@ -288,7 +288,7 @@
                                                                     <textInputTraits key="textInputTraits"/>
                                                                 </textField>
                                                             </subviews>
-                                                            <color key="backgroundColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstItem="cW8-jS-AL1" firstAttribute="leading" secondItem="Iaa-49-cMR" secondAttribute="trailing" id="00Z-yi-ENZ"/>
                                                                 <constraint firstItem="cW8-jS-AL1" firstAttribute="trailing" secondItem="TTb-I0-JsT" secondAttribute="trailing" id="6bH-Wg-mvQ"/>
@@ -366,7 +366,7 @@
                                                                     <textInputTraits key="textInputTraits"/>
                                                                 </textField>
                                                             </subviews>
-                                                            <color key="backgroundColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstItem="uHV-oJ-AQV" firstAttribute="width" secondItem="CKf-47-1qg" secondAttribute="width" multiplier="0.2" id="1rN-1A-nUY"/>
                                                                 <constraint firstItem="wxW-3f-JuZ" firstAttribute="trailing" secondItem="CKf-47-1qg" secondAttribute="trailing" id="4i6-ci-nNV"/>
@@ -442,7 +442,7 @@
                                                                     </segments>
                                                                 </segmentedControl>
                                                             </subviews>
-                                                            <color key="backgroundColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstItem="cXr-eD-X1Z" firstAttribute="bottom" secondItem="N4L-Yx-nei" secondAttribute="bottom" id="6tC-Uh-jQ7"/>
                                                                 <constraint firstItem="J5w-kv-68w" firstAttribute="leading" secondItem="N4L-Yx-nei" secondAttribute="leading" id="9P8-ah-ZCm"/>
@@ -497,7 +497,7 @@
                                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                 </textView>
                                                             </subviews>
-                                                            <color key="backgroundColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstItem="rX6-0P-Lbx" firstAttribute="trailing" secondItem="hYX-ks-yjC" secondAttribute="trailing" id="33a-JN-Og8"/>
                                                                 <constraint firstItem="p1S-eE-n2p" firstAttribute="bottom" secondItem="hYX-ks-yjC" secondAttribute="bottom" id="3dc-h4-Eu9"/>
