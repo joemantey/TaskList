@@ -1,34 +1,37 @@
 //
-//  JSMTaskListTableViewController.m
+//  JSMNewTaskListViewController.m
 //  List
 //
-//  Created by Joseph Smalls-Mantey on 5/5/15.
+//  Created by Joseph Smalls-Mantey on 5/6/15.
 //  Copyright (c) 2015 Joseph Smalls-Mantey. All rights reserved.
 //
 
-#import "JSMTaskListTableViewController.h"
+#import "JSMNewTaskListViewController.h"
 #import "JSMTaskDataManager.h"
 #import "JSMTask.h"
 #import "JSMTaskTableViewCell.h"
 
-
-@interface JSMTaskListTableViewController ()
-
+@interface JSMNewTaskListViewController ()
 
 @property (strong, nonatomic) JSMTaskDataManager *taskDataManager;
 
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
-
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 
 @end
 
-@implementation JSMTaskListTableViewController
+@implementation JSMNewTaskListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Do any additional setup after loading the view.
+}
+
+- (void)didReceiveMemoryWarning {
+    [super viewDidLoad];
     
-     self.taskDataManager = [JSMTaskDataManager sharedDataManager];
+    self.taskDataManager = [JSMTaskDataManager sharedDataManager];
     
     [self setUpTimeProperties];
 
@@ -40,9 +43,6 @@
     [self.dateFormatter setDateStyle:NSDateFormatterLongStyle];
     [self.dateFormatter setTimeStyle:NSDateFormatterShortStyle];
     
-
-
-
 }
 
 
@@ -66,41 +66,6 @@
     
     return cell;
 }
-
-                           
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 /*
 #pragma mark - Navigation

@@ -4,6 +4,10 @@
    <FileRef
       location = "group:List.xcodeproj">
    </FileRef>
+   <Group
+      location = "container:"
+      name = "Trash">
+   </Group>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
