@@ -336,13 +336,12 @@
     [self.tableView endUpdates];
 }
 
-- (void)hideDatePickerCell:(UIDatePicker *)picker andupdateBool:(BOOL)isShowingBool {
-    
-    
-    UIDatePicker *datePicker = picker;
+
+
+- (void)hideDueDatePickerCell{
     
     //...change the BOOLEAN to indicate the the date picker is (about to be) shown...
-    isShowingBool = NO;
+    self.dueDatePickerIsShowing= NO;
     
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
@@ -351,18 +350,43 @@
     [UIView animateWithDuration:0.25
      
                      animations:^{
-                         datePicker.alpha = 0.0f;
+                         self.dueDatePicker.alpha = 0.0f;
                      }
                      completion:^(BOOL finished){
                          //when we're done animating, hide the picker
-                         datePicker.hidden = YES;
+                         self.dueDatePicker.hidden = YES;
                          //update picker to show date
                          
-                         if (datePicker == self.dueDatePicker) {
-                             self.dueDate = [datePicker date];
-                         }else if (datePicker == self.reminderDatePicker) {
-                             self.reminderDate = [datePicker date];
-                         }
+                         
+                         self.dueDateField.text = [self.dateFormatter stringFromDate:[self.dueDatePicker date]];
+                         
+                         
+                     }];
+}
+
+
+- (void)hideReminderDatePickerCell{
+    
+    //...change the BOOLEAN to indicate the the date picker is (about to be) shown...
+    self.reminderDatePickerIsShowing= NO;
+    
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+    
+    //Animation time again. This time were turning the date picker clear.
+    [UIView animateWithDuration:0.25
+     
+                     animations:^{
+                         self.reminderDatePicker.alpha = 0.0f;
+                     }
+                     completion:^(BOOL finished){
+                         //when we're done animating, hide the picker
+                         self.dueDatePicker.hidden = YES;
+                         //update picker to show date
+                         
+                         
+                             self.reminderField.text = [self.dateFormatter stringFromDate:[self.reminderDatePicker date]];
+                         
                          
                      }];
 }
@@ -370,10 +394,11 @@
 
 - (void)hideListPicker{
     
-    [self.tableView beginUpdates];
+    
     self.listPickerIsShowing = NO;
     
-    
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
     
     
     [UIView animateWithDuration:0.25
@@ -385,9 +410,9 @@
                          
                          self.listPicker.hidden = YES;
                          
-                         self.list = self.listField.text;
+                         NSInteger row = [self.listPicker selectedRowInComponent:0];
+                         self.listField.text = [self.categoryPickerItems objectAtIndex:row];;
                      }];
-    [self.tableView endUpdates];
 }
 
 
