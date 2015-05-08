@@ -316,14 +316,14 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ufn-e8-zbm" id="5My-86-KnK">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Ac-ye-gQc" userLabel="ContentContainer">
-                                                    <rect key="frame" x="0.0" y="0.0" width="584" height="112"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Ac-ye-gQc" userLabel="ContentContainer">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="112"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CKf-47-1qg" userLabel="LabelContainer">
-                                                            <rect key="frame" x="58" y="18" width="468" height="78"/>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CKf-47-1qg" userLabel="LabelContainer">
+                                                            <rect key="frame" x="60" y="17" width="480" height="78"/>
                                                             <subviews>
-                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wxW-3f-JuZ" userLabel="ListField">
-                                                                    <rect key="frame" x="94" y="0.0" width="384" height="30"/>
+                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wxW-3f-JuZ" userLabel="ListField">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="480" height="78"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -388,12 +388,6 @@
                                                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N4L-Yx-nei" userLabel="LabelContainer">
                                                             <rect key="frame" x="58" y="18" width="468" height="78"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Priority" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J5w-kv-68w" userLabel="PriorityLabel">
-                                                                    <rect key="frame" x="0.0" y="1" width="94" height="78"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
                                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cXr-eD-X1Z" userLabel="PrioritySegmentedControl">
                                                                     <rect key="frame" x="90" y="25" width="345" height="79"/>
                                                                     <segments>
@@ -408,13 +402,9 @@
                                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstItem="cXr-eD-X1Z" firstAttribute="bottom" secondItem="N4L-Yx-nei" secondAttribute="bottom" id="6tC-Uh-jQ7"/>
-                                                                <constraint firstItem="J5w-kv-68w" firstAttribute="leading" secondItem="N4L-Yx-nei" secondAttribute="leading" constant="-20" id="9P8-ah-ZCm"/>
                                                                 <constraint firstItem="cXr-eD-X1Z" firstAttribute="top" secondItem="N4L-Yx-nei" secondAttribute="top" id="PUS-DF-4s1"/>
-                                                                <constraint firstItem="J5w-kv-68w" firstAttribute="width" secondItem="N4L-Yx-nei" secondAttribute="width" multiplier="0.2" id="V1p-HP-jv2"/>
-                                                                <constraint firstItem="J5w-kv-68w" firstAttribute="top" secondItem="N4L-Yx-nei" secondAttribute="top" id="eQU-rA-lfY"/>
+                                                                <constraint firstItem="cXr-eD-X1Z" firstAttribute="leading" secondItem="N4L-Yx-nei" secondAttribute="leading" id="cmh-9z-ZRJ"/>
                                                                 <constraint firstItem="cXr-eD-X1Z" firstAttribute="trailing" secondItem="N4L-Yx-nei" secondAttribute="trailing" id="fh9-d1-CaS"/>
-                                                                <constraint firstItem="cXr-eD-X1Z" firstAttribute="leading" secondItem="J5w-kv-68w" secondAttribute="trailing" id="oqD-we-K9R"/>
-                                                                <constraint firstItem="J5w-kv-68w" firstAttribute="bottom" secondItem="N4L-Yx-nei" secondAttribute="bottom" id="rgM-X9-mAi"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
@@ -448,12 +438,6 @@
                                                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hYX-ks-yjC" userLabel="LabelContainer">
                                                             <rect key="frame" x="58" y="17" width="468" height="78"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p1S-eE-n2p" userLabel="NoteLabel">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="94" height="78"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
                                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="Sample Text" translatesAutoresizingMaskIntoConstraints="NO" id="rX6-0P-Lbx" userLabel="NoteTextField">
                                                                     <rect key="frame" x="94" y="0.0" width="374" height="78"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
@@ -465,13 +449,9 @@
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstItem="rX6-0P-Lbx" firstAttribute="trailing" secondItem="hYX-ks-yjC" secondAttribute="trailing" id="33a-JN-Og8"/>
-                                                                <constraint firstItem="p1S-eE-n2p" firstAttribute="bottom" secondItem="hYX-ks-yjC" secondAttribute="bottom" id="3dc-h4-Eu9"/>
                                                                 <constraint firstItem="rX6-0P-Lbx" firstAttribute="bottom" secondItem="hYX-ks-yjC" secondAttribute="bottom" id="7bP-WU-KsE"/>
-                                                                <constraint firstItem="p1S-eE-n2p" firstAttribute="top" secondItem="hYX-ks-yjC" secondAttribute="top" id="HZp-Cg-WCj"/>
+                                                                <constraint firstItem="rX6-0P-Lbx" firstAttribute="leading" secondItem="hYX-ks-yjC" secondAttribute="leading" id="S22-a0-XoX"/>
                                                                 <constraint firstItem="rX6-0P-Lbx" firstAttribute="top" secondItem="hYX-ks-yjC" secondAttribute="top" id="g0z-jp-hna"/>
-                                                                <constraint firstItem="p1S-eE-n2p" firstAttribute="width" secondItem="hYX-ks-yjC" secondAttribute="width" multiplier="0.2" id="jwL-LE-SNE"/>
-                                                                <constraint firstItem="rX6-0P-Lbx" firstAttribute="leading" secondItem="p1S-eE-n2p" secondAttribute="trailing" id="pjM-fo-y6k"/>
-                                                                <constraint firstItem="p1S-eE-n2p" firstAttribute="leading" secondItem="hYX-ks-yjC" secondAttribute="leading" id="xwA-06-gmO"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>

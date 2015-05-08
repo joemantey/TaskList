@@ -63,15 +63,8 @@
     [super viewDidLoad];
     
     
+    [self hidePickerViews];
     [self setUpTimeProperties];
-    
-    
-    self.dueDatePickerIsShowing = NO;
-    self.dueDatePicker.hidden = YES;
-    self.reminderDatePickerIsShowing = NO;
-    self.reminderDatePicker.hidden= YES;
-    self.listPickerIsShowing =  NO;
-    self.listPicker.hidden = YES;
     
     self.dataManager = [JSMTaskDataManager sharedDataManager];
     
@@ -80,6 +73,17 @@
     
 }
 
+-(void)hidePickerViews{
+    
+    self.dueDatePickerIsShowing = NO;
+    self.dueDatePicker.hidden = YES;
+    
+    self.reminderDatePickerIsShowing = NO;
+    self.reminderDatePicker.hidden= YES;
+    
+    self.listPickerIsShowing =  NO;
+    self.listPicker.hidden = YES;
+}
 
 
 - (void)setUpTimeProperties{
@@ -314,7 +318,7 @@
 
 - (void)showListPicker {
     
-     [self.tableView beginUpdates];
+    [self.tableView beginUpdates];
     self.listPickerIsShowing = YES;
     
     self.listPicker.hidden = NO;
