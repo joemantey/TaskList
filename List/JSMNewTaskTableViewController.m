@@ -252,11 +252,11 @@
         //If the datePickerIsShowing...
         if (self.dueDatePickerIsShowing){
             //...hide it!
-            [self hideDatePickerCell:self.dueDatePicker andupdateBool:self.dueDatePickerIsShowing];
+            [self hideDueDatePickerCell];
           
         }else {
             //...show it!
-            [self showDatePickerCell:self.dueDatePicker andupdateBool:self.dueDatePickerIsShowing];
+            [self showDueDatePickerCell];
 ;
         }
         
@@ -264,10 +264,10 @@
         
         if (self.reminderDatePickerIsShowing){
             
-            [self hideDatePickerCell:self.reminderDatePicker andupdateBool:self.reminderDatePickerIsShowing];
+            [self showReminderDatePickerCell];
         }else {
             
-            [self showDatePickerCell:self.reminderDatePicker andupdateBool:self.reminderDatePickerIsShowing];
+            [self hideReminderDatePickerCell];
         }
         
     }else if (indexPath.row == listFieldIndex){
@@ -315,6 +315,57 @@
         
     }];
 }
+
+- (void)showDueDatePickerCell{
+    
+    
+    //...change the BOOLEAN to indicate the the date picker is (about to be) shown...
+    self.dueDatePickerIsShowing = YES;
+    
+    
+    //...refresh the tableview...
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+    
+    //...seems like a good time to stop hiding the date picker...
+    self.dueDatePicker.hidden = NO;
+    
+    //Now some setup. Turn the date picker clear so we can have it fade in during our animation.
+    self.dueDatePicker .alpha = 0.0f;
+    
+    //Let's get our Walt Disney on and animate the appearance of this date picker.
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        self.dueDatePicker.alpha = 1.0f;
+        
+    }];
+}
+
+- (void)showReminderDatePickerCell{
+    
+    
+    //...change the BOOLEAN to indicate the the date picker is (about to be) shown...
+    self.dueDatePickerIsShowing = YES;
+    
+    
+    //...refresh the tableview...
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+    
+    //...seems like a good time to stop hiding the date picker...
+    self.reminderDatePicker.hidden = NO;
+    
+    //Now some setup. Turn the date picker clear so we can have it fade in during our animation.
+    self.reminderDatePicker.alpha = 0.0f;
+    
+    //Let's get our Walt Disney on and animate the appearance of this date picker.
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        self.dueDatePicker.alpha = 1.0f;
+        
+    }];
+}
+
 
 - (void)showListPicker {
     
