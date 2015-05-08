@@ -101,6 +101,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.024623746049999999" green="0.223166272" blue="0.36096638440000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexBackgroundColor" red="0.028992598876357079" green="0.24453653395175934" blue="0.39765655994415283" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection id="4Fz-V1-2S7">
@@ -117,11 +118,14 @@
                                                             <rect key="frame" x="60" y="18" width="480" height="78"/>
                                                             <subviews>
                                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Task Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SO8-vq-zjS" userLabel="NameField">
-                                                                    <rect key="frame" x="-9" y="1" width="489" height="78"/>
-                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                    <rect key="frame" x="-9" y="1" width="489" height="30"/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
                                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <textInputTraits key="textInputTraits"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                    <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="yes" spellCheckingType="yes" keyboardAppearance="alert" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                                                    <connections>
+                                                                        <action selector="nameFieldChanged:" destination="i79-ie-8ko" eventType="editingDidEnd" id="m0S-lD-c6j"/>
+                                                                    </connections>
                                                                 </textField>
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -163,9 +167,11 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0f2-By-kDs" userLabel="LabelContainer">
                                                             <rect key="frame" x="60" y="17" width="480" height="78"/>
                                                             <subviews>
-                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xOq-Tp-5WF" userLabel="DueField">
+                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xOq-Tp-5WF" userLabel="DueField">
                                                                     <rect key="frame" x="0.0" y="0.0" width="480" height="78"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                     <textInputTraits key="textInputTraits"/>
                                                                 </textField>
                                                             </subviews>
@@ -232,9 +238,11 @@
                                                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q0l-a2-c5G" userLabel="LabelContainer">
                                                             <rect key="frame" x="60" y="17" width="480" height="78"/>
                                                             <subviews>
-                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="549-AQ-mfn" userLabel="DueField">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="480" height="90"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="549-AQ-mfn" userLabel="DueField">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="480" height="30"/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                     <textInputTraits key="textInputTraits"/>
                                                                 </textField>
                                                             </subviews>
@@ -309,33 +317,25 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Ac-ye-gQc" userLabel="ContentContainer">
-                                                    <rect key="frame" x="0.0" y="-8" width="584" height="112"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="584" height="112"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CKf-47-1qg" userLabel="LabelContainer">
                                                             <rect key="frame" x="58" y="18" width="468" height="78"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="List:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uHV-oJ-AQV" userLabel="ListLabel">
-                                                                    <rect key="frame" x="0.0" y="1" width="94" height="78"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
                                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wxW-3f-JuZ" userLabel="ListField">
-                                                                    <rect key="frame" x="94" y="0.0" width="384" height="78"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <rect key="frame" x="94" y="0.0" width="384" height="30"/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                     <textInputTraits key="textInputTraits"/>
                                                                 </textField>
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstItem="uHV-oJ-AQV" firstAttribute="width" secondItem="CKf-47-1qg" secondAttribute="width" multiplier="0.2" id="1rN-1A-nUY"/>
                                                                 <constraint firstItem="wxW-3f-JuZ" firstAttribute="trailing" secondItem="CKf-47-1qg" secondAttribute="trailing" id="4i6-ci-nNV"/>
-                                                                <constraint firstItem="uHV-oJ-AQV" firstAttribute="bottom" secondItem="CKf-47-1qg" secondAttribute="bottom" id="8nV-Cs-Bcq"/>
                                                                 <constraint firstItem="wxW-3f-JuZ" firstAttribute="top" secondItem="CKf-47-1qg" secondAttribute="top" id="DZl-66-Nya"/>
-                                                                <constraint firstItem="uHV-oJ-AQV" firstAttribute="top" secondItem="CKf-47-1qg" secondAttribute="top" id="MeJ-Ib-Nar"/>
-                                                                <constraint firstItem="wxW-3f-JuZ" firstAttribute="leading" secondItem="uHV-oJ-AQV" secondAttribute="trailing" id="nkv-P8-Xah"/>
+                                                                <constraint firstItem="wxW-3f-JuZ" firstAttribute="leading" secondItem="CKf-47-1qg" secondAttribute="leading" id="IIh-KX-FDf"/>
                                                                 <constraint firstItem="wxW-3f-JuZ" firstAttribute="bottom" secondItem="CKf-47-1qg" secondAttribute="bottom" id="xQd-fG-M1Y"/>
-                                                                <constraint firstItem="uHV-oJ-AQV" firstAttribute="leading" secondItem="CKf-47-1qg" secondAttribute="leading" constant="-20" id="ylM-Yg-aS1"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
@@ -390,8 +390,8 @@
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Priority" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J5w-kv-68w" userLabel="PriorityLabel">
                                                                     <rect key="frame" x="0.0" y="1" width="94" height="78"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cXr-eD-X1Z" userLabel="PrioritySegmentedControl">
@@ -405,6 +405,7 @@
                                                                 </segmentedControl>
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstItem="cXr-eD-X1Z" firstAttribute="bottom" secondItem="N4L-Yx-nei" secondAttribute="bottom" id="6tC-Uh-jQ7"/>
                                                                 <constraint firstItem="J5w-kv-68w" firstAttribute="leading" secondItem="N4L-Yx-nei" secondAttribute="leading" constant="-20" id="9P8-ah-ZCm"/>
@@ -455,8 +456,9 @@
                                                                 </label>
                                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="Sample Text" translatesAutoresizingMaskIntoConstraints="NO" id="rX6-0P-Lbx" userLabel="NoteTextField">
                                                                     <rect key="frame" x="94" y="0.0" width="374" height="78"/>
-                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                 </textView>
                                                             </subviews>
@@ -517,6 +519,7 @@
                         <outlet property="nameField" destination="SO8-vq-zjS" id="wwX-Q8-XdN"/>
                         <outlet property="prioritySegmentedControl" destination="cXr-eD-X1Z" id="w7t-dG-1Ag"/>
                         <outlet property="reminderDatePicker" destination="gDR-B1-ear" id="aUV-6R-xm3"/>
+                        <outlet property="reminderField" destination="549-AQ-mfn" id="XUC-ah-jwH"/>
                         <outlet property="tableView" destination="GxG-iu-U0M" id="4e8-qy-aJK"/>
                     </connections>
                 </tableViewController>
