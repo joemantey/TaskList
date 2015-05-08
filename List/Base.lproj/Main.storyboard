@@ -111,8 +111,8 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BPV-A4-yb2" id="VEg-lZ-Ghx">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0DJ-7e-kyj" userLabel="ContentContainer">
-                                                    <rect key="frame" x="0.0" y="1" width="600" height="112"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0DJ-7e-kyj" userLabel="ContentContainer">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="112"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z1j-Tb-YJQ" userLabel="LabelContainer">
                                                             <rect key="frame" x="60" y="18" width="480" height="78"/>

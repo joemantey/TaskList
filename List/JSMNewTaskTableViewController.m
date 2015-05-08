@@ -203,37 +203,32 @@
     
     CGFloat height = fieldCellHeight;
     
-    if (indexPath.row == dateDuePickerIndex){
-        
-        if (self.dueDatePickerIsShowing) {
-            height = pickerCellHeight;
-            
-            
-        }else{
-            height = 0;
-        }
-        
-    } else if (indexPath.row == reminderPickerIndex){
+    if (indexPath.row == reminderPickerIndex){
         
         if (self.reminderDatePickerIsShowing) {
             height = pickerCellHeight;
-            
         }else{
             height = 0;
         }
-        
     }
+    
+    else if (indexPath.row == dateDuePickerIndex){
+        
+        if (self.dueDatePickerIsShowing) {
+            height = pickerCellHeight;
+        }else{
+            height = 0;
+        }
+    }
+    
     else if (indexPath.row == listPickerIndex){
         
         if (self.listPickerIsShowing) {
             height = pickerCellHeight;
-            
         }else{
             height = 0;
         }
-        
     }
-    
     return height;
 }
 
@@ -248,40 +243,32 @@
     
     
     if (indexPath.row == dateDueFieldIndex){
-        
-        //If the datePickerIsShowing...
+    
         if (self.dueDatePickerIsShowing){
-            //...hide it!
             [self hideDueDatePickerCell];
           
         }else {
-            //...show it!
             [self showDueDatePickerCell];
-;
         }
         
     } else if (indexPath.row == reminderFieldIndex){
         
         if (self.reminderDatePickerIsShowing){
-            
-            [self showReminderDatePickerCell];
-        }else {
-            
             [self hideReminderDatePickerCell];
+        }else {
+            [self showReminderDatePickerCell];
         }
         
     }else if (indexPath.row == listFieldIndex){
         
         if (self.listPickerIsShowing){
-            
-            [self showListPicker];
-        }else {
-            
             [self hideListPicker];
+        }else {
+            [self showListPicker];
         }
     }
     
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 
@@ -290,50 +277,18 @@
 
 #pragma mark - helper methods
 
-- (void)showDatePickerCell:(UIDatePicker *)picker andupdateBool:(BOOL)isShowingBool {
-    
-    
-    //...change the BOOLEAN to indicate the the date picker is (about to be) shown...
-    isShowingBool = YES;
-    
-    UIDatePicker *datePicker = picker;
-    
-    //...refresh the tableview...
-    [self.tableView beginUpdates];
-    [self.tableView endUpdates];
-    
-    //...seems like a good time to stop hiding the date picker...
-    picker.hidden = NO;
-    
-    //Now some setup. Turn the date picker clear so we can have it fade in during our animation.
-    picker.alpha = 0.0f;
-    
-    //Let's get our Walt Disney on and animate the appearance of this date picker.
-    [UIView animateWithDuration:0.25 animations:^{
-        
-        datePicker.alpha = 1.0f;
-        
-    }];
-}
+
 
 - (void)showDueDatePickerCell{
     
-    
-    //...change the BOOLEAN to indicate the the date picker is (about to be) shown...
     self.dueDatePickerIsShowing = YES;
     
-    
-    //...refresh the tableview...
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
     
-    //...seems like a good time to stop hiding the date picker...
     self.dueDatePicker.hidden = NO;
-    
-    //Now some setup. Turn the date picker clear so we can have it fade in during our animation.
     self.dueDatePicker .alpha = 0.0f;
     
-    //Let's get our Walt Disney on and animate the appearance of this date picker.
     [UIView animateWithDuration:0.25 animations:^{
         
         self.dueDatePicker.alpha = 1.0f;
@@ -343,25 +298,17 @@
 
 - (void)showReminderDatePickerCell{
     
+    self.reminderDatePickerIsShowing = YES;
     
-    //...change the BOOLEAN to indicate the the date picker is (about to be) shown...
-    self.dueDatePickerIsShowing = YES;
-    
-    
-    //...refresh the tableview...
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
     
-    //...seems like a good time to stop hiding the date picker...
     self.reminderDatePicker.hidden = NO;
-    
-    //Now some setup. Turn the date picker clear so we can have it fade in during our animation.
     self.reminderDatePicker.alpha = 0.0f;
     
-    //Let's get our Walt Disney on and animate the appearance of this date picker.
     [UIView animateWithDuration:0.25 animations:^{
         
-        self.dueDatePicker.alpha = 1.0f;
+        self.reminderDatePicker.alpha = 1.0f;
         
     }];
 }
@@ -369,46 +316,37 @@
 
 - (void)showListPicker {
     
-    [self.tableView beginUpdates];
+    
     self.listPickerIsShowing = YES;
-    
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
     self.listPicker.hidden = NO;
-    
-   
-    
     
     self.listPicker.alpha = 0.0f;
     
     [UIView animateWithDuration:0.25 animations:^{
-        
-        self.listPicker.alpha = 1.0f;
-        
+                self.listPicker.alpha = 1.0f;
     }];
-    [self.tableView endUpdates];
+   
 }
 
 
 
 - (void)hideDueDatePickerCell{
     
-    //...change the BOOLEAN to indicate the the date picker is (about to be) shown...
     self.dueDatePickerIsShowing= NO;
     
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
     
-    //Animation time again. This time were turning the date picker clear.
     [UIView animateWithDuration:0.25
      
                      animations:^{
                          self.dueDatePicker.alpha = 0.0f;
                      }
                      completion:^(BOOL finished){
-                         //when we're done animating, hide the picker
+                         
                          self.dueDatePicker.hidden = YES;
-                         //update picker to show date
-                         
-                         
                          self.dueDateField.text = [self.dateFormatter stringFromDate:[self.dueDatePicker date]];
                          
                          
@@ -418,22 +356,18 @@
 
 - (void)hideReminderDatePickerCell{
     
-    //...change the BOOLEAN to indicate the the date picker is (about to be) shown...
     self.reminderDatePickerIsShowing= NO;
     
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
     
-    //Animation time again. This time were turning the date picker clear.
     [UIView animateWithDuration:0.25
      
                      animations:^{
                          self.reminderDatePicker.alpha = 0.0f;
                      }
                      completion:^(BOOL finished){
-                         //when we're done animating, hide the picker
                          self.dueDatePicker.hidden = YES;
-                         //update picker to show date
                          
                          
                              self.reminderField.text = [self.dateFormatter stringFromDate:[self.reminderDatePicker date]];
