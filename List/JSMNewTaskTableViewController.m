@@ -95,8 +95,8 @@
     self.dueDateField.text = [self.dateFormatter stringFromDate:[self.dueDatePicker date]];
     self.reminderField.text = [self.dateFormatter stringFromDate:[self.reminderDatePicker date]];
     
-    NSInteger row = [self.listPicker selectedRowInComponent:0];
-    self.listField.text = [self.categoryPickerItems objectAtIndex:row];
+//    NSInteger row = [self.listPicker selectedRowInComponent:0];
+    self.listField.text = self.categoryPickerItems[0];
 }
 
 - (IBAction)nameFieldChanged:(id)sender {
@@ -215,7 +215,6 @@
             height = 0;
         }
     }
-    
     else if (indexPath.row == dateDuePickerIndex){
         
         if (self.dueDatePickerIsShowing) {
@@ -224,7 +223,6 @@
             height = 0;
         }
     }
-    
     else if (indexPath.row == listPickerIndex){
         
         if (self.listPickerIsShowing) {
@@ -283,8 +281,6 @@
 
 #pragma mark - helper methods
 
-
-
 - (void)showDueDatePickerCell{
     
     self.dueDatePickerIsShowing = YES;
@@ -301,6 +297,7 @@
         
     }];
 }
+
 
 - (void)showReminderDatePickerCell{
     
@@ -332,6 +329,7 @@
     
     [UIView animateWithDuration:0.25 animations:^{
                 self.listPicker.alpha = 1.0f;
+                self.listField.alpha = 0.0f;
     }];
    
 }
@@ -354,9 +352,8 @@
                          
                          self.dueDatePicker.hidden = YES;
                          self.dueDateField.text = [self.dateFormatter stringFromDate:[self.dueDatePicker date]];
-                         
-                         
-                     }];
+    }];
+    
 }
 
 
@@ -374,11 +371,8 @@
                      }
                      completion:^(BOOL finished){
                          self.dueDatePicker.hidden = YES;
-                         
-                         
+                
                              self.reminderField.text = [self.dateFormatter stringFromDate:[self.reminderDatePicker date]];
-                         
-                         
                      }];
 }
 
@@ -396,14 +390,18 @@
      
                      animations:^{
                          self.listPicker.alpha = 0.0f;
+                         self.listField.alpha = 1.0f;
+
                      }
                      completion:^(BOOL finished){
                          
                          self.listPicker.hidden = YES;
                          
                          NSInteger row = [self.listPicker selectedRowInComponent:0];
-                         self.listField.text = [self.categoryPickerItems objectAtIndex:row];;
+                         self.listField.text = [self.categoryPickerItems objectAtIndex:row];
                      }];
+    
+   
 }
 
 
