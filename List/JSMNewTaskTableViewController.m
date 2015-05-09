@@ -170,16 +170,11 @@
     return 1;
 }
 
-- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-    self.listField.text= self.categoryPickerItems[row];
-    return self.categoryPickerItems[row];
-}
 
 - (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    NSString *title = @"sample title";
-    NSAttributedString *attString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    NSString *stringToDisplay = self.categoryPickerItems[row];
+    NSAttributedString *attString = [[NSAttributedString alloc] initWithString:stringToDisplay attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
     return attString;
     
