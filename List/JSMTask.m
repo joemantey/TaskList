@@ -24,6 +24,8 @@
             andUserPriority:(NSInteger)userPriority
                   andIsGoal:(BOOL)isGoal{
     
+    self = [super init];
+    
     if (self = [super init]) {
         _name = name;
         _details = details;
@@ -152,13 +154,8 @@
 
 -(BOOL)checkIf:(NSInteger)integer isBetween:(NSInteger)integerOne and:(NSInteger)integerTwo{
     
-    if (integer > integerOne){
-        if (integer < integerTwo){
+    if (integer > integerOne && integer < integerTwo){
             return YES;
-        }
-        else{
-            return NO;
-        }
     }
     else{
         return NO;
