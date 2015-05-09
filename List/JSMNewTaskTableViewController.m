@@ -176,6 +176,14 @@
     return self.categoryPickerItems[row];
 }
 
+- (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    NSString *title = @"sample title";
+    NSAttributedString *attString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
+    return attString;
+    
+}
 
 #pragma mark - TableViewDelegate
 
@@ -190,8 +198,9 @@
 #define priorityFieldIndex 7
 #define notesFieldIndex 8
 
-#define fieldCellHeight 64
+#define fieldCellHeight 48
 #define pickerCellHeight 162
+#define notesCellHeight  224
 
 -(void)populateCategoryArray{
     
@@ -228,6 +237,8 @@
         }else{
             height = 0;
         }
+    }else if (indexPath.row == notesFieldIndex){
+        height = notesCellHeight;
     }
     return height;
 }
