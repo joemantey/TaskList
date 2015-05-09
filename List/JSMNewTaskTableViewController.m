@@ -64,7 +64,8 @@
     
     
     [self hidePickerViews];
-    [self setUpTimeProperties];
+    [self setUpTextInOutlets];
+    [self setUpPlaceHolderText];
     
     self.dataManager = [JSMTaskDataManager sharedDataManager];
     
@@ -86,18 +87,33 @@
 }
 
 
-- (void)setUpTimeProperties{
+- (void)setUpTextInOutlets{
     
     self.dateFormatter = [[NSDateFormatter alloc] init];
     [self.dateFormatter setDateStyle:NSDateFormatterLongStyle];
     [self.dateFormatter setTimeStyle:NSDateFormatterShortStyle];
     
-    self.dueDateField.text = [self.dateFormatter stringFromDate:[self.dueDatePicker date]];
-    self.reminderField.text = [self.dateFormatter stringFromDate:[self.reminderDatePicker date]];
+//    self.dueDateField.text = [self.dateFormatter stringFromDate:[self.dueDatePicker date]];
+//    self.reminderField.text = [self.dateFormatter stringFromDate:[self.reminderDatePicker date]];
     
-//    NSInteger row = [self.listPicker selectedRowInComponent:0];
     self.listField.text = self.categoryPickerItems[0];
 }
+
+-(void)setUpPlaceHolderText{
+    UIColor *color = [UIColor colorWithWhite:1 alpha:0.5];
+
+    self.nameField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"task name" attributes:@{NSForegroundColorAttributeName: color }];
+    
+    self.dueDateField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"due date" attributes:@{NSForegroundColorAttributeName: color }];
+    
+    self.reminderField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"reminder date" attributes:@{NSForegroundColorAttributeName: color }];
+    
+     self.listField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"task list" attributes:@{NSForegroundColorAttributeName: color }];
+
+}
+
+#pragma mark - Action Outlets
+
 
 - (IBAction)nameFieldChanged:(id)sender {
     
@@ -407,7 +423,10 @@
 
 
 
-#pragma mark - Navigation
+#pragma mark - Formatting
+
+
+
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
