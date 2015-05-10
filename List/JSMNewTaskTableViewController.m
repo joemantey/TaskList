@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *reminderDatePicker;
 @property (weak, nonatomic) IBOutlet UITextField *listField;
 @property (weak, nonatomic) IBOutlet UIPickerView *listPicker;
+@property (weak, nonatomic) IBOutlet UITextField *priorityField;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *prioritySegmentedControl;
 @property (weak, nonatomic) IBOutlet UITextView *detailField;
 
@@ -48,6 +49,7 @@
 @property (nonatomic) BOOL dueDatePickerIsShowing;
 @property (nonatomic) BOOL reminderDatePickerIsShowing;
 @property (nonatomic) BOOL listPickerIsShowing;
+@property (nonatomic) BOOL priorityPickerIsShowing;
 
 @property (strong, nonatomic) JSMTaskDataManager *dataManager;
 
@@ -100,7 +102,7 @@
 }
 
 -(void)setUpPlaceHolderText{
-    UIColor *color = [UIColor colorWithWhite:1 alpha:0.5];
+    UIColor *color = [UIColor colorWithWhite:1 alpha:0.7];
 
     self.nameField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"task name" attributes:@{NSForegroundColorAttributeName: color }];
     
@@ -109,6 +111,8 @@
     self.reminderField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"reminder date" attributes:@{NSForegroundColorAttributeName: color }];
     
      self.listField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"task list" attributes:@{NSForegroundColorAttributeName: color }];
+    
+    self.priorityField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"task priority" attributes:@{NSForegroundColorAttributeName: color }];
 
 }
 
@@ -207,7 +211,8 @@
 #define listFieldIndex 5
 #define listPickerIndex 6
 #define priorityFieldIndex 7
-#define notesFieldIndex 8
+#define priorityPickerIndex 8
+#define notesFieldIndex 9
 
 #define fieldCellHeight 48
 #define pickerCellHeight 162
@@ -270,7 +275,6 @@
         }else {
             [self showDueDatePickerCell];
         }
-        
     } else if (indexPath.row == reminderFieldIndex){
         
         if (self.reminderDatePickerIsShowing){
@@ -287,7 +291,15 @@
             [self showListPicker];
         }
     }
+    else if (indexPath.row == priorityFieldIndex){
     
+        if (self.priorityPickerIsShowing){
+            [self hideListPicker];
+        }else {
+            [self showListPicker];
+        }
+    }
+
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
@@ -345,7 +357,7 @@
     
     [UIView animateWithDuration:0.25 animations:^{
                 self.listPicker.alpha = 1.0f;
-                self.listField.alpha = 0.0f;
+                self.listField.text = @"select list";
     }];
    
 }
@@ -406,18 +418,17 @@
      
                      animations:^{
                          self.listPicker.alpha = 0.0f;
-                         self.listField.alpha = 1.0f;
+                         NSInteger row = [self.listPicker selectedRowInComponent:0];
+                         self.listField.text = [self.categoryPickerItems objectAtIndex:row];
 
                      }
                      completion:^(BOOL finished){
                          
                          self.listPicker.hidden = YES;
                          
-                         NSInteger row = [self.listPicker selectedRowInComponent:0];
-                         self.listField.text = [self.categoryPickerItems objectAtIndex:row];
+                         
                      }];
-    
-   
+
 }
 
 
