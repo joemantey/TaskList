@@ -86,6 +86,9 @@
     
     self.listPickerIsShowing =  NO;
     self.listPicker.hidden = YES;
+    
+    self.priorityPickerIsShowing = NO;
+    self.prioritySegmentedControl.hidden = YES;
 }
 
 
@@ -251,6 +254,15 @@
         }else{
             height = 0;
         }
+    }
+    else if (indexPath.row == priorityPickerIndex){
+        
+        if (self.priorityPickerIsShowing) {
+            height = pickerCellHeight;
+        }else{
+            height = 0;
+            
+        }
     }else if (indexPath.row == notesFieldIndex){
         height = notesCellHeight;
     }
@@ -294,9 +306,9 @@
     else if (indexPath.row == priorityFieldIndex){
     
         if (self.priorityPickerIsShowing){
-            [self hideListPicker];
+            [self hidePrioritPicker];
         }else {
-            [self showListPicker];
+            [self showPriorityPicker];
         }
     }
 
@@ -361,6 +373,24 @@
     }];
    
 }
+
+- (void)showPriorityPicker {
+    
+    
+    self.priorityPickerIsShowing = YES;
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+    self.prioritySegmentedControl.hidden = NO;
+    
+    self.prioritySegmentedControl.alpha = 0.0f;
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        self.prioritySegmentedControl.alpha = 1.0f;
+        self.priorityField.text = [self.prioritySegmentedControl titleForSegmentAtIndex:self.prioritySegmentedControl.selectedSegmentIndex];
+    }];
+    
+}
+
 
 
 
@@ -431,7 +461,29 @@
 
 }
 
-
+- (void)hidePrioritPicker{
+    
+    
+    self.priorityPickerIsShowing = NO;
+    
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+    
+    
+    [UIView animateWithDuration:0.25
+     
+                     animations:^{
+                         self.prioritySegmentedControl.alpha = 0.0f;
+                         NSString *stringToAppend = [self.prioritySegmentedControl titleForSegmentAtIndex:self.prioritySegmentedControl.selectedSegmentIndex];
+                         self.priorityField.text = [NSString stringWithFormat:@"priority: %@", stringToAppend];
+                         
+                     }
+                     completion:^(BOOL finished){
+                         
+                         self.prioritySegmentedControl.hidden = YES;
+                     }];
+    
+}
 
 
 #pragma mark - Formatting
