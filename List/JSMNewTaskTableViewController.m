@@ -25,6 +25,21 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *prioritySegmentedControl;
 @property (weak, nonatomic) IBOutlet UITextView *detailField;
 
+
+
+@property (weak, nonatomic) IBOutlet UIButton *cancelName;
+- (IBAction)didCancelName:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *cancelDateDue;
+- (IBAction)didCancelDueDate:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *cancelReminder;
+- (IBAction)didCancelReminder:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *cancelList;
+- (IBAction)didCancelList:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *cancelPriority;
+- (IBAction)didCancelPriority:(id)sender;
+
+
+
 @property (strong,nonatomic) NSString *name;
 @property (strong,nonatomic) NSString *details;
 @property (strong, nonatomic) NSString *list;
@@ -68,6 +83,7 @@
     [self hidePickerViews];
     [self setUpTextInOutlets];
     [self setUpPlaceHolderText];
+    [self setUpButtonImages];
     
     self.dataManager = [JSMTaskDataManager sharedDataManager];
     
@@ -117,6 +133,11 @@
     
     self.priorityField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"task priority" attributes:@{NSForegroundColorAttributeName: color }];
 
+}
+
+
+-(void)setUpButtonImages{
+    
 }
 
 #pragma mark - Action Outlets
@@ -512,4 +533,14 @@
 
 
 
+- (IBAction)didCancelName:(id)sender {
+}
+- (IBAction)didCancelDueDate:(id)sender {
+}
+- (IBAction)didCancelReminder:(id)sender {
+}
+- (IBAction)didCancelList:(id)sender {
+}
+- (IBAction)didCancelPriority:(id)sender {
+}
 @end

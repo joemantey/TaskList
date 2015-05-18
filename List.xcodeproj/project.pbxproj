@@ -187,9 +187,9 @@
 			isa = PBXGroup;
 			children = (
 				38774B541AD313F70017C37C /* Main.storyboard */,
+				38774B591AD313F70017C37C /* LaunchScreen.xib */,
 				38422C3B1AFA7EFE00EFD5F4 /* JSMNewTaskListViewController.h */,
 				38422C3C1AFA7EFE00EFD5F4 /* JSMNewTaskListViewController.m */,
-				38774B591AD313F70017C37C /* LaunchScreen.xib */,
 				38ADD40B1AF9B875000BC5CF /* JSMTaskListTableViewController.h */,
 				38ADD40C1AF9B875000BC5CF /* JSMTaskListTableViewController.m */,
 				38ADD40E1AF9C101000BC5CF /* JSMTaskTableViewCell.h */,
