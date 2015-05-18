@@ -218,7 +218,7 @@
 #define notesFieldIndex 9
 
 #define fieldCellHeight 48
-#define pickerCellHeight 162
+#define pickerCellHeight 180
 #define notesCellHeight  224
 
 -(void)populateCategoryArray{
