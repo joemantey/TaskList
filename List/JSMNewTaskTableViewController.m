@@ -121,6 +121,7 @@
 }
 
 -(void)setUpPlaceHolderText{
+    
     UIColor *color = [UIColor colorWithWhite:1 alpha:0.7];
 
     self.nameField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"task name" attributes:@{NSForegroundColorAttributeName: color }];
@@ -137,6 +138,21 @@
 
 
 -(void)setUpButtonImages{
+    
+    [self.cancelName setImage:[UIImage imageNamed:@"Cancel"] forState:normal];
+    self.cancelName.hidden = YES;
+    
+    [self.cancelDateDue setImage:[UIImage imageNamed:@"Cancel"] forState:normal];
+    self.cancelDateDue.hidden = YES;
+    
+    [self.cancelReminder setImage:[UIImage imageNamed:@"Cancel"] forState:normal];
+    self.cancelReminder.hidden = YES;
+    
+    [self.cancelList setImage:[UIImage imageNamed:@"Cancel"] forState:normal];
+    self.cancelList.hidden = YES;
+    
+    [self.cancelPriority setImage:[UIImage imageNamed:@"Cancel"] forState:normal];
+    self.cancelPriority.hidden = YES;
     
 }
 
@@ -426,6 +442,7 @@
      
                      animations:^{
                          self.dueDatePicker.alpha = 0.0f;
+                         self.cancelDateDue.hidden = NO;
                      }
                      completion:^(BOOL finished){
                          
@@ -447,9 +464,10 @@
      
                      animations:^{
                          self.reminderDatePicker.alpha = 0.0f;
+                         self.cancelReminder.hidden = NO;
                      }
                      completion:^(BOOL finished){
-                         self.dueDatePicker.hidden = YES;
+                         self.reminderDatePicker.hidden = YES;
                 
                              self.reminderField.text = [self.dateFormatter stringFromDate:[self.reminderDatePicker date]];
                      }];
@@ -471,6 +489,7 @@
                          self.listPicker.alpha = 0.0f;
                          NSInteger row = [self.listPicker selectedRowInComponent:0];
                          self.listField.text = [self.categoryPickerItems objectAtIndex:row];
+                         self.cancelList.hidden = NO;
 
                      }
                      completion:^(BOOL finished){
@@ -497,6 +516,7 @@
                          self.prioritySegmentedControl.alpha = 0.0f;
                          NSString *stringToAppend = [self.prioritySegmentedControl titleForSegmentAtIndex:self.prioritySegmentedControl.selectedSegmentIndex];
                          self.priorityField.text = [NSString stringWithFormat:@"priority: %@", stringToAppend];
+                         self.cancelPriority.hidden = NO;
                          
                      }
                      completion:^(BOOL finished){
@@ -535,12 +555,37 @@
 
 - (IBAction)didCancelName:(id)sender {
 }
+
+
 - (IBAction)didCancelDueDate:(id)sender {
+   
+    UIColor *color = [UIColor colorWithWhite:1 alpha:0.7];
+    
+    self.dueDateField.text = @"";
+    self.dueDateField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"due date" attributes:@{NSForegroundColorAttributeName: color }];
 }
+
+
 - (IBAction)didCancelReminder:(id)sender {
+    
+    UIColor *color = [UIColor colorWithWhite:1 alpha:0.7];
+    
+    self.reminderField.text = @"";
+    self.reminderField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"due date" attributes:@{NSForegroundColorAttributeName: color }];
 }
 - (IBAction)didCancelList:(id)sender {
+    
+    UIColor *color = [UIColor colorWithWhite:1 alpha:0.7];
+    
+    self.listField.text = @"";
+    self.listField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"due date" attributes:@{NSForegroundColorAttributeName: color }];
 }
+
 - (IBAction)didCancelPriority:(id)sender {
+    
+    UIColor *color = [UIColor colorWithWhite:1 alpha:0.7];
+    
+    self.priorityField.text = @"";
+    self.priorityField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"due date" attributes:@{NSForegroundColorAttributeName: color }];
 }
 @end

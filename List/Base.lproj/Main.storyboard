@@ -113,13 +113,13 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BPV-A4-yb2" id="VEg-lZ-Ghx">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3qU-fQ-HpL" userLabel="Cancel">
-                                                    <rect key="frame" x="562" y="41" width="30" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3qU-fQ-HpL" userLabel="Cancel">
+                                                    <rect key="frame" x="576" y="45" width="16" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="btz-KV-PEx"/>
                                                         <constraint firstAttribute="height" constant="30" id="lxv-Xp-1jl"/>
                                                     </constraints>
-                                                    <state key="normal" title="X">
+                                                    <state key="normal" image="Cancel">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -131,10 +131,10 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="112"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="exn-pg-55K" userLabel="Line">
-                                                            <rect key="frame" x="60" y="93" width="480" height="2"/>
+                                                            <rect key="frame" x="60" y="94" width="480" height="1"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="2" id="Yu8-DD-5Hz"/>
+                                                                <constraint firstAttribute="height" constant="1" id="Yu8-DD-5Hz"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z1j-Tb-YJQ" userLabel="LabelContainer">
@@ -177,7 +177,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="0DJ-7e-kyj" firstAttribute="bottom" secondItem="VEg-lZ-Ghx" secondAttribute="bottom" id="I3u-da-18z"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="3qU-fQ-HpL" secondAttribute="trailing" id="LQY-si-kZb"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="3qU-fQ-HpL" secondAttribute="trailing" constant="-12" id="LQY-si-kZb"/>
                                                 <constraint firstAttribute="centerY" secondItem="3qU-fQ-HpL" secondAttribute="centerY" id="Ptg-S7-ifL"/>
                                                 <constraint firstItem="0DJ-7e-kyj" firstAttribute="leading" secondItem="VEg-lZ-Ghx" secondAttribute="leading" id="bjV-XW-Ffb"/>
                                                 <constraint firstItem="0DJ-7e-kyj" firstAttribute="trailing" secondItem="VEg-lZ-Ghx" secondAttribute="trailing" id="tnu-BO-Awp"/>
@@ -191,13 +191,13 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Raa-Oe-P3D" id="bu3-Fl-Zzp">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHJ-Fb-4jp" userLabel="Cancel">
-                                                    <rect key="frame" x="562" y="41" width="30" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHJ-Fb-4jp" userLabel="Cancel">
+                                                    <rect key="frame" x="576" y="45" width="16" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="5Vh-dc-SLN"/>
                                                         <constraint firstAttribute="width" constant="30" id="DUB-hs-wT4"/>
                                                     </constraints>
-                                                    <state key="normal" title="X">
+                                                    <state key="normal" image="Cancel">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -209,10 +209,10 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="112"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbR-kd-rP6" userLabel="Line">
-                                                            <rect key="frame" x="60" y="93" width="480" height="2"/>
+                                                            <rect key="frame" x="60" y="94" width="480" height="1"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="2" id="l4g-MK-B25"/>
+                                                                <constraint firstAttribute="height" constant="1" id="l4g-MK-B25"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0f2-By-kDs" userLabel="LabelContainer">
@@ -250,7 +250,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="kWy-dD-pf3" firstAttribute="leading" secondItem="bu3-Fl-Zzp" secondAttribute="leading" id="5Lb-s5-zGY"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="cHJ-Fb-4jp" secondAttribute="trailing" id="O6x-lO-Nb6"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="cHJ-Fb-4jp" secondAttribute="trailing" constant="-12" id="O6x-lO-Nb6"/>
                                                 <constraint firstAttribute="centerY" secondItem="cHJ-Fb-4jp" secondAttribute="centerY" id="OhN-1c-qKv"/>
                                                 <constraint firstItem="kWy-dD-pf3" firstAttribute="bottom" secondItem="bu3-Fl-Zzp" secondAttribute="bottom" id="ZS8-cA-oy9"/>
                                                 <constraint firstItem="kWy-dD-pf3" firstAttribute="trailing" secondItem="bu3-Fl-Zzp" secondAttribute="trailing" id="x0q-kr-AGa"/>
@@ -288,13 +288,13 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="blI-i8-xCr" id="ZiD-ia-DrW">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hDn-RF-cGT" userLabel="Cancel">
-                                                    <rect key="frame" x="562" y="41" width="30" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hDn-RF-cGT" userLabel="Cancel">
+                                                    <rect key="frame" x="576" y="45" width="16" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="Jwg-Ap-8m3"/>
                                                         <constraint firstAttribute="height" constant="30" id="cba-rh-KBm"/>
                                                     </constraints>
-                                                    <state key="normal" title="X">
+                                                    <state key="normal" image="Cancel">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -306,10 +306,10 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="112"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W9e-Fy-QEo" userLabel="Line">
-                                                            <rect key="frame" x="60" y="99" width="480" height="2"/>
+                                                            <rect key="frame" x="60" y="100" width="480" height="1"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="2" id="FJu-4C-oFN"/>
+                                                                <constraint firstAttribute="height" constant="1" id="FJu-4C-oFN"/>
                                                                 <constraint firstAttribute="width" constant="300" id="yC9-Cf-gBU"/>
                                                             </constraints>
                                                             <variation key="default">
@@ -370,7 +370,7 @@
                                                 <constraint firstItem="col-Sd-UFI" firstAttribute="top" secondItem="ZiD-ia-DrW" secondAttribute="top" id="I5i-9X-zln"/>
                                                 <constraint firstItem="col-Sd-UFI" firstAttribute="trailing" secondItem="ZiD-ia-DrW" secondAttribute="trailing" id="cpx-U8-msc"/>
                                                 <constraint firstItem="col-Sd-UFI" firstAttribute="bottom" secondItem="ZiD-ia-DrW" secondAttribute="bottom" id="qAS-sa-GSw"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="hDn-RF-cGT" secondAttribute="trailing" id="wlz-CT-6Oz"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="hDn-RF-cGT" secondAttribute="trailing" constant="-12" id="wlz-CT-6Oz"/>
                                                 <constraint firstItem="col-Sd-UFI" firstAttribute="leading" secondItem="ZiD-ia-DrW" secondAttribute="leading" id="wse-wb-Chc"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -406,13 +406,13 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ufn-e8-zbm" id="5My-86-KnK">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fE-84-abb" userLabel="Cancel">
-                                                    <rect key="frame" x="562" y="41" width="30" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fE-84-abb" userLabel="Cancel">
+                                                    <rect key="frame" x="576" y="45" width="16" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="ept-97-MjQ"/>
                                                         <constraint firstAttribute="height" constant="30" id="xAk-UK-ZxV"/>
                                                     </constraints>
-                                                    <state key="normal" title="X">
+                                                    <state key="normal" image="Cancel">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -427,10 +427,10 @@
                                                             <rect key="frame" x="60" y="17" width="480" height="78"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LlR-Su-tfE" userLabel="Line">
-                                                                    <rect key="frame" x="0.0" y="76" width="480" height="2"/>
+                                                                    <rect key="frame" x="0.0" y="77" width="480" height="1"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="2" id="koY-sa-5F2"/>
+                                                                        <constraint firstAttribute="height" constant="1" id="koY-sa-5F2"/>
                                                                     </constraints>
                                                                 </view>
                                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wxW-3f-JuZ" userLabel="ListField">
@@ -466,7 +466,7 @@
                                             <constraints>
                                                 <constraint firstItem="5Ac-ye-gQc" firstAttribute="trailing" secondItem="5My-86-KnK" secondAttribute="trailing" id="7vX-4q-Chv"/>
                                                 <constraint firstAttribute="centerY" secondItem="4fE-84-abb" secondAttribute="centerY" id="JYg-xh-Cho"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="4fE-84-abb" secondAttribute="trailing" id="cDC-o8-Tqf"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="4fE-84-abb" secondAttribute="trailing" constant="-12" id="cDC-o8-Tqf"/>
                                                 <constraint firstItem="5Ac-ye-gQc" firstAttribute="top" secondItem="5My-86-KnK" secondAttribute="top" id="cdl-ec-zrk"/>
                                                 <constraint firstItem="5Ac-ye-gQc" firstAttribute="bottom" secondItem="5My-86-KnK" secondAttribute="bottom" id="mgH-CF-smf"/>
                                                 <constraint firstItem="5Ac-ye-gQc" firstAttribute="leading" secondItem="5My-86-KnK" secondAttribute="leading" id="vsk-TX-Nbf"/>
@@ -498,13 +498,13 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8oN-Es-dMJ" id="waS-ed-82U">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qd1-T8-a4m" userLabel="Cancel">
-                                                    <rect key="frame" x="562" y="41" width="30" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qd1-T8-a4m" userLabel="Cancel">
+                                                    <rect key="frame" x="576" y="45" width="16" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="9W3-GP-pc2"/>
                                                         <constraint firstAttribute="height" constant="30" id="lMs-IX-KnH"/>
                                                     </constraints>
-                                                    <state key="normal" title="X">
+                                                    <state key="normal" image="Cancel">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -516,11 +516,11 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="112"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NHS-nn-3g2" userLabel="Line">
-                                                            <rect key="frame" x="60" y="99" width="480" height="2"/>
+                                                            <rect key="frame" x="60" y="100" width="480" height="1"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="300" id="4Ob-Is-Dcj"/>
-                                                                <constraint firstAttribute="height" constant="2" id="CqC-SU-lU4"/>
+                                                                <constraint firstAttribute="height" constant="1" id="CqC-SU-lU4"/>
                                                             </constraints>
                                                             <variation key="default">
                                                                 <mask key="constraints">
@@ -577,7 +577,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="dVu-fs-l3G" firstAttribute="trailing" secondItem="waS-ed-82U" secondAttribute="trailing" id="Ne4-I8-jri"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Qd1-T8-a4m" secondAttribute="trailing" id="Nx9-jc-qrw"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Qd1-T8-a4m" secondAttribute="trailing" constant="-12" id="Nx9-jc-qrw"/>
                                                 <constraint firstItem="dVu-fs-l3G" firstAttribute="leading" secondItem="waS-ed-82U" secondAttribute="leading" id="Ttl-N9-No1"/>
                                                 <constraint firstItem="dVu-fs-l3G" firstAttribute="top" secondItem="waS-ed-82U" secondAttribute="top" id="a0I-Lr-KJp"/>
                                                 <constraint firstAttribute="centerY" secondItem="Qd1-T8-a4m" secondAttribute="centerY" id="b9G-cm-LEY"/>
@@ -766,4 +766,7 @@
             <point key="canvasLocation" x="2313" y="468"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Cancel" width="16" height="16"/>
+    </resources>
 </document>
