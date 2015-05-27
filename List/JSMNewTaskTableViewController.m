@@ -251,7 +251,7 @@
 #define fieldCellHeight 48
 #define pickerCellHeight 180
 #define segmentedCellHeight 96
-#define notesCellHeight  48
+#define notesCellHeight  276
 
 -(void)populateCategoryArray{
     
