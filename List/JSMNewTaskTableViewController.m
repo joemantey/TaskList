@@ -11,7 +11,7 @@
 #import "JSMTask.h"
 #import "JSMTaskDataManager.h"
 
-@interface JSMNewTaskTableViewController ()
+@interface JSMNewTaskTableViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
@@ -351,6 +351,9 @@
 
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
+
+#pragma mark - textViewDelegate
+
 
 
 
