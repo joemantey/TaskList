@@ -111,11 +111,9 @@
 - (void)setUpTextInOutlets{
     
     self.dateFormatter = [[NSDateFormatter alloc] init];
+    
     [self.dateFormatter setDateStyle:NSDateFormatterLongStyle];
     [self.dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-    
-//    self.dueDateField.text = [self.dateFormatter stringFromDate:[self.dueDatePicker date]];
-//    self.reminderField.text = [self.dateFormatter stringFromDate:[self.reminderDatePicker date]];
     
     self.listField.text = self.categoryPickerItems[0];
 }
@@ -133,7 +131,6 @@
      self.listField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"task list" attributes:@{NSForegroundColorAttributeName: color }];
     
     self.priorityField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"task priority" attributes:@{NSForegroundColorAttributeName: color }];
-
 }
 
 
@@ -192,9 +189,7 @@
     self.list = self.listField.text;
     self.details = self.detailField.text;
     
-    //make sure the user priority has been set!!!!!!
     
-    //create a new event from those properties
     
     JSMTask *newTask = [[JSMTask alloc]initWithName:self.name
                                          andDetails:self.details
@@ -242,7 +237,6 @@
 
 #pragma mark - TableViewDelegate
 
-//Constants for static tableview
 #define nameFieldIndex 0
 #define dateDueFieldIndex 1
 #define dateDuePickerIndex 2
@@ -256,7 +250,8 @@
 
 #define fieldCellHeight 48
 #define pickerCellHeight 180
-#define notesCellHeight  224
+#define segmentedCellHeight 96
+#define notesCellHeight  48
 
 -(void)populateCategoryArray{
     
@@ -295,7 +290,7 @@
     else if (indexPath.row == priorityPickerIndex){
         
         if (self.priorityPickerIsShowing) {
-            height = pickerCellHeight;
+            height = segmentedCellHeight;
         }else{
             height = 0;
             
@@ -319,7 +314,8 @@
     if (indexPath.row == dateDueFieldIndex){
     
         if (self.dueDatePickerIsShowing){
-            [self hideDueDatePickerCell];
+            [self hideDueDatePicker];
+            [self fillDueDateField];
           
         }else {
             [self showDueDatePickerCell];
@@ -327,7 +323,8 @@
     } else if (indexPath.row == reminderFieldIndex){
         
         if (self.reminderDatePickerIsShowing){
-            [self hideReminderDatePickerCell];
+            [self hideReminderDatePicker];
+            [self fillReminderField];
         }else {
             [self showReminderDatePickerCell];
         }
@@ -336,6 +333,7 @@
         
         if (self.listPickerIsShowing){
             [self hideListPicker];
+            [self fillListField];
         }else {
             [self showListPicker];
         }
@@ -343,7 +341,9 @@
     else if (indexPath.row == priorityFieldIndex){
     
         if (self.priorityPickerIsShowing){
-            [self hidePrioritPicker];
+            [self hidePriorityPicker];
+            [self fillPriorityField];
+            
         }else {
             [self showPriorityPicker];
         }
@@ -374,6 +374,7 @@
         
     }];
 }
+
 
 
 - (void)showReminderDatePickerCell{
@@ -431,116 +432,255 @@
 
 
 
-- (void)hideDueDatePickerCell{
+- (void)hideDueDatePicker{
     
-    self.dueDatePickerIsShowing= NO;
+    if (self.dueDatePickerIsShowing == YES) {
     
-    [self.tableView beginUpdates];
-    [self.tableView endUpdates];
+        self.dueDatePickerIsShowing= NO;
     
-    [UIView animateWithDuration:0.25
+        [self.tableView beginUpdates];
+        [self.tableView endUpdates];
+    
+        if (self.cancelDateDue.hidden == YES) {
+        
+            self.cancelDateDue.hidden = NO;
+            self.cancelDateDue.alpha = 0.0f;;
+        }
+    
+        [UIView animateWithDuration:0.25
      
-                     animations:^{
-                         self.dueDatePicker.alpha = 0.0f;
-                         self.cancelDateDue.hidden = NO;
-                     }
-                     completion:^(BOOL finished){
-                         
-                         self.dueDatePicker.hidden = YES;
-                         self.dueDateField.text = [self.dateFormatter stringFromDate:[self.dueDatePicker date]];
-    }];
+                         animations:^{
+                             self.dueDatePicker.alpha = 0.0f;
+                             self.cancelDateDue.alpha = 1.0f;
+                         }
+                         completion:^(BOOL finished){
+                             self.dueDatePicker.hidden = YES;
+                         }
+         ];
+    }
+}
+
+- (void)fillDueDateField{
     
+    self.dueDateField.text = [self.dateFormatter stringFromDate:[self.dueDatePicker date]];
 }
 
 
-- (void)hideReminderDatePickerCell{
+- (void)hideReminderDatePicker{
     
-    self.reminderDatePickerIsShowing= NO;
+    if (self.reminderDatePickerIsShowing == YES) {
     
-    [self.tableView beginUpdates];
-    [self.tableView endUpdates];
+        self.reminderDatePickerIsShowing= NO;
     
-    [UIView animateWithDuration:0.25
+        [self.tableView beginUpdates];
+        [self.tableView endUpdates];
+    
+        if (self.cancelReminder.hidden == YES) {
+        
+            self.cancelReminder.hidden = NO;
+            self.cancelReminder.alpha = 0.0f;
+        }
+    
+        [UIView animateWithDuration:0.25
      
-                     animations:^{
-                         self.reminderDatePicker.alpha = 0.0f;
-                         self.cancelReminder.hidden = NO;
-                     }
-                     completion:^(BOOL finished){
-                         self.reminderDatePicker.hidden = YES;
-                
-                             self.reminderField.text = [self.dateFormatter stringFromDate:[self.reminderDatePicker date]];
-                     }];
+                         animations:^{
+                             self.reminderDatePicker.alpha = 0.0f;
+                             self.cancelReminder.alpha = 1.0f;
+                         }
+                         completion:^(BOOL finished){
+                             self.reminderDatePicker.hidden = YES;
+                         }];
+    }
 }
 
+- (void)fillReminderField{
+    self.reminderField.text = [self.dateFormatter stringFromDate:[self.reminderDatePicker date]];
+}
 
 - (void)hideListPicker{
     
     
-    self.listPickerIsShowing = NO;
+    if (self.listPickerIsShowing == YES) {
     
-    [self.tableView beginUpdates];
-    [self.tableView endUpdates];
     
+        self.listPickerIsShowing = NO;
+    
+        [self.tableView beginUpdates];
+        [self.tableView endUpdates];
+    
+        if (self.cancelList.hidden == YES){
+        
+            self.cancelList.hidden = NO;
+            self.cancelList.alpha = 0.0f;
+        }
+    
+        [UIView animateWithDuration:0.25
+     
+                         animations:^{
+                             self.listPicker.alpha = 0.0f;
+                             self.cancelList.alpha = 1.0f;
+                             self.cancelList.hidden = NO;
+
+                         }
+                         completion:^(BOOL finished){
+                             self.listPicker.hidden = YES;
+                     }];
+    }
+}
+
+- (void)fillListField{
+    NSInteger row = [self.listPicker selectedRowInComponent:0];
+    self.listField.text = [self.categoryPickerItems objectAtIndex:row];
+}
+
+
+- (void)hidePriorityPicker{
+    
+    if (self.priorityPickerIsShowing == YES) {
+    
+        self.priorityPickerIsShowing = NO;
+        
+        [self.tableView beginUpdates];
+        [self.tableView endUpdates];
+        
+        if (self.cancelPriority.hidden == YES) {
+            
+            self.cancelPriority.alpha = 0.0f;
+            self.cancelPriority.hidden = NO;
+        }
+        
+        
+        [UIView animateWithDuration:0.25
+         
+                         animations:^{
+                             self.prioritySegmentedControl.alpha = 0.0f;
+                             self.cancelPriority.alpha = 1.0f;
+                             self.cancelPriority.hidden = NO;
+                             
+                         }
+                         completion:^(BOOL finished){
+                             self.prioritySegmentedControl.hidden = YES;
+                         }];
+    }
+}
+
+- (void)fillPriorityField{
+    
+    NSString *stringToAppend = [self.prioritySegmentedControl titleForSegmentAtIndex:self.prioritySegmentedControl.selectedSegmentIndex];
+    self.priorityField.text = [NSString stringWithFormat:@"%@ priority", stringToAppend];
+}
+
+
+- (IBAction)didCancelName:(id)sender {
+}
+
+
+- (IBAction)didCancelDueDate:(id)sender {
+    
+    [self hideDueDatePicker];
+    
+    UIColor *color = [UIColor colorWithWhite:1 alpha:0.7];
+    
+    self.dueDateField.text = @"";
+    self.dueDateField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"due date" attributes:@{NSForegroundColorAttributeName: color }];
     
     [UIView animateWithDuration:0.25
      
                      animations:^{
-                         self.listPicker.alpha = 0.0f;
-                         NSInteger row = [self.listPicker selectedRowInComponent:0];
-                         self.listField.text = [self.categoryPickerItems objectAtIndex:row];
-                         self.cancelList.hidden = NO;
-
+                
+                         self.cancelDateDue.alpha = 0.0;
+                         
                      }
                      completion:^(BOOL finished){
                          
-                         self.listPicker.hidden = YES;
-                         
-                         
+                         self.cancelDateDue.alpha = 1.0;
+                         self.cancelDateDue.hidden = YES;
                      }];
-
 }
 
-- (void)hidePrioritPicker{
+
+- (IBAction)didCancelReminder:(id)sender {
     
+    [self hideReminderDatePicker];
     
-    self.priorityPickerIsShowing = NO;
+    UIColor *color = [UIColor colorWithWhite:1 alpha:0.7];
     
-    [self.tableView beginUpdates];
-    [self.tableView endUpdates];
-    
+    self.reminderField.text = @"";
+    self.reminderField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"due date" attributes:@{NSForegroundColorAttributeName: color }];
     
     [UIView animateWithDuration:0.25
      
                      animations:^{
-                         self.prioritySegmentedControl.alpha = 0.0f;
-                         NSString *stringToAppend = [self.prioritySegmentedControl titleForSegmentAtIndex:self.prioritySegmentedControl.selectedSegmentIndex];
-                         self.priorityField.text = [NSString stringWithFormat:@"priority: %@", stringToAppend];
-                         self.cancelPriority.hidden = NO;
+                         
+                         self.cancelReminder.alpha = 0.0;
                          
                      }
                      completion:^(BOOL finished){
                          
-                         self.prioritySegmentedControl.hidden = YES;
+                         self.cancelReminder.alpha = 1.0;
+                         self.cancelReminder.hidden = YES;
                      }];
-    
 }
 
 
-#pragma mark - Formatting
+- (IBAction)didCancelList:(id)sender {
+    
+    [self hideListPicker];
+    
+    UIColor *color = [UIColor colorWithWhite:1 alpha:0.7];
+    
+    self.listField.text = @"";
+    self.listField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"select list " attributes:@{NSForegroundColorAttributeName: color }];
+    
+    [UIView animateWithDuration:0.25
+     
+                     animations:^{
+                         
+                         self.cancelList.alpha = 0.0;
+                         
+                     }
+                     completion:^(BOOL finished){
+                         
+                         self.cancelList.alpha = 1.0;
+                         self.cancelList.hidden = YES;
+                     }];
+}
+
+- (IBAction)didCancelPriority:(id)sender {
+    
+    [self hidePriorityPicker];
+    
+    UIColor *color = [UIColor colorWithWhite:1 alpha:0.7];
+    
+    self.priorityField.text = @"";
+    self.priorityField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"due date" attributes:@{NSForegroundColorAttributeName: color }];
+    
+    [UIView animateWithDuration:0.25
+     
+                     animations:^{
+                         
+                         self.cancelPriority.alpha = 0.0;
+                         
+                     }
+                     completion:^(BOOL finished){
+                         
+                         self.cancelPriority.alpha = 1.0;
+                         self.cancelPriority.hidden = YES;
+                     }];
+}
+
+@end
 
 
 
 
+/*
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
 
-
-
-/*
  #pragma mark - Navigation
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -550,42 +690,3 @@
  }
  */
 
-
-
-
-- (IBAction)didCancelName:(id)sender {
-}
-
-
-- (IBAction)didCancelDueDate:(id)sender {
-   
-    UIColor *color = [UIColor colorWithWhite:1 alpha:0.7];
-    
-    self.dueDateField.text = @"";
-    self.dueDateField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"due date" attributes:@{NSForegroundColorAttributeName: color }];
-}
-
-
-- (IBAction)didCancelReminder:(id)sender {
-    
-    UIColor *color = [UIColor colorWithWhite:1 alpha:0.7];
-    
-    self.reminderField.text = @"";
-    self.reminderField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"due date" attributes:@{NSForegroundColorAttributeName: color }];
-}
-- (IBAction)didCancelList:(id)sender {
-    
-    UIColor *color = [UIColor colorWithWhite:1 alpha:0.7];
-    
-    self.listField.text = @"";
-    self.listField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"due date" attributes:@{NSForegroundColorAttributeName: color }];
-}
-
-- (IBAction)didCancelPriority:(id)sender {
-    
-    UIColor *color = [UIColor colorWithWhite:1 alpha:0.7];
-    
-    self.priorityField.text = @"";
-    self.priorityField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"due date" attributes:@{NSForegroundColorAttributeName: color }];
-}
-@end
