@@ -59,7 +59,7 @@
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                            <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="yes" spellCheckingType="yes" keyboardAppearance="alert" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="yes" spellCheckingType="yes" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                             <connections>
                                                                 <action selector="nameFieldChanged:" destination="i79-ie-8ko" eventType="editingDidEnd" id="m0S-lD-c6j"/>
                                                             </connections>
@@ -117,7 +117,7 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0f2-By-kDs" userLabel="LabelContainer">
                                                             <rect key="frame" x="60" y="17" width="480" height="78"/>
                                                             <subviews>
-                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xOq-Tp-5WF" userLabel="DueField">
+                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="xOq-Tp-5WF" userLabel="DueField">
                                                                     <rect key="frame" x="0.0" y="0.0" width="480" height="78"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -289,7 +289,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="YUk-Fu-2WL" userLabel="4. Alarm Picker">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="YUk-Fu-2WL" userLabel="4. Reminder Picker">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YUk-Fu-2WL" id="jJy-IK-ZYo">
@@ -560,13 +560,12 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hYX-ks-yjC" userLabel="LabelContainer">
                                                             <rect key="frame" x="60" y="11" width="480" height="90"/>
                                                             <subviews>
-                                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w4z-5h-XPw" userLabel="Line">
-                                                                    <rect key="frame" x="-6" y="39" width="480" height="1"/>
-                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="1" id="o7K-L8-kKw"/>
-                                                                    </constraints>
-                                                                </view>
+                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zGB-ZJ-ok1">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="480" height="30"/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                    <textInputTraits key="textInputTraits"/>
+                                                                </textField>
                                                                 <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="rX6-0P-Lbx" userLabel="NoteTextField">
                                                                     <rect key="frame" x="0.0" y="0.0" width="480" height="90"/>
                                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
@@ -574,11 +573,13 @@
                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                 </textView>
-                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zGB-ZJ-ok1">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="480" height="90"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <textInputTraits key="textInputTraits"/>
-                                                                </textField>
+                                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w4z-5h-XPw" userLabel="Line">
+                                                                    <rect key="frame" x="-6" y="39" width="480" height="1"/>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="1" id="o7K-L8-kKw"/>
+                                                                    </constraints>
+                                                                </view>
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
@@ -604,12 +605,28 @@
                                                         <constraint firstAttribute="centerX" secondItem="hYX-ks-yjC" secondAttribute="centerX" id="hrr-uc-Cvk"/>
                                                     </constraints>
                                                 </view>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCg-C4-udI" userLabel="Cancel">
+                                                    <rect key="frame" x="292" y="45" width="16" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="YFm-Dz-nMh"/>
+                                                        <constraint firstAttribute="height" constant="30" id="fvf-Jt-5y1"/>
+                                                    </constraints>
+                                                    <state key="normal" image="Cancel">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="didCancelDetails:" destination="i79-ie-8ko" eventType="touchUpInside" id="Dc7-xE-xix"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="SMP-gp-J6m" firstAttribute="leading" secondItem="JAu-dr-9es" secondAttribute="leading" id="3HU-hN-HoW"/>
                                                 <constraint firstItem="SMP-gp-J6m" firstAttribute="top" secondItem="JAu-dr-9es" secondAttribute="top" id="C63-W2-sgk"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="YCg-C4-udI" secondAttribute="trailing" constant="-12" id="HJ0-zS-Fpv"/>
                                                 <constraint firstItem="SMP-gp-J6m" firstAttribute="trailing" secondItem="JAu-dr-9es" secondAttribute="trailing" id="cQ8-98-fHJ"/>
+                                                <constraint firstAttribute="centerY" secondItem="YCg-C4-udI" secondAttribute="centerY" id="hKa-tD-pSI"/>
                                                 <constraint firstItem="SMP-gp-J6m" firstAttribute="bottom" secondItem="JAu-dr-9es" secondAttribute="bottom" id="rq2-v9-cX4"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -633,11 +650,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cancelDateDue" destination="cHJ-Fb-4jp" id="sjQ-DT-0As"/>
+                        <outlet property="cancelDetails" destination="YCg-C4-udI" id="BSO-08-lue"/>
                         <outlet property="cancelList" destination="4fE-84-abb" id="zgq-gP-LvD"/>
                         <outlet property="cancelName" destination="3qU-fQ-HpL" id="Yva-Xm-Fzg"/>
                         <outlet property="cancelPriority" destination="Qd1-T8-a4m" id="hvL-ff-PE2"/>
                         <outlet property="cancelReminder" destination="hDn-RF-cGT" id="c3M-iW-Lff"/>
                         <outlet property="detailField" destination="rX6-0P-Lbx" id="u77-0P-hzn"/>
+                        <outlet property="detailFieldLine" destination="w4z-5h-XPw" id="z8f-rm-Y1e"/>
                         <outlet property="detailFieldPlaceholder" destination="zGB-ZJ-ok1" id="nAw-MJ-S4m"/>
                         <outlet property="dueDateField" destination="xOq-Tp-5WF" id="qM3-2i-mHs"/>
                         <outlet property="dueDatePicker" destination="Mie-A6-ow2" id="PSA-OG-bUL"/>

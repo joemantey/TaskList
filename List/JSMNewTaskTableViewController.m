@@ -13,7 +13,6 @@
 
 @interface JSMNewTaskTableViewController () <UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *dueDateField;
 @property (weak, nonatomic) IBOutlet UIDatePicker *dueDatePicker;
@@ -25,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *prioritySegmentedControl;
 @property (weak, nonatomic) IBOutlet UITextView *detailField;
 @property (weak, nonatomic) IBOutlet UITextField *detailFieldPlaceholder;
+@property (weak, nonatomic) IBOutlet UIView *detailFieldLine;
 
 
 
@@ -38,7 +38,8 @@
 - (IBAction)didCancelList:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *cancelPriority;
 - (IBAction)didCancelPriority:(id)sender;
-
+@property (weak, nonatomic) IBOutlet UIButton *cancelDetails;
+- (IBAction)didCancelDetails:(id)sender;
 
 
 @property (strong,nonatomic) NSString *name;
@@ -53,14 +54,11 @@
 
 - (IBAction)cancelButton:(id)sender;
 - (IBAction)saveButton:(id)sender;
-
 - (IBAction)nameFieldChanged:(id)sender;
 - (IBAction)datePickerValueChanged:(id)sender;
 - (IBAction)reminderPickerValueChanged:(id)sender;
 
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
-
-
 
 @property (nonatomic) BOOL dueDatePickerIsShowing;
 @property (nonatomic) BOOL reminderDatePickerIsShowing;
@@ -73,6 +71,7 @@
 @end
 
 @implementation JSMNewTaskTableViewController
+
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
     [self populateCategoryArray];
@@ -94,6 +93,8 @@
     
 }
 
+
+
 -(void)hidePickerViews{
     
     self.dueDatePickerIsShowing = NO;
@@ -108,8 +109,10 @@
     self.priorityPickerIsShowing = NO;
     self.prioritySegmentedControl.hidden = YES;
     
+    self.detailField.hidden = YES;
     self.detailPlaceholderIsShowing = YES;
     self.detailFieldPlaceholder.hidden = NO;
+    self.detailFieldLine.hidden = NO;
 }
 
 
@@ -136,6 +139,8 @@
      self.listField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"task list" attributes:@{NSForegroundColorAttributeName: color }];
     
     self.priorityField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"task priority" attributes:@{NSForegroundColorAttributeName: color }];
+    
+    self.detailFieldPlaceholder.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"notes" attributes:@{NSForegroundColorAttributeName: color }];
 }
 
 
@@ -156,6 +161,8 @@
     [self.cancelPriority setImage:[UIImage imageNamed:@"Cancel"] forState:normal];
     self.cancelPriority.hidden = YES;
     
+    [self.cancelDetails setImage:[UIImage imageNamed:@"Cancel"] forState:normal];
+    self.cancelDetails.hidden = YES;
 }
 
 #pragma mark - Action Outlets
@@ -361,8 +368,6 @@
         
         if (self.detailPlaceholderIsShowing) {
             [self expandDetailCell];
-        }else{
-            [self collapseDetailCell];
         }
     }
 
@@ -419,6 +424,7 @@
     
     
     self.listPickerIsShowing = YES;
+    
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
     self.listPicker.hidden = NO;
@@ -451,26 +457,33 @@
 - (void)expandDetailCell{
     
     self.detailPlaceholderIsShowing = NO;
+    self.detailFieldLine.hidden = YES;
+    self.detailField.hidden = NO;
     
     
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
     
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.25 animations:^{
         self.detailFieldPlaceholder.hidden = YES;
+        self.cancelDetails.hidden = NO;
+
     }];
 }
 
 - (void)collapseDetailCell{
     
     self.detailPlaceholderIsShowing = YES;
+    self.detailFieldLine.hidden = NO;
+    self.detailField.hidden = YES;
     
     
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
     
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.25 animations:^{
         self.detailFieldPlaceholder.hidden = NO;
+        self.cancelDetails.hidden = YES;
     }];
 }
 
@@ -712,6 +725,17 @@
                      }];
 }
 
+
+- (IBAction)didCancelDetails:(id)sender {
+    [self collapseDetailCell];
+}
+
+
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+//    //hides keyboard when another part of layout was touched
+//    [self.view endEditing:YES];
+//    [super touchesBegan:touches withEvent:event];
+//}
 @end
 
 
