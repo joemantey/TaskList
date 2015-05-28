@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *priorityField;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *prioritySegmentedControl;
 @property (weak, nonatomic) IBOutlet UITextView *detailField;
+@property (weak, nonatomic) IBOutlet UITextField *detailFieldPlaceholder;
 
 
 
@@ -65,6 +66,7 @@
 @property (nonatomic) BOOL reminderDatePickerIsShowing;
 @property (nonatomic) BOOL listPickerIsShowing;
 @property (nonatomic) BOOL priorityPickerIsShowing;
+@property (nonatomic) BOOL detailPlaceholderIsShowing;
 
 @property (strong, nonatomic) JSMTaskDataManager *dataManager;
 
@@ -105,6 +107,9 @@
     
     self.priorityPickerIsShowing = NO;
     self.prioritySegmentedControl.hidden = YES;
+    
+    self.detailPlaceholderIsShowing = YES;
+    self.detailFieldPlaceholder.hidden = NO;
 }
 
 
@@ -246,12 +251,12 @@
 #define listPickerIndex 6
 #define priorityFieldIndex 7
 #define priorityPickerIndex 8
-#define notesFieldIndex 9
+#define detailFieldIndex 9
 
 #define fieldCellHeight 48
 #define pickerCellHeight 180
 #define segmentedCellHeight 96
-#define notesCellHeight  276
+#define detailCellHeight  228
 
 -(void)populateCategoryArray{
     
@@ -295,8 +300,12 @@
             height = 0;
             
         }
-    }else if (indexPath.row == notesFieldIndex){
-        height = notesCellHeight;
+    }else if (indexPath.row == detailFieldIndex){
+        if (self.detailPlaceholderIsShowing) {
+            height = fieldCellHeight;
+        }else{
+            height = detailCellHeight;
+        }
     }
     return height;
 }
@@ -346,6 +355,14 @@
             
         }else {
             [self showPriorityPicker];
+        }
+    }
+    else if (indexPath.row == detailFieldIndex){
+        
+        if (self.detailPlaceholderIsShowing) {
+            [self expandDetailCell];
+        }else{
+            [self collapseDetailCell];
         }
     }
 
@@ -412,8 +429,8 @@
                 self.listPicker.alpha = 1.0f;
                 self.listField.text = @"select list";
     }];
-   
 }
+
 
 - (void)showPriorityPicker {
     
@@ -429,10 +446,33 @@
         self.prioritySegmentedControl.alpha = 1.0f;
         self.priorityField.text = [self.prioritySegmentedControl titleForSegmentAtIndex:self.prioritySegmentedControl.selectedSegmentIndex];
     }];
-    
 }
 
+- (void)expandDetailCell{
+    
+    self.detailPlaceholderIsShowing = NO;
+    
+    
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        self.detailFieldPlaceholder.hidden = YES;
+    }];
+}
 
+- (void)collapseDetailCell{
+    
+    self.detailPlaceholderIsShowing = YES;
+    
+    
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        self.detailFieldPlaceholder.hidden = NO;
+    }];
+}
 
 
 - (void)hideDueDatePicker{

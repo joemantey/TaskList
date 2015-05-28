@@ -558,7 +558,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="584" height="112"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hYX-ks-yjC" userLabel="LabelContainer">
-                                                            <rect key="frame" x="60" y="17" width="480" height="78"/>
+                                                            <rect key="frame" x="60" y="11" width="480" height="90"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w4z-5h-XPw" userLabel="Line">
                                                                     <rect key="frame" x="-6" y="39" width="480" height="1"/>
@@ -568,12 +568,17 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="rX6-0P-Lbx" userLabel="NoteTextField">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="480" height="78"/>
-                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="480" height="90"/>
+                                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                 </textView>
+                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zGB-ZJ-ok1">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="480" height="90"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <textInputTraits key="textInputTraits"/>
+                                                                </textField>
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
@@ -583,20 +588,24 @@
                                                                 <constraint firstAttribute="bottom" secondItem="w4z-5h-XPw" secondAttribute="bottom" id="KUF-Yb-Cm8"/>
                                                                 <constraint firstItem="rX6-0P-Lbx" firstAttribute="leading" secondItem="hYX-ks-yjC" secondAttribute="leading" id="S22-a0-XoX"/>
                                                                 <constraint firstAttribute="width" secondItem="w4z-5h-XPw" secondAttribute="width" id="S3q-R2-noh"/>
+                                                                <constraint firstAttribute="trailing" secondItem="zGB-ZJ-ok1" secondAttribute="trailing" id="YC7-Jx-PEB"/>
                                                                 <constraint firstItem="rX6-0P-Lbx" firstAttribute="top" secondItem="hYX-ks-yjC" secondAttribute="top" id="g0z-jp-hna"/>
+                                                                <constraint firstItem="zGB-ZJ-ok1" firstAttribute="leading" secondItem="hYX-ks-yjC" secondAttribute="leading" id="int-qi-15W"/>
+                                                                <constraint firstItem="zGB-ZJ-ok1" firstAttribute="top" secondItem="hYX-ks-yjC" secondAttribute="top" id="lIj-cE-NKB"/>
+                                                                <constraint firstAttribute="bottom" secondItem="zGB-ZJ-ok1" secondAttribute="bottom" id="zYV-1W-4yY"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstItem="hYX-ks-yjC" firstAttribute="height" secondItem="SMP-gp-J6m" secondAttribute="height" multiplier="0.7" id="0eG-Fo-B9m"/>
+                                                        <constraint firstItem="hYX-ks-yjC" firstAttribute="height" secondItem="SMP-gp-J6m" secondAttribute="height" multiplier="0.8" id="0eG-Fo-B9m"/>
                                                         <constraint firstAttribute="centerY" secondItem="hYX-ks-yjC" secondAttribute="centerY" id="Eg6-Jb-mRf"/>
                                                         <constraint firstItem="hYX-ks-yjC" firstAttribute="width" secondItem="SMP-gp-J6m" secondAttribute="width" multiplier="0.8" id="aXt-nd-CZ1"/>
                                                         <constraint firstAttribute="centerX" secondItem="hYX-ks-yjC" secondAttribute="centerX" id="hrr-uc-Cvk"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.96381800809999996" green="0.94555569189999999" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="SMP-gp-J6m" firstAttribute="leading" secondItem="JAu-dr-9es" secondAttribute="leading" id="3HU-hN-HoW"/>
                                                 <constraint firstItem="SMP-gp-J6m" firstAttribute="top" secondItem="JAu-dr-9es" secondAttribute="top" id="C63-W2-sgk"/>
@@ -629,6 +638,7 @@
                         <outlet property="cancelPriority" destination="Qd1-T8-a4m" id="hvL-ff-PE2"/>
                         <outlet property="cancelReminder" destination="hDn-RF-cGT" id="c3M-iW-Lff"/>
                         <outlet property="detailField" destination="rX6-0P-Lbx" id="u77-0P-hzn"/>
+                        <outlet property="detailFieldPlaceholder" destination="zGB-ZJ-ok1" id="nAw-MJ-S4m"/>
                         <outlet property="dueDateField" destination="xOq-Tp-5WF" id="qM3-2i-mHs"/>
                         <outlet property="dueDatePicker" destination="Mie-A6-ow2" id="PSA-OG-bUL"/>
                         <outlet property="listField" destination="wxW-3f-JuZ" id="0H8-u8-cYR"/>
