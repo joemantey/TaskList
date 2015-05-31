@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		381728331AEBFA53003510F8 /* JSMTaskList.m in Sources */ = {isa = PBXBuildFile; fileRef = 381728321AEBFA53003510F8 /* JSMTaskList.m */; };
 		381728361AEBFBBD003510F8 /* JSMTaskDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 381728351AEBFBBD003510F8 /* JSMTaskDataManager.m */; };
+		382BF4811B19184F0029CF97 /* JSMTaskTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 382BF4801B19184F0029CF97 /* JSMTaskTableViewController.m */; };
 		38774B4D1AD313F70017C37C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 38774B4C1AD313F70017C37C /* main.m */; };
 		38774B501AD313F70017C37C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38774B4F1AD313F70017C37C /* AppDelegate.m */; };
 		38774B531AD313F70017C37C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38774B521AD313F70017C37C /* ViewController.m */; };
@@ -40,6 +41,8 @@
 		381728321AEBFA53003510F8 /* JSMTaskList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSMTaskList.m; sourceTree = "<group>"; };
 		381728341AEBFBBD003510F8 /* JSMTaskDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSMTaskDataManager.h; sourceTree = "<group>"; };
 		381728351AEBFBBD003510F8 /* JSMTaskDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSMTaskDataManager.m; sourceTree = "<group>"; };
+		382BF47F1B19184F0029CF97 /* JSMTaskTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSMTaskTableViewController.h; sourceTree = "<group>"; };
+		382BF4801B19184F0029CF97 /* JSMTaskTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSMTaskTableViewController.m; sourceTree = "<group>"; };
 		38774B471AD313F70017C37C /* List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = List.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38774B4B1AD313F70017C37C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38774B4C1AD313F70017C37C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -195,6 +198,8 @@
 				38ADD40C1AF9B875000BC5CF /* JSMTaskListTableViewController.m */,
 				38ADD4051AF96784000BC5CF /* JSMNewTaskTableViewController.h */,
 				38ADD4061AF96784000BC5CF /* JSMNewTaskTableViewController.m */,
+				382BF47F1B19184F0029CF97 /* JSMTaskTableViewController.h */,
+				382BF4801B19184F0029CF97 /* JSMTaskTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -349,6 +354,7 @@
 				38ADD40D1AF9B875000BC5CF /* JSMTaskListTableViewController.m in Sources */,
 				38774B751AD314560017C37C /* JSMTask.m in Sources */,
 				381728361AEBFBBD003510F8 /* JSMTaskDataManager.m in Sources */,
+				382BF4811B19184F0029CF97 /* JSMTaskTableViewController.m in Sources */,
 				38774B531AD313F70017C37C /* ViewController.m in Sources */,
 				38774B501AD313F70017C37C /* AppDelegate.m in Sources */,
 				38ADD4071AF96784000BC5CF /* JSMNewTaskTableViewController.m in Sources */,

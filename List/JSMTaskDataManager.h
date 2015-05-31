@@ -10,8 +10,13 @@
 
 @interface JSMTaskDataManager : NSObject
 
-@property (strong, nonatomic) NSMutableArray *taskList;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) NSArray *tasks;
 
-+ (instancetype)sharedDataManager;
++ (instancetype) sharedDataStore;
+
+- (void) saveContext;
+- (void) generateTestData;
+- (void) fetchData;
 
 @end

@@ -7,8 +7,12 @@
 //
 
 #import "JSMTaskDataManager.h"
+#import "JSMTask.h"
 
 @implementation JSMTaskDataManager
+@synthesize managedObjectContext = _managedObjectContext;
+
+
 
 + (instancetype)sharedDataManager {
     static JSMTaskDataManager *_sharedDataManager = nil;

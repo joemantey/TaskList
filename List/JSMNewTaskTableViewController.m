@@ -28,6 +28,7 @@
 
 
 
+- (IBAction)nameFieldDidChange:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *cancelName;
 - (IBAction)didCancelName:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *cancelDateDue;
@@ -735,6 +736,9 @@
 //    //hides keyboard when another part of layout was touched
 //    [self.view endEditing:YES];
 //    [super touchesBegan:touches withEvent:event];
+//}
+//- (IBAction)nameFieldDidChange:(id)sender {
+//    self.title = self.nameField.text;
 //}
 @end
 
