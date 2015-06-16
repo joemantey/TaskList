@@ -28,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-     self.taskDataManager = [JSMTaskDataManager sharedDataManager];
+     self.taskDataManager = [JSMTaskDataManager sharedDataStore];
     
     [self setUpTimeProperties];
 
@@ -52,17 +52,16 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return [self.taskDataManager.taskList count];
+    return 1;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     JSMTaskTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"task.cell" forIndexPath:indexPath];
     
-    JSMTask *task = self.taskDataManager.taskList[indexPath.row];
-    cell.titleLabel.text = task.name;
+/*    cell.titleLabel.text = task.name;
     cell.dateLabel.text = [self.dateFormatter stringFromDate:task.dueDate];
-    cell.priorityLabel.text = [NSString stringWithFormat: @"%ld", (long)task.currentPriority];
+    cell.priorityLabel.text = [NSString stringWithFormat: @"%ld", (long)task.currentPriority]; */
     
     return cell;
 }

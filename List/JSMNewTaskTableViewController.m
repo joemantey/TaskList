@@ -9,8 +9,7 @@
 #import "JSMNewTaskTableViewController.h"
 
 #import "JSMTask.h"
-#import "JSMTaskDataManager.h"
-
+#import "JSMDataStore.h"
 @interface JSMNewTaskTableViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
@@ -67,7 +66,7 @@
 @property (nonatomic) BOOL priorityPickerIsShowing;
 @property (nonatomic) BOOL detailPlaceholderIsShowing;
 
-@property (strong, nonatomic) JSMTaskDataManager *dataManager;
+@property (strong, nonatomic) JSMDataStore *dataManager;
 
 @end
 
@@ -87,7 +86,7 @@
     [self setUpPlaceHolderText];
     [self setUpButtonImages];
     
-    self.dataManager = [JSMTaskDataManager sharedDataManager];
+//    self.dataManager = [JSMDataStore sharedDataManager];
     
     self.listPicker.dataSource = self;
     self.listPicker.delegate = self;
@@ -212,7 +211,7 @@
                                     andUserPriority:self.userPriority
                                           andIsGoal:self.isGoal];
     
-    [self.dataManager.taskList addObject:newTask];
+//    [self.dataManager.taskList addObject:newTask];
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
