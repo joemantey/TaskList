@@ -15,7 +15,6 @@
 @interface JSMTaskListTableViewController ()
 
 
-@property (strong, nonatomic) JSMTaskDataManager *taskDataManager;
 
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
 
@@ -27,9 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-     self.taskDataManager = [JSMTaskDataManager sharedDataStore];
-    
+        
     [self setUpTimeProperties];
 
 }
