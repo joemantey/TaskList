@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface JSMTaskTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *priorityLabel;
+
+@property (weak, nonatomic) IBOutlet UITextField *priorityLabel;
+@property (weak, nonatomic) IBOutlet UITextField *nameLabel;
+@property (weak, nonatomic) IBOutlet UITextField *detailLabel;
 
 @end

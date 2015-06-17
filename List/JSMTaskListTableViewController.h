@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JSMDataStore.h"
 
 @interface JSMTaskListTableViewController : UITableViewController
+
+@property (strong, nonatomic) NSArray *managedListObjects;
+@property (strong, nonatomic) JSMDataStore *store;
 
 @end

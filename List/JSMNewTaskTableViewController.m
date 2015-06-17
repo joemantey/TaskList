@@ -170,25 +170,21 @@
 
 
 - (IBAction)nameFieldChanged:(id)sender {
-    
     [self setTitle:self.nameField.text];
 }
 
 
 - (IBAction)datePickerValueChanged:(id)sender {
-  
     self.dueDateField.text = [self.dateFormatter stringFromDate:[self.dueDatePicker date]];
 }
 
 
 - (IBAction)reminderPickerValueChanged:(id)sender {
-   
     self.reminderField.text = [self.dateFormatter stringFromDate:[self.reminderDatePicker date]];
 }
 
 
 - (IBAction)cancelButton:(id)sender {
-   
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
