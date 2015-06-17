@@ -192,6 +192,12 @@
 - (IBAction)saveButton:(id)sender {
     //set the properties equal to the inuputs
     
+    
+    if (self.prioritySegmentedControl.selectedSegmentIndex == -1) {
+        self.userPriority = 0;
+    }else{
+        self.userPriority = self.prioritySegmentedControl.selectedSegmentIndex;
+    }
     self.name = self.nameField.text;
     self.dueDate = self.dueDatePicker.date;
     self.reminderDate = self.reminderDatePicker.date;
@@ -736,9 +742,11 @@
 //    [self.view endEditing:YES];
 //    [super touchesBegan:touches withEvent:event];
 //}
-//- (IBAction)nameFieldDidChange:(id)sender {
-//    self.title = self.nameField.text;
-//}
+
+- (IBAction)nameFieldDidChange:(id)sender {
+    self.title = self.nameField.text;
+}
+
 @end
 
 
