@@ -203,7 +203,6 @@
     JSMTask *newTask = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext: self.store.managedObjectContext];
     
     
-    newTask.userPriority = 25;
     newTask.currentPriorityString = @"Low";
     newTask.dateCreated = [NSDate date];
     newTask.dueDate = self.dueDate;
