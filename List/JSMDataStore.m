@@ -7,6 +7,7 @@
 //
 
 #import "JSMDataStore.h"
+#import "Task.h"
 #import <CoreData/CoreData.h>
 
 @implementation JSMDataStore
@@ -70,5 +71,38 @@
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
+
+- (void)fetchData
+{
+    NSFetchRequest *messagesRequest = [NSFetchRequest fetchRequestWithEntityName:@"Task"];
+    
+    NSSortDescriptor *createdAtSorter = [NSSortDescriptor sortDescriptorWithKey:@"dateCreated" ascending:YES];
+    messagesRequest.sortDescriptors = @[createdAtSorter];
+    
+    self.taskArray = [self.managedObjectContext executeFetchRequest:messagesRequest error:nil];
+    
+    if ([self.taskArray count]==0) {
+        [self generateTestData];
+    }
+}
+
+- (void)generateTestData
+{
+    Task *taskOne = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:self.managedObjectContext];
+    
+    taskOne.currentPriority = @25;
+    taskOne.currentPriorityString = @"Low";
+    taskOne.dateCreated = [NSDate date];
+    taskOne.details = @"It's my first task. The devil is in the details";
+    taskOne.isDueToday = @0;
+    taskOne.isGoal = @0;
+    taskOne.list = @"To Do's";
+    taskOne.name = @"My First Task";
+    
+    
+    [self saveContext];
+    [self fetchData];
+}
+
 
 @end

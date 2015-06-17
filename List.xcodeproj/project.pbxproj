@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		381728331AEBFA53003510F8 /* JSMTaskList.m in Sources */ = {isa = PBXBuildFile; fileRef = 381728321AEBFA53003510F8 /* JSMTaskList.m */; };
-		382BF4811B19184F0029CF97 /* JSMTaskTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 382BF4801B19184F0029CF97 /* JSMTaskTableViewController.m */; };
 		38774B4D1AD313F70017C37C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 38774B4C1AD313F70017C37C /* main.m */; };
 		38774B501AD313F70017C37C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38774B4F1AD313F70017C37C /* AppDelegate.m */; };
 		38774B531AD313F70017C37C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38774B521AD313F70017C37C /* ViewController.m */; };
@@ -22,8 +21,8 @@
 		38ADD40D1AF9B875000BC5CF /* JSMTaskListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38ADD40C1AF9B875000BC5CF /* JSMTaskListTableViewController.m */; };
 		38ADD4101AF9C101000BC5CF /* JSMTaskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38ADD40F1AF9C101000BC5CF /* JSMTaskTableViewCell.m */; };
 		38E423CD1B244AEF0085F183 /* List.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 38E423CB1B244AEF0085F183 /* List.xcdatamodeld */; };
-		38E9E6361B30B3BB00E3B637 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E9E6351B30B3BB00E3B637 /* Task.m */; };
 		38E9E6391B30BD5D00E3B637 /* JSMDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E9E6381B30BD5D00E3B637 /* JSMDataStore.m */; };
+		38E9E63C1B30F40900E3B637 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E9E63B1B30F40900E3B637 /* Task.m */; };
 		38FEBB471AD42ABD00C4FC56 /* JSMConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 38FEBB461AD42ABD00C4FC56 /* JSMConstants.m */; };
 		CAE61324BBB18258CF565377 /* libPods-List.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A215EDF48DED864F9E1A3EF3 /* libPods-List.a */; };
 /* End PBXBuildFile section */
@@ -41,8 +40,6 @@
 /* Begin PBXFileReference section */
 		381728311AEBFA53003510F8 /* JSMTaskList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSMTaskList.h; sourceTree = "<group>"; };
 		381728321AEBFA53003510F8 /* JSMTaskList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSMTaskList.m; sourceTree = "<group>"; };
-		382BF47F1B19184F0029CF97 /* JSMTaskTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSMTaskTableViewController.h; sourceTree = "<group>"; };
-		382BF4801B19184F0029CF97 /* JSMTaskTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSMTaskTableViewController.m; sourceTree = "<group>"; };
 		38774B471AD313F70017C37C /* List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = List.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38774B4B1AD313F70017C37C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38774B4C1AD313F70017C37C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -67,10 +64,10 @@
 		38ADD40E1AF9C101000BC5CF /* JSMTaskTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSMTaskTableViewCell.h; sourceTree = "<group>"; };
 		38ADD40F1AF9C101000BC5CF /* JSMTaskTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSMTaskTableViewCell.m; sourceTree = "<group>"; };
 		38E423CC1B244AEF0085F183 /* List.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = List.xcdatamodel; sourceTree = "<group>"; };
-		38E9E6341B30B3BB00E3B637 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
-		38E9E6351B30B3BB00E3B637 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		38E9E6371B30BD5D00E3B637 /* JSMDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSMDataStore.h; sourceTree = "<group>"; };
 		38E9E6381B30BD5D00E3B637 /* JSMDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSMDataStore.m; sourceTree = "<group>"; };
+		38E9E63A1B30F40900E3B637 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		38E9E63B1B30F40900E3B637 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		38FEBB451AD42ABD00C4FC56 /* JSMConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSMConstants.h; path = ../JSMConstants.h; sourceTree = "<group>"; };
 		38FEBB461AD42ABD00C4FC56 /* JSMConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSMConstants.m; path = ../JSMConstants.m; sourceTree = "<group>"; };
 		817B4FBFF77FAAB80E3D0D50 /* Pods-List.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-List.debug.xcconfig"; path = "Pods/Target Support Files/Pods-List/Pods-List.debug.xcconfig"; sourceTree = "<group>"; };
@@ -171,12 +168,12 @@
 		38774B701AD3140E0017C37C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				38E9E63A1B30F40900E3B637 /* Task.h */,
+				38E9E63B1B30F40900E3B637 /* Task.m */,
 				38E9E6371B30BD5D00E3B637 /* JSMDataStore.h */,
 				38E9E6381B30BD5D00E3B637 /* JSMDataStore.m */,
 				38774B731AD314560017C37C /* JSMTask.h */,
 				38774B741AD314560017C37C /* JSMTask.m */,
-				38E9E6341B30B3BB00E3B637 /* Task.h */,
-				38E9E6351B30B3BB00E3B637 /* Task.m */,
 				38E423CB1B244AEF0085F183 /* List.xcdatamodeld */,
 				381728311AEBFA53003510F8 /* JSMTaskList.h */,
 				381728321AEBFA53003510F8 /* JSMTaskList.m */,
@@ -206,8 +203,6 @@
 				38ADD40C1AF9B875000BC5CF /* JSMTaskListTableViewController.m */,
 				38ADD4051AF96784000BC5CF /* JSMNewTaskTableViewController.h */,
 				38ADD4061AF96784000BC5CF /* JSMNewTaskTableViewController.m */,
-				382BF47F1B19184F0029CF97 /* JSMTaskTableViewController.h */,
-				382BF4801B19184F0029CF97 /* JSMTaskTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -355,8 +350,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38E9E63C1B30F40900E3B637 /* Task.m in Sources */,
 				38E9E6391B30BD5D00E3B637 /* JSMDataStore.m in Sources */,
-				38E9E6361B30B3BB00E3B637 /* Task.m in Sources */,
 				38FEBB471AD42ABD00C4FC56 /* JSMConstants.m in Sources */,
 				38E423CD1B244AEF0085F183 /* List.xcdatamodeld in Sources */,
 				381728331AEBFA53003510F8 /* JSMTaskList.m in Sources */,
@@ -364,7 +359,6 @@
 				38ADD4101AF9C101000BC5CF /* JSMTaskTableViewCell.m in Sources */,
 				38ADD40D1AF9B875000BC5CF /* JSMTaskListTableViewController.m in Sources */,
 				38774B751AD314560017C37C /* JSMTask.m in Sources */,
-				382BF4811B19184F0029CF97 /* JSMTaskTableViewController.m in Sources */,
 				38774B531AD313F70017C37C /* ViewController.m in Sources */,
 				38774B501AD313F70017C37C /* AppDelegate.m in Sources */,
 				38ADD4071AF96784000BC5CF /* JSMNewTaskTableViewController.m in Sources */,

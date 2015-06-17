@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JSMDataStore.h"
 
 @interface JSMNewTaskTableViewController : UITableViewController <UIPickerViewDelegate, UIPickerViewDataSource>
+
+
+@property (strong, nonatomic) NSArray *managedTaskObjects;
+@property (strong, nonatomic) JSMDataStore *store;
 
 @end

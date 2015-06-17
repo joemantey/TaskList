@@ -19,7 +19,6 @@
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
 
 
-
 @end
 
 @implementation JSMTaskListTableViewController

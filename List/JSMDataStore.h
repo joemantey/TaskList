@@ -12,6 +12,8 @@
 @interface JSMDataStore : NSObject
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) NSArray *taskArray;
+
 
 + (instancetype) sharedDataStore;
 

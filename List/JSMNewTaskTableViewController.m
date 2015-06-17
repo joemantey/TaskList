@@ -72,28 +72,29 @@
 
 @implementation JSMNewTaskTableViewController
 
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:YES];
-    [self populateCategoryArray];
-}
-
 - (void)viewDidLoad {
+   
     [super viewDidLoad];
     
+    self.store = [JSMDataStore sharedDataStore];
     
     [self hidePickerViews];
     [self setUpTextInOutlets];
     [self setUpPlaceHolderText];
     [self setUpButtonImages];
     
-//    self.dataManager = [JSMDataStore sharedDataManager];
-    
     self.listPicker.dataSource = self;
     self.listPicker.delegate = self;
     
 }
 
-
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    [self.store fetchData];
+    [self populateCategoryArray];
+}
 
 -(void)hidePickerViews{
     
@@ -203,15 +204,19 @@
     
     
     
-    JSMTask *newTask = [[JSMTask alloc]initWithName:self.name
-                                         andDetails:self.details
-                                            andList:self.list
-                                         andDateDue:self.dueDate
-                                    andReminderDate:self.reminderDate
-                                    andUserPriority:self.userPriority
-                                          andIsGoal:self.isGoal];
+    JSMTask *newTask = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext: self.store.managedObjectContext];
     
-//    [self.dataManager.taskList addObject:newTask];
+    
+    newTask.userPriority = 25;
+    newTask.currentPriorityString = @"Low";
+    newTask.dateCreated = [NSDate date];
+    newTask.dueDate = self.dueDate;
+    newTask.details = self.details;
+    newTask.isGoal = self.isGoal;
+    newTask.list = self.list;
+    newTask.name = self.name;
+    
+    [self.store saveContext];
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
