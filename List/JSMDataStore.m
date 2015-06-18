@@ -11,6 +11,9 @@
 #import "Task+Algorithm.h"
 #import <CoreData/CoreData.h>
 
+#import <DTTimePeriod.h>
+#import <NSDate+DateTools.h>
+
 @implementation JSMDataStore
 @synthesize managedObjectContext = _managedObjectContext;
 
@@ -96,13 +99,28 @@
     Task *taskOne = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:self.managedObjectContext];
     
     taskOne.currentPriority = @25;
-    taskOne.currentPriorityString = @"Low";
+    taskOne.currentPriorityString = @"Med";
     taskOne.dateCreated = [NSDate date];
     taskOne.details = @"It's my first task. The devil is in the details";
     taskOne.isDueToday = @0;
     taskOne.isGoal = @0;
     taskOne.list = @"To Do's";
     taskOne.name = @"My First Task";
+    
+    [taskOne setTaskPriorityWithTask:taskOne];
+    
+    
+    Task *taskTwo = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:self.managedObjectContext];
+    
+    taskOne.currentPriority = @25;
+    taskOne.currentPriorityString = @"Low";
+    taskOne.dateCreated = [NSDate date];
+    taskTwo.dueDate = [NSDate dateWithYear:2015 month:7 day:01  ];
+    taskOne.details = @"It's my first task. The devil is in the details";
+    taskOne.isDueToday = @0;
+    taskOne.isGoal = @0;
+    taskOne.list = @"To Do's";
+    taskOne.name = @"The Weekend X Beyonce";
     
     [taskOne setTaskPriorityWithTask:taskOne];
     

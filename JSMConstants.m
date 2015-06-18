@@ -12,10 +12,10 @@
 
 NSString *const MyThingNotificationKey = @"MyThingNotificationKey";
 
-
-NSInteger const highPriorityInteger = 3;
-NSInteger const medPriorityInteger = 2;
-NSInteger const lowPriorityInteger = 1;
+NSInteger const isGoalInteder = 3;
+NSInteger const highPriorityInteger = 2;
+NSInteger const medPriorityInteger = 1;
+NSInteger const lowPriorityInteger = 0;
 
 NSInteger const maxBasePriority = 1000;
 NSInteger const highBasePriority = 800;

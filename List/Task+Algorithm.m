@@ -21,7 +21,7 @@
     NSDictionary *algorithmDictionary = [self buildDictionaryOfTaskPriortyValues];
     
     //if task has due date
-    if (task.dueDate) {
+    if (task.dueDate != nil) {
         
         NSArray *algorithmKeys       = [self getMilestonesForTasksWithDueDate:task];
         NSString *algorithmKeyString = [self getDictionaryKeyStringforTask:task];
@@ -41,7 +41,7 @@
         NSString *algorithmKeyString = [self getDictionaryKeyStringforTask:task];
         NSArray *algorithmKeys =       [self getMilestonesForTasksWithoutDueDate:task];
         
-        double adjuster = [self getPercentageOfTimeElapsedSincePeriodStartDate:[algorithmKeys[0] integerValue]
+        double adjuster = [self getPercentageOfTimeElapsedSincePeriodStartDateNoDueDate:[algorithmKeys[0] integerValue]
                                                               andPeriodEndDate:[algorithmKeys[1] integerValue]
                                                                      usingTask:task];
         
@@ -74,12 +74,12 @@
 
 
 
--(double)getPercentageOfTimeElapsedSincePeriodStartDate:(NSInteger)periodStartDateAdjuster andPeriodEndDate:(NSInteger)periodEndDateAdjuster usingTask:(Task *)task{
-    
+-(float)getPercentageOfTimeElapsedSincePeriodStartDate:(NSInteger)periodStartDateAdjuster andPeriodEndDate:(NSInteger)periodEndDateAdjuster usingTask:(Task *)task{
+
     NSDate *todaysDate      = [NSDate date];
     NSDate *dueDate         =  task.dueDate;
-    NSDate *periodStartDate = [dueDate dateBySubtractingDays:periodStartDateAdjuster];
-    NSDate *periodEndDate   = [dueDate dateBySubtractingDays:periodEndDateAdjuster];
+    NSDate *periodStartDate = [dueDate dateByAddingDays:periodStartDateAdjuster];
+    NSDate *periodEndDate   = [dueDate dateByAddingDays:periodEndDateAdjuster];
     
     DTTimePeriod *taskTimePeriod = [[DTTimePeriod alloc] init];
     taskTimePeriod.StartDate     = periodStartDate;
@@ -89,15 +89,36 @@
     timeSinceStartofPeriod.StartDate     = periodStartDate;
     timeSinceStartofPeriod.EndDate       = todaysDate;
     
-    double taskTimePeriodInMinutes                  = [taskTimePeriod durationInMinutes];
-    double taskTimePeriodBeforeEndOfPeriodinMinutes = [timeSinceStartofPeriod durationInMinutes];
+    float taskTimePeriodInMinutes                  = [taskTimePeriod durationInMinutes];
+    float taskTimePeriodBeforeEndOfPeriodinMinutes = [timeSinceStartofPeriod durationInMinutes];
     
-    double perecentaageOfTimeElapsedSincePeriodStartDate = taskTimePeriodBeforeEndOfPeriodinMinutes/taskTimePeriodInMinutes;
+    float perecentaageOfTimeElapsedSincePeriodStartDate = taskTimePeriodBeforeEndOfPeriodinMinutes/taskTimePeriodInMinutes;
     return perecentaageOfTimeElapsedSincePeriodStartDate;
     
 }
 
-
+-(float)getPercentageOfTimeElapsedSincePeriodStartDateNoDueDate:(NSInteger)periodStartDateAdjuster andPeriodEndDate:(NSInteger)periodEndDateAdjuster usingTask:(Task *)task{
+    
+    NSDate *todaysDate      = [NSDate date];
+    NSDate *periodStartDate = [todaysDate dateBySubtractingDays:periodStartDateAdjuster];
+    NSDate *periodEndDate   = [todaysDate dateBySubtractingDays:periodEndDateAdjuster];
+    
+    DTTimePeriod *taskTimePeriod = [[DTTimePeriod alloc] init];
+    taskTimePeriod.StartDate     = periodStartDate;
+    taskTimePeriod.EndDate       = periodEndDate;
+    
+    DTTimePeriod *timeSinceStartofPeriod = [[DTTimePeriod alloc]init];
+    timeSinceStartofPeriod.StartDate     = periodStartDate;
+    timeSinceStartofPeriod.EndDate       = todaysDate;
+    
+    float taskTimePeriodInMinutes                  = [taskTimePeriod durationInMinutes];
+    float taskTimePeriodBeforeEndOfPeriodinMinutes = [timeSinceStartofPeriod durationInMinutes];
+    
+    float  perecentaageOfTimeElapsedSincePeriodStartDate = taskTimePeriodBeforeEndOfPeriodinMinutes/taskTimePeriodInMinutes;
+    
+    return perecentaageOfTimeElapsedSincePeriodStartDate;
+    
+}
 
 
 
@@ -113,7 +134,11 @@
     }
 }
 
-
+/*
+ 
+ This is where you need to make the adjustment for ISGOAL based on what the number coming out of the segmented control is (should be four but make sure you check it out
+ 
+ */
 
 -(NSString *)getDictionaryKeyStringforTask:(Task *)task{
     
