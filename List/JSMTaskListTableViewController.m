@@ -58,6 +58,7 @@
     return cellHeight;
 }
 
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     return [self.store.taskArray count];
@@ -69,9 +70,19 @@
     
     Task *eachTask = self.store.taskArray[indexPath.row];
     
+   
     cell.nameLabel.text = eachTask.name;
-    cell.detailLabel.text = eachTask.details;
-    cell.priorityLabel.text = [NSString stringWithFormat:@"%@", eachTask.currentPriority];
+    cell.priorityLabel.text = [NSString stringWithFormat:@"%@", eachTask.currentPriority ];
+    
+    if (eachTask.dueDate) {
+        
+        cell.detailLabel.text = [NSString stringWithFormat:@"Due: %@", [self.dateFormatter stringFromDate:eachTask.dueDate] ];
+    }else{
+        
+        cell.detailLabel.text = [NSString stringWithFormat:@"Created: %@", [self.dateFormatter stringFromDate:eachTask.dateCreated]];
+    }
+                                 
+                                 
     
     return cell;
 }

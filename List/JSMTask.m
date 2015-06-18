@@ -8,6 +8,7 @@
 
 
 #import "JSMTask.h"
+#import "Task.h"
 #import "JSMConstants.h"
 #import <DTTimePeriod.h>
 
@@ -67,7 +68,7 @@
 
 
 
--(NSInteger )calculatePriorityForTask:(JSMTask *)task usingKeyString:(NSString *)keyString andKeys:(NSArray *)keyArray andAdjuster:(double)adjuster andAlgorithmDictionary:(NSDictionary *)algorithmDictionary{
+-(NSNumber *)calculatePriorityForTask:(Task *)task usingKeyString:(NSString *)keyString andKeys:(NSArray *)keyArray andAdjuster:(double)adjuster andAlgorithmDictionary:(NSDictionary *)algorithmDictionary{
     
     
     //get the bottom of the range
@@ -83,13 +84,13 @@
     NSInteger basePriority = [bottomOfPriorityRange integerValue];
     NSInteger adjustedPriority = basePriority + ( (NSInteger)adjuster * range);
     
-    return adjustedPriority;
+    return [NSNumber numberWithInteger: adjustedPriority];
     
 }
 
 
 
--(double)getPercentageOfTimeElapsedSincePeriodStartDate:(NSInteger)periodStartDateAdjuster andPeriodEndDate:(NSInteger)periodEndDateAdjuster usingTask:(JSMTask *)task{
+-(double)getPercentageOfTimeElapsedSincePeriodStartDate:(NSInteger)periodStartDateAdjuster andPeriodEndDate:(NSInteger)periodEndDateAdjuster usingTask:(Task *)task{
     
     NSDate *todaysDate      = [NSDate date];
     NSDate *dueDate         =  task.dueDate;
@@ -115,7 +116,7 @@
 
 
 
--(void)setTaskPriorityWithTask:(JSMTask *)task{
+-(void)setTaskPriorityWithTask:(Task *)task{
     
     NSDictionary *algorithmDictionary = [self buildDictionaryOfTaskPriortyValues];
     
@@ -131,7 +132,7 @@
         
         NSInteger calculatedPriority = [self calculatePriorityForTask:task usingKeyString:algorithmKeyString andKeys:algorithmKeys andAdjuster:adjuster andAlgorithmDictionary:algorithmDictionary];
         
-        task.currentPriority = calculatedPriority;
+        task.currentPriority = [NSNumber numberWithInteger:calculatedPriority ];
     }
     
     //if task doesn't have due date
@@ -146,7 +147,7 @@
         
         NSInteger calculatedPriority = [self calculatePriorityForTask:task usingKeyString:algorithmKeyString andKeys:algorithmKeys andAdjuster:adjuster andAlgorithmDictionary:algorithmDictionary];
         
-        task.currentPriority = calculatedPriority;
+        task.currentPriority = [NSNumber numberWithInteger:calculatedPriority ];
     }
 }
 
@@ -165,19 +166,19 @@
 
 
 
--(NSString *)getDictionaryKeyStringforTask:(JSMTask *)task{
+-(NSString *)getDictionaryKeyStringforTask:(Task *)task{
     
     if (task.isGoal) {
         return @"isAGoal";
     }
     else if (task.dueDate) {
-        if (task.userPriority == highPriorityInteger) {
+        if (task.userPriority == [NSNumber numberWithInteger:highPriorityInteger ]) {
             return @"dueDateHigh";
         }
-        else if (task.userPriority == medPriorityInteger) {
+        else if (task.userPriority == [NSNumber numberWithInteger:medPriorityInteger]){
             return @"dueDateMedium";
         }
-        else if (task.userPriority == lowPriorityInteger) {
+        else if (task.userPriority == [NSNumber numberWithInteger:lowPriorityInteger]) {
             return @"dueDateLow";
         }
         else {
@@ -185,13 +186,13 @@
         }
     }
     else{
-        if (task.userPriority == highPriorityInteger) {
+        if (task.userPriority == [NSNumber numberWithInteger:highPriorityInteger]) {
             return @"noDueDateHigh";
         }
-        if (task.userPriority == medPriorityInteger) {
+        if (task.userPriority == [NSNumber numberWithInteger:medPriorityInteger]) {
             return @"noDueDateMedium";
         }
-        if (task.userPriority == lowPriorityInteger) {
+        if (task.userPriority == [NSNumber numberWithInteger:lowPriorityInteger]) {
             return @"noDueDateLow";
         }else{
             return @"noDueDateLow";
@@ -283,7 +284,7 @@
     return algorithmDictionary;
 }
 
--(NSArray *)getMilestonesForTasksWithoutDueDate:(JSMTask *)task{
+-(NSArray *)getMilestonesForTasksWithoutDueDate:(Task *)task{
     
     
     NSDate *todaysDate = [NSDate date];
@@ -324,7 +325,7 @@
 
 
 
--(NSArray *)getMilestonesForTasksWithDueDate:(JSMTask *)task{
+-(NSArray *)getMilestonesForTasksWithDueDate:(Task *)task{
     
    
     NSDate *todaysDate = [NSDate date];

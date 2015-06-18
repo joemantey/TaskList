@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OUG-wz-fCf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14A379b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OUG-wz-fCf">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -686,7 +686,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="0.0" reuseIdentifier="taskCell" rowHeight="60" id="puy-1T-Dr7" customClass="JSMTaskTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="0.0" reuseIdentifier="taskCell" rowHeight="60" id="puy-1T-Dr7" customClass="JSMTaskTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="puy-1T-Dr7" id="wBG-TB-xhZ">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -694,57 +694,94 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ddt-6N-Pin" userLabel="Container View">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="59"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ft-jt-ycP" userLabel="TextContainer">
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Ft-jt-ycP" userLabel="TextContainer">
                                                     <rect key="frame" x="59" y="0.0" width="508" height="59"/>
                                                     <subviews>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ctR-CO-Pbr" userLabel="Title">
-                                                            <rect key="frame" x="0.0" y="0.0" width="508" height="35"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                                            <textInputTraits key="textInputTraits"/>
-                                                        </textField>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DBq-ox-Jdb" userLabel="Detail">
+                                                        <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DBq-ox-Jdb" userLabel="Detail">
                                                             <rect key="frame" x="0.0" y="35" width="508" height="24"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
+                                                        <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ctR-CO-Pbr" userLabel="Title">
+                                                            <rect key="frame" x="0.0" y="8" width="508" height="35"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstItem="ctR-CO-Pbr" firstAttribute="height" secondItem="0Ft-jt-ycP" secondAttribute="height" multiplier="0.6" id="0g8-Rl-9Id"/>
-                                                        <constraint firstItem="ctR-CO-Pbr" firstAttribute="top" secondItem="0Ft-jt-ycP" secondAttribute="top" id="6BC-q4-H3L"/>
+                                                        <constraint firstItem="ctR-CO-Pbr" firstAttribute="height" secondItem="0Ft-jt-ycP" secondAttribute="height" multiplier="0.3" id="0g8-Rl-9Id"/>
+                                                        <constraint firstItem="ctR-CO-Pbr" firstAttribute="top" secondItem="0Ft-jt-ycP" secondAttribute="top" constant="15" id="6BC-q4-H3L"/>
                                                         <constraint firstAttribute="trailing" secondItem="DBq-ox-Jdb" secondAttribute="trailing" id="LIh-ez-Orb"/>
                                                         <constraint firstItem="ctR-CO-Pbr" firstAttribute="leading" secondItem="0Ft-jt-ycP" secondAttribute="leading" id="XGs-Ud-8WM"/>
                                                         <constraint firstAttribute="trailing" secondItem="ctR-CO-Pbr" secondAttribute="trailing" id="Zjb-2d-r5j"/>
-                                                        <constraint firstAttribute="bottom" secondItem="DBq-ox-Jdb" secondAttribute="bottom" id="gtE-vo-juY"/>
+                                                        <constraint firstAttribute="bottom" secondItem="DBq-ox-Jdb" secondAttribute="bottom" constant="10" id="gtE-vo-juY"/>
+                                                        <constraint firstItem="ctR-CO-Pbr" firstAttribute="leading" secondItem="0Ft-jt-ycP" secondAttribute="leading" id="iqD-Cd-Sep"/>
                                                         <constraint firstItem="DBq-ox-Jdb" firstAttribute="leading" secondItem="0Ft-jt-ycP" secondAttribute="leading" id="lc8-fi-uLF"/>
                                                         <constraint firstItem="DBq-ox-Jdb" firstAttribute="top" secondItem="ctR-CO-Pbr" secondAttribute="bottom" id="wme-ea-0tP"/>
                                                     </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="XGs-Ud-8WM"/>
+                                                        </mask>
+                                                    </variation>
                                                 </view>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vmu-JS-EWG">
-                                                    <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
+                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vmu-JS-EWG" userLabel="Score">
+                                                    <rect key="frame" x="0.0" y="0.0" width="41" height="59"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="Vmu-JS-EWG" secondAttribute="height" id="xQK-Xu-p9S"/>
+                                                        <constraint firstAttribute="width" secondItem="Vmu-JS-EWG" secondAttribute="height" multiplier="0.7" id="xQK-Xu-p9S"/>
                                                     </constraints>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="25"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
+                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6km-yc-thK" userLabel="Slash">
+                                                    <rect key="frame" x="41" y="0.0" width="18" height="59"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="6km-yc-thK" secondAttribute="height" multiplier="0.5" id="d8l-zy-H1v"/>
+                                                        <constraint firstAttribute="width" id="kbT-L9-wBR"/>
+                                                    </constraints>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="41"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="d8l-zy-H1v"/>
+                                                        </mask>
+                                                    </variation>
+                                                </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
+                                                <constraint firstItem="0Ft-jt-ycP" firstAttribute="leading" secondItem="6km-yc-thK" secondAttribute="trailing" id="0rK-fd-S54"/>
+                                                <constraint firstItem="6km-yc-thK" firstAttribute="width" secondItem="6km-yc-thK" secondAttribute="height" id="6AD-7n-4lk"/>
+                                                <constraint firstItem="Vmu-JS-EWG" firstAttribute="trailing" secondItem="6km-yc-thK" secondAttribute="leading" id="8EO-pj-gHk"/>
                                                 <constraint firstItem="0Ft-jt-ycP" firstAttribute="leading" secondItem="Vmu-JS-EWG" secondAttribute="trailing" id="9OS-la-dbg"/>
+                                                <constraint firstAttribute="bottom" secondItem="6km-yc-thK" secondAttribute="bottom" id="Cd8-ke-x0N"/>
+                                                <constraint firstItem="ctR-CO-Pbr" firstAttribute="trailing" secondItem="6km-yc-thK" secondAttribute="trailing" id="D6c-3C-nF9"/>
                                                 <constraint firstItem="Vmu-JS-EWG" firstAttribute="leading" secondItem="Ddt-6N-Pin" secondAttribute="leading" id="J13-lL-eim"/>
+                                                <constraint firstItem="6km-yc-thK" firstAttribute="top" secondItem="Ddt-6N-Pin" secondAttribute="top" id="Mzy-2I-ONp"/>
                                                 <constraint firstItem="0Ft-jt-ycP" firstAttribute="top" secondItem="Ddt-6N-Pin" secondAttribute="top" id="a9g-UV-Nli"/>
                                                 <constraint firstAttribute="trailing" secondItem="0Ft-jt-ycP" secondAttribute="trailing" id="jM2-K1-qi8"/>
                                                 <constraint firstItem="Vmu-JS-EWG" firstAttribute="top" secondItem="Ddt-6N-Pin" secondAttribute="top" id="mwv-Of-NOy"/>
                                                 <constraint firstAttribute="bottom" secondItem="Vmu-JS-EWG" secondAttribute="bottom" id="opE-UE-8I0"/>
+                                                <constraint firstItem="Vmu-JS-EWG" firstAttribute="width" secondItem="6km-yc-thK" secondAttribute="width" multiplier="2" id="ruw-4u-3nF"/>
                                                 <constraint firstItem="0Ft-jt-ycP" firstAttribute="bottom" secondItem="Ddt-6N-Pin" secondAttribute="bottom" id="xPW-Xh-zWm"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="9OS-la-dbg"/>
+                                                    <exclude reference="6AD-7n-4lk"/>
+                                                    <exclude reference="ruw-4u-3nF"/>
+                                                    <exclude reference="D6c-3C-nF9"/>
+                                                </mask>
+                                            </variation>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -760,6 +797,7 @@
                                     <outlet property="detailLabel" destination="DBq-ox-Jdb" id="bEK-6f-cHX"/>
                                     <outlet property="nameLabel" destination="ctR-CO-Pbr" id="q48-cP-Woa"/>
                                     <outlet property="priorityLabel" destination="Vmu-JS-EWG" id="lh8-zf-lYb"/>
+                                    <segue destination="Ewc-ve-BlI" kind="presentation" id="51E-9v-NRd"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -779,6 +817,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I64-98-Tmk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2647" y="467"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Nng-jb-NIn">
+            <objects>
+                <viewController id="Ewc-ve-BlI" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6MN-M5-hSK"/>
+                        <viewControllerLayoutGuide type="bottom" id="YgU-hD-FpH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1SM-FZ-igy">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ucK-mH-FeW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2647" y="1175"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2Ja-t3-ejq">
