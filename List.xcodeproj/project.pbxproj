@@ -16,6 +16,7 @@
 		38774B5B1AD313F70017C37C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38774B591AD313F70017C37C /* LaunchScreen.xib */; };
 		38774B671AD313F70017C37C /* ListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 38774B661AD313F70017C37C /* ListTests.m */; };
 		38774B751AD314560017C37C /* JSMTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 38774B741AD314560017C37C /* JSMTask.m */; };
+		3885A94F1B331654007C6427 /* Task+Algorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 3885A94E1B331654007C6427 /* Task+Algorithm.m */; };
 		38AA79071AFE8D1100A5A5D5 /* UILabel+WhiteUIDatePickerLabels.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AA79061AFE8D1100A5A5D5 /* UILabel+WhiteUIDatePickerLabels.m */; };
 		38ADD4071AF96784000BC5CF /* JSMNewTaskTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38ADD4061AF96784000BC5CF /* JSMNewTaskTableViewController.m */; };
 		38ADD40D1AF9B875000BC5CF /* JSMTaskListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38ADD40C1AF9B875000BC5CF /* JSMTaskListTableViewController.m */; };
@@ -55,6 +56,8 @@
 		38774B661AD313F70017C37C /* ListTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListTests.m; sourceTree = "<group>"; };
 		38774B731AD314560017C37C /* JSMTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSMTask.h; sourceTree = "<group>"; };
 		38774B741AD314560017C37C /* JSMTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSMTask.m; sourceTree = "<group>"; };
+		3885A94D1B331654007C6427 /* Task+Algorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Task+Algorithm.h"; sourceTree = "<group>"; };
+		3885A94E1B331654007C6427 /* Task+Algorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Task+Algorithm.m"; sourceTree = "<group>"; };
 		38AA79051AFE8D1100A5A5D5 /* UILabel+WhiteUIDatePickerLabels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+WhiteUIDatePickerLabels.h"; sourceTree = "<group>"; };
 		38AA79061AFE8D1100A5A5D5 /* UILabel+WhiteUIDatePickerLabels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+WhiteUIDatePickerLabels.m"; sourceTree = "<group>"; };
 		38ADD4051AF96784000BC5CF /* JSMNewTaskTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSMNewTaskTableViewController.h; sourceTree = "<group>"; };
@@ -170,6 +173,8 @@
 			children = (
 				38E9E63A1B30F40900E3B637 /* Task.h */,
 				38E9E63B1B30F40900E3B637 /* Task.m */,
+				3885A94D1B331654007C6427 /* Task+Algorithm.h */,
+				3885A94E1B331654007C6427 /* Task+Algorithm.m */,
 				38E9E6371B30BD5D00E3B637 /* JSMDataStore.h */,
 				38E9E6381B30BD5D00E3B637 /* JSMDataStore.m */,
 				38774B731AD314560017C37C /* JSMTask.h */,
@@ -358,6 +363,7 @@
 				38AA79071AFE8D1100A5A5D5 /* UILabel+WhiteUIDatePickerLabels.m in Sources */,
 				38ADD4101AF9C101000BC5CF /* JSMTaskTableViewCell.m in Sources */,
 				38ADD40D1AF9B875000BC5CF /* JSMTaskListTableViewController.m in Sources */,
+				3885A94F1B331654007C6427 /* Task+Algorithm.m in Sources */,
 				38774B751AD314560017C37C /* JSMTask.m in Sources */,
 				38774B531AD313F70017C37C /* ViewController.m in Sources */,
 				38774B501AD313F70017C37C /* AppDelegate.m in Sources */,
