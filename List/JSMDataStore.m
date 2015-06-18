@@ -8,6 +8,7 @@
 
 #import "JSMDataStore.h"
 #import "Task.h"
+#import "Task+Algorithm.h"
 #import <CoreData/CoreData.h>
 
 @implementation JSMDataStore
@@ -81,6 +82,10 @@
     
     self.taskArray = [self.managedObjectContext executeFetchRequest:messagesRequest error:nil];
     
+    for (Task *eachTask in self.taskArray) {
+        [eachTask setTaskPriorityWithTask:eachTask];
+    }
+    
     if ([self.taskArray count]==0) {
         [self generateTestData];
     }
@@ -99,6 +104,7 @@
     taskOne.list = @"To Do's";
     taskOne.name = @"My First Task";
     
+    [taskOne setTaskPriorityWithTask:taskOne];
     
     [self saveContext];
     [self fetchData];

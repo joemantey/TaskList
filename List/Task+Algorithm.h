@@ -10,4 +10,6 @@
 
 @interface Task (Algorithm)
 
+-(void)setTaskPriorityWithTask:(Task *)task;
+
 @end
