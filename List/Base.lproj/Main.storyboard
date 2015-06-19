@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14A379b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OUG-wz-fCf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14A379b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gL5-5E-T9Z">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -55,7 +55,7 @@
                                                             <rect key="frame" x="60" y="17" width="480" height="78"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         </view>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Task Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SO8-vq-zjS" userLabel="NameField">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Task Name" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="SO8-vq-zjS" userLabel="NameField">
                                                             <rect key="frame" x="60" y="17" width="480" height="78"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -675,7 +675,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YXt-Pf-MZQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4146" y="474"/>
+            <point key="canvasLocation" x="4044" y="467"/>
         </scene>
         <!--Task List Table View Controller-->
         <scene sceneID="Oz6-Pn-7sj">
@@ -694,18 +694,18 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ddt-6N-Pin" userLabel="Container View">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="59"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Ft-jt-ycP" userLabel="TextContainer">
-                                                    <rect key="frame" x="59" y="0.0" width="508" height="59"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ft-jt-ycP" userLabel="TextContainer">
+                                                    <rect key="frame" x="41" y="0.0" width="526" height="59"/>
                                                     <subviews>
-                                                        <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DBq-ox-Jdb" userLabel="Detail">
-                                                            <rect key="frame" x="0.0" y="35" width="508" height="24"/>
+                                                        <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DBq-ox-Jdb" userLabel="Detail">
+                                                            <rect key="frame" x="0.0" y="33" width="526" height="16"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
-                                                        <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ctR-CO-Pbr" userLabel="Title">
-                                                            <rect key="frame" x="0.0" y="8" width="508" height="35"/>
+                                                        <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ctR-CO-Pbr" userLabel="Title">
+                                                            <rect key="frame" x="0.0" y="15" width="526" height="18"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
@@ -740,8 +740,7 @@
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="25"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6km-yc-thK" userLabel="Slash">
-                                                    <rect key="frame" x="41" y="0.0" width="18" height="59"/>
+                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6km-yc-thK" userLabel="Slash">
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="6km-yc-thK" secondAttribute="height" multiplier="0.5" id="d8l-zy-H1v"/>
@@ -808,8 +807,9 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="8tm-Ug-5YC">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="y0j-Y0-wPg">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="Kds-kh-0RS" kind="presentation" id="taP-X2-fVT"/>
+                                <segue destination="gL5-5E-T9Z" kind="showDetail" id="GQW-Ea-lnf"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -855,22 +855,22 @@
             <point key="canvasLocation" x="1989" y="467"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="8Ws-jf-6NJ">
+        <scene sceneID="6Vj-aH-tcq">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kds-kh-0RS" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gL5-5E-T9Z" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iV0-AQ-X9B">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0Bj-o5-szs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="i79-ie-8ko" kind="relationship" relationship="rootViewController" id="p36-UM-Hx0"/>
+                        <segue destination="i79-ie-8ko" kind="relationship" relationship="rootViewController" id="lcp-1a-D65"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rvo-58-rQv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kI6-ra-adB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3334" y="474"/>
+            <point key="canvasLocation" x="3346" y="467"/>
         </scene>
     </scenes>
     <resources>

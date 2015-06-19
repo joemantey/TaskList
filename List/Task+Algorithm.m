@@ -306,37 +306,6 @@
         return outputArray;
     }
     
-    
-//    if ([self checkIf:daysFromDateCreated isBetween:42 and:1000000])
-//    {
-//        NSArray *outputArray = @[@42,@42];
-//        return outputArray;
-//    }
-//    else if ([self checkIf:daysFromDateCreated isBetween:28 and:42])
-//    {
-//        NSArray *outputArray = @[@28,@42];
-//        return outputArray;
-//    }
-//    else if ([self checkIf:daysFromDateCreated isBetween:28 and:21])
-//    {
-//        NSArray *outputArray = @[@21,@28];
-//        return outputArray;
-//    }
-//    else if ([self checkIf:daysFromDateCreated isBetween:21 and:14])
-//    {
-//        NSArray *outputArray = @[@14,@21];
-//        return outputArray;
-//    }
-//    else if ([self checkIf:daysFromDateCreated isBetween:14 and:7])
-//    {
-//        NSArray *outputArray = @[@7,@14];
-//        return outputArray;
-//    }
-//    else
-//    {
-//        NSArray *outputArray = @[@0,@7];
-//        return outputArray;
-//    }
 }
 
 
@@ -348,43 +317,43 @@
     
     NSInteger daysFromDueDate = [task.dueDate daysFrom:todaysDate];
     
-    if ([self checkIf:daysFromDueDate isBetween:0 and:1])
+    if ((daysFromDueDate >= 0)&&(daysFromDueDate < 1))
     {
         NSArray *outputArray = @[@0,@1];
         return outputArray;
     }
     
-    else if ([self checkIf:daysFromDueDate isBetween:1 and:2])
+    else if ((daysFromDueDate >= 1)&&(daysFromDueDate < 2))
     {
         NSArray *outputArray = @[@1,@2]; return outputArray;
         return outputArray;
     }
     
-    else if ([self checkIf:daysFromDueDate isBetween:2 and:3])
+    else if ((daysFromDueDate >= 2)&&(daysFromDueDate < 3))
     {
         NSArray *outputArray = @[@2,@3];
         return outputArray;
     }
     
-    else if ([self checkIf:daysFromDueDate isBetween:3 and:7])
+    else if ((daysFromDueDate >= 3)&&(daysFromDueDate < 7))
     {
         NSArray *outputArray = @[@3,@7];
         return outputArray;
     }
     
-    else if ([self checkIf:daysFromDueDate isBetween:7 and:14])
+    else if ((daysFromDueDate >= 7)&&(daysFromDueDate < 14))
     {
         NSArray *outputArray = @[@7,@14];
         return outputArray;
     }
     
-    else if ([self checkIf:daysFromDueDate isBetween:14 and:21])
+    else if ((daysFromDueDate >= 14)&&(daysFromDueDate < 21))
     {
         NSArray *outputArray = @[@14,@21];
         return outputArray;
     }
     
-    else if ([self checkIf:daysFromDueDate isBetween:21 and:56])
+    else if ((daysFromDueDate >= 21)&&(daysFromDueDate < 56))
     {
         NSArray *outputArray = @[@21,@56];
         return outputArray;

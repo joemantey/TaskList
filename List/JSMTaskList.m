@@ -7,7 +7,6 @@
 //
 
 #import "JSMTaskList.h"
-#import "JSMTask.h"
 
 @implementation JSMTaskList
 

@@ -80,8 +80,8 @@
 {
     NSFetchRequest *messagesRequest = [NSFetchRequest fetchRequestWithEntityName:@"Task"];
     
-    NSSortDescriptor *createdAtSorter = [NSSortDescriptor sortDescriptorWithKey:@"dateCreated" ascending:YES];
-    messagesRequest.sortDescriptors = @[createdAtSorter];
+    NSSortDescriptor *cuurrentPrioritySorter = [NSSortDescriptor sortDescriptorWithKey:@"currentPriority" ascending:NO];
+    messagesRequest.sortDescriptors = @[cuurrentPrioritySorter];
     
     self.taskArray = [self.managedObjectContext executeFetchRequest:messagesRequest error:nil];
     

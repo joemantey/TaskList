@@ -7,9 +7,10 @@
 //
 
 #import "JSMNewTaskTableViewController.h"
-
-#import "JSMTask.h"
 #import "JSMDataStore.h"
+#import "Task.h"
+
+
 @interface JSMNewTaskTableViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
@@ -204,21 +205,7 @@
     self.list = self.listField.text;
     self.details = self.detailField.text;
     
-    
-    
-    JSMTask *newTask = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext: self.store.managedObjectContext];
-    
-    
-    newTask.currentPriorityString = @"Low";
-    newTask.dateCreated = [NSDate date];
-    newTask.dueDate = self.dueDate;
-    newTask.details = self.details;
-    newTask.isGoal = self.isGoal;
-    newTask.list = self.list;
-    newTask.name = self.name;
-    
-    [self.store saveContext];
-    
+
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
@@ -391,6 +378,12 @@
 
 - (void)showDueDatePickerCell{
     
+    [self hideListPicker];
+    [self hidePriorityPicker];
+    [self hideReminderDatePicker];
+    [self hidePickerViews];
+    [self collapseDetailCell];
+    
     self.dueDatePickerIsShowing = YES;
     
     [self.tableView beginUpdates];
@@ -410,6 +403,13 @@
 
 - (void)showReminderDatePickerCell{
     
+    [self hideDueDatePicker];
+    [self hideListPicker];
+    [self hidePriorityPicker];
+    [self hidePickerViews];
+    [self collapseDetailCell];
+
+    
     self.reminderDatePickerIsShowing = YES;
     
     [self.tableView beginUpdates];
@@ -428,7 +428,12 @@
 
 - (void)showListPicker {
     
-    
+    [self hideDueDatePicker];
+    [self hidePriorityPicker];
+    [self hideReminderDatePicker];
+    [self hidePickerViews];
+    [self collapseDetailCell];
+
     self.listPickerIsShowing = YES;
     
     [self.tableView beginUpdates];
@@ -446,6 +451,12 @@
 
 - (void)showPriorityPicker {
     
+    [self hideDueDatePicker];
+    [self hideListPicker];
+    [self hideReminderDatePicker];
+    [self hidePickerViews];
+    [self collapseDetailCell];
+
     
     self.priorityPickerIsShowing = YES;
     [self.tableView beginUpdates];
@@ -461,6 +472,12 @@
 }
 
 - (void)expandDetailCell{
+    
+    [self hideDueDatePicker];
+    [self hideListPicker];
+    [self hidePriorityPicker];
+    [self hideReminderDatePicker];
+    [self hidePickerViews];
     
     self.detailPlaceholderIsShowing = NO;
     self.detailFieldLine.hidden = YES;

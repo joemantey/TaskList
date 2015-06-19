@@ -9,7 +9,7 @@
 #import "JSMTaskListTableViewController.h"
 #import "Task.h"
 #import "JSMTaskDataManager.h"
-#import "JSMTask.h"
+
 #import "JSMTaskTableViewCell.h"
 
 
