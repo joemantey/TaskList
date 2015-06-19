@@ -15,6 +15,8 @@
 @implementation Task (Algorithm)
 
 
+//consider making algorithm dictionary a property and having an if statement at the beginning of the method to determing if it is built or not to improve speed
+
 
 -(void)setTaskPriorityWithTask:(Task *)task{
     
@@ -26,7 +28,7 @@
         NSArray *algorithmKeys       = [self getMilestonesForTasksWithDueDate:task];
         NSString *algorithmKeyString = [self getDictionaryKeyStringforTask:task];
         
-        double adjuster = [self getPercentageOfTimeElapsedSincePeriodStartDate:[algorithmKeys[1] integerValue]
+        float adjuster = [self getPercentageOfTimeElapsedSincePeriodStartDate:[algorithmKeys[1] integerValue]
                                                               andPeriodEndDate:[algorithmKeys[0] integerValue]
                                                                      usingTask:task];
         
@@ -41,7 +43,7 @@
         NSString *algorithmKeyString = [self getDictionaryKeyStringforTask:task];
         NSArray *algorithmKeys =       [self getMilestonesForTasksWithoutDueDate:task];
         
-        double adjuster = [self getPercentageOfTimeElapsedSincePeriodStartDateNoDueDate:[algorithmKeys[0] integerValue]
+        float adjuster = [self getPercentageOfTimeElapsedSincePeriodStartDateNoDueDate:[algorithmKeys[0] integerValue]
                                                               andPeriodEndDate:[algorithmKeys[1] integerValue]
                                                                      usingTask:task];
         
@@ -52,7 +54,7 @@
 }
 
 
--(NSNumber *)calculatePriorityForTask:(Task *)task usingKeyString:(NSString *)keyString andKeys:(NSArray *)keyArray andAdjuster:(double)adjuster andAlgorithmDictionary:(NSDictionary *)algorithmDictionary{
+-(NSNumber *)calculatePriorityForTask:(Task *)task usingKeyString:(NSString *)keyString andKeys:(NSArray *)keyArray andAdjuster:(float)adjuster andAlgorithmDictionary:(NSDictionary *)algorithmDictionary{
     
     
     //get the bottom of the range
@@ -65,8 +67,8 @@
     NSNumber *topOfPriorityRange    = [currentAlgorithmDictionary objectForKey:topOfRangeKey];
     NSInteger range = [topOfPriorityRange integerValue] - [bottomOfPriorityRange integerValue];
     
-    NSInteger basePriority = [bottomOfPriorityRange integerValue];
-    NSInteger adjustedPriority = basePriority + ( (NSInteger)adjuster * range);
+    NSInteger basePriority = [bottomOfPriorityRange integerValue]*10;
+    NSInteger adjustedPriority = basePriority + (adjuster * range * 10);
     
     return [NSNumber numberWithInteger: adjustedPriority];
     
@@ -78,8 +80,8 @@
 
     NSDate *todaysDate      = [NSDate date];
     NSDate *dueDate         =  task.dueDate;
-    NSDate *periodStartDate = [dueDate dateByAddingDays:periodStartDateAdjuster];
-    NSDate *periodEndDate   = [dueDate dateByAddingDays:periodEndDateAdjuster];
+    NSDate *periodStartDate = [dueDate dateBySubtractingDays:periodStartDateAdjuster];
+    NSDate *periodEndDate   = [dueDate dateBySubtractingDays:periodEndDateAdjuster];
     
     DTTimePeriod *taskTimePeriod = [[DTTimePeriod alloc] init];
     taskTimePeriod.StartDate     = periodStartDate;
@@ -92,14 +94,15 @@
     float taskTimePeriodInMinutes                  = [taskTimePeriod durationInMinutes];
     float taskTimePeriodBeforeEndOfPeriodinMinutes = [timeSinceStartofPeriod durationInMinutes];
     
-    float perecentaageOfTimeElapsedSincePeriodStartDate = taskTimePeriodBeforeEndOfPeriodinMinutes/taskTimePeriodInMinutes;
-    return perecentaageOfTimeElapsedSincePeriodStartDate;
+    float perecentageOfTimeElapsedSincePeriodStartDate = taskTimePeriodBeforeEndOfPeriodinMinutes/taskTimePeriodInMinutes;
+    return perecentageOfTimeElapsedSincePeriodStartDate;
     
 }
 
 -(float)getPercentageOfTimeElapsedSincePeriodStartDateNoDueDate:(NSInteger)periodStartDateAdjuster andPeriodEndDate:(NSInteger)periodEndDateAdjuster usingTask:(Task *)task{
     
     NSDate *todaysDate      = [NSDate date];
+    NSDate *dateCreated     = task.dateCreated;
     NSDate *periodStartDate = [todaysDate dateBySubtractingDays:periodStartDateAdjuster];
     NSDate *periodEndDate   = [todaysDate dateBySubtractingDays:periodEndDateAdjuster];
     
@@ -107,16 +110,26 @@
     taskTimePeriod.StartDate     = periodStartDate;
     taskTimePeriod.EndDate       = periodEndDate;
     
-    DTTimePeriod *timeSinceStartofPeriod = [[DTTimePeriod alloc]init];
-    timeSinceStartofPeriod.StartDate     = periodStartDate;
-    timeSinceStartofPeriod.EndDate       = todaysDate;
+    DTTimePeriod *timeBetweenCreationAndPeriodStart = [[DTTimePeriod alloc] init];
+    timeBetweenCreationAndPeriodStart.StartDate     = dateCreated;
+    timeBetweenCreationAndPeriodStart.EndDate       = periodEndDate;
+    
+    DTTimePeriod *timeSinceCreated = [[DTTimePeriod alloc]init];
+    timeSinceCreated.StartDate     = dateCreated;
+    timeSinceCreated.EndDate       = todaysDate;
+    
     
     float taskTimePeriodInMinutes                  = [taskTimePeriod durationInMinutes];
-    float taskTimePeriodBeforeEndOfPeriodinMinutes = [timeSinceStartofPeriod durationInMinutes];
+    float timeBetweenCreationAndPeriodStartInMinutes   = [timeBetweenCreationAndPeriodStart durationInMinutes];
+    float timeSinceCreatedInMinutes                = [timeSinceCreated durationInMinutes];
     
-    float  perecentaageOfTimeElapsedSincePeriodStartDate = taskTimePeriodBeforeEndOfPeriodinMinutes/taskTimePeriodInMinutes;
+    float differenceBetweenTodayAndPeriodStart = timeBetweenCreationAndPeriodStartInMinutes - timeSinceCreatedInMinutes;
     
-    return perecentaageOfTimeElapsedSincePeriodStartDate;
+    float numeratorForPercentageOfTime = taskTimePeriodInMinutes - differenceBetweenTodayAndPeriodStart;
+    
+    float  perecentageOfTimeElapsedSincePeriodStartDate = numeratorForPercentageOfTime/taskTimePeriodInMinutes;
+    
+    return perecentageOfTimeElapsedSincePeriodStartDate;
     
 }
 
@@ -142,10 +155,7 @@
 
 -(NSString *)getDictionaryKeyStringforTask:(Task *)task{
     
-    if (task.isGoal) {
-        return @"isAGoal";
-    }
-    else if (task.dueDate) {
+     if (task.dueDate != nil) {
         if (task.userPriority == [NSNumber numberWithInteger:highPriorityInteger ]) {
             return @"dueDateHigh";
         }
@@ -304,7 +314,7 @@
     
     NSDate *todaysDate = [NSDate date];
     
-    NSInteger daysFromDueDate = [todaysDate daysFrom:task.dueDate];
+    NSInteger daysFromDueDate = [task.dueDate daysFrom:todaysDate];
     
     if ([self checkIf:daysFromDueDate isBetween:0 and:1])
     {

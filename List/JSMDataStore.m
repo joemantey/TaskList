@@ -89,8 +89,12 @@
         [eachTask setTaskPriorityWithTask:eachTask];
     }
     
-    if ([self.taskArray count]==0) {
+    if ([self.taskArray count]<3) {
         [self generateTestData];
+    }
+    
+    for (Task *eachTask in self.taskArray) {
+        [eachTask setTaskPriorityWithTask:eachTask];
     }
 }
 
@@ -98,31 +102,44 @@
 {
     Task *taskOne = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:self.managedObjectContext];
     
-    taskOne.currentPriority = @25;
-    taskOne.currentPriorityString = @"Med";
-    taskOne.dateCreated = [NSDate date];
+    taskOne.currentPriorityString = @"Low";
+    taskOne.userPriority = @2;
+    taskOne.dateCreated = [NSDate dateWithYear:2015 month:06 day:5];
     taskOne.details = @"It's my first task. The devil is in the details";
     taskOne.isDueToday = @0;
-    taskOne.isGoal = @0;
+    taskOne.isGoal = @1;
     taskOne.list = @"To Do's";
     taskOne.name = @"My First Task";
     
-    [taskOne setTaskPriorityWithTask:taskOne];
-    
+
     
     Task *taskTwo = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:self.managedObjectContext];
     
-    taskOne.currentPriority = @25;
-    taskOne.currentPriorityString = @"Low";
-    taskOne.dateCreated = [NSDate date];
+    taskTwo.currentPriority = @25;
+    taskTwo.currentPriorityString = @"Low";
+    taskTwo.userPriority = @2;
+    taskTwo.dateCreated = [NSDate date];
     taskTwo.dueDate = [NSDate dateWithYear:2015 month:7 day:01  ];
-    taskOne.details = @"It's my first task. The devil is in the details";
-    taskOne.isDueToday = @0;
-    taskOne.isGoal = @0;
-    taskOne.list = @"To Do's";
-    taskOne.name = @"The Weekend X Beyonce";
+    taskTwo.details = @"It's my first task. The devil is in the details";
+    taskTwo.isDueToday = @0;
+    taskTwo.isGoal = @0;
+    taskTwo.list = @"To Do's";
+    taskTwo.name = @"The Weekend X Beyonce";
     
-    [taskOne setTaskPriorityWithTask:taskOne];
+    
+    Task *taskThree = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:self.managedObjectContext];
+    
+    taskThree.currentPriority = @25;
+    taskThree.currentPriorityString = @"Low";
+    taskThree.userPriority = @2;
+    taskThree.dateCreated = [NSDate date];
+    taskThree.dueDate = [NSDate dateWithYear:2015 month:8 day:01  ];
+    taskThree.details = @"It's my first task. The devil is in the details";
+    taskThree.isDueToday = @0;
+    taskThree.isGoal = @0;
+    taskThree.list = @"To Do's";
+    taskThree.name = @"The Weekend X Beyonce";
+    
     
     [self saveContext];
     [self fetchData];
