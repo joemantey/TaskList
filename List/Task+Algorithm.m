@@ -103,8 +103,8 @@
     
     NSDate *todaysDate      = [NSDate date];
     NSDate *dateCreated     = task.dateCreated;
-    NSDate *periodStartDate = [todaysDate dateBySubtractingDays:periodStartDateAdjuster];
-    NSDate *periodEndDate   = [todaysDate dateBySubtractingDays:periodEndDateAdjuster];
+    NSDate *periodStartDate = [dateCreated dateByAddingDays:periodStartDateAdjuster];
+    NSDate *periodEndDate   = [dateCreated dateByAddingDays:periodEndDateAdjuster];
     
     DTTimePeriod *taskTimePeriod = [[DTTimePeriod alloc] init];
     taskTimePeriod.StartDate     = periodStartDate;
@@ -275,36 +275,68 @@
     
     NSInteger daysFromDateCreated = [todaysDate daysFrom:task.dateCreated];
     
-    if ([self checkIf:daysFromDateCreated isBetween:42 and:1000000])
+    if ((daysFromDateCreated >= 42)&&(daysFromDateCreated < 10000000))
     {
         NSArray *outputArray = @[@42,@42];
         return outputArray;
     }
-    else if ([self checkIf:daysFromDateCreated isBetween:28 and:42])
+    else if ((daysFromDateCreated >= 28)&&(daysFromDateCreated < 42))
     {
-        NSArray *outputArray = @[@42,@28];
+        NSArray *outputArray = @[@28,@42];
         return outputArray;
     }
-    else if ([self checkIf:daysFromDateCreated isBetween:28 and:21])
+    else if ((daysFromDateCreated >= 21)&&(daysFromDateCreated < 28))
     {
-        NSArray *outputArray = @[@28,@21];
+        NSArray *outputArray = @[@21,@28];
         return outputArray;
     }
-    else if ([self checkIf:daysFromDateCreated isBetween:21 and:14])
+    else if ((daysFromDateCreated >= 14)&&(daysFromDateCreated < 21))
     {
-        NSArray *outputArray = @[@21,@14];
+        NSArray *outputArray = @[@14,@21];
         return outputArray;
     }
-    else if ([self checkIf:daysFromDateCreated isBetween:14 and:7])
+    else if ((daysFromDateCreated >= 7)&&(daysFromDateCreated < 14))
     {
-        NSArray *outputArray = @[@14,@7];
+        NSArray *outputArray = @[@7,@14];
         return outputArray;
     }
     else
     {
-        NSArray *outputArray = @[@7,@0];
+        NSArray *outputArray = @[@0,@7];
         return outputArray;
     }
+    
+    
+//    if ([self checkIf:daysFromDateCreated isBetween:42 and:1000000])
+//    {
+//        NSArray *outputArray = @[@42,@42];
+//        return outputArray;
+//    }
+//    else if ([self checkIf:daysFromDateCreated isBetween:28 and:42])
+//    {
+//        NSArray *outputArray = @[@28,@42];
+//        return outputArray;
+//    }
+//    else if ([self checkIf:daysFromDateCreated isBetween:28 and:21])
+//    {
+//        NSArray *outputArray = @[@21,@28];
+//        return outputArray;
+//    }
+//    else if ([self checkIf:daysFromDateCreated isBetween:21 and:14])
+//    {
+//        NSArray *outputArray = @[@14,@21];
+//        return outputArray;
+//    }
+//    else if ([self checkIf:daysFromDateCreated isBetween:14 and:7])
+//    {
+//        NSArray *outputArray = @[@7,@14];
+//        return outputArray;
+//    }
+//    else
+//    {
+//        NSArray *outputArray = @[@0,@7];
+//        return outputArray;
+//    }
 }
 
 

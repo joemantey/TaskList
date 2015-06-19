@@ -89,7 +89,7 @@
         [eachTask setTaskPriorityWithTask:eachTask];
     }
     
-    if ([self.taskArray count]<3) {
+    if ([self.taskArray count]<5) {
         [self generateTestData];
     }
     
@@ -104,7 +104,7 @@
     
     taskOne.currentPriorityString = @"Low";
     taskOne.userPriority = @2;
-    taskOne.dateCreated = [NSDate dateWithYear:2015 month:06 day:5];
+    taskOne.dateCreated = [NSDate dateWithYear:2015 month:06 day:15];
     taskOne.details = @"It's my first task. The devil is in the details";
     taskOne.isDueToday = @0;
     taskOne.isGoal = @1;
