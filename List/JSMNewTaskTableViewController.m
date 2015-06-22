@@ -83,9 +83,12 @@
     [self setUpTextInOutlets];
     [self setUpPlaceHolderText];
     [self setUpButtonImages];
+    [self resignFirstResponder];
     
     self.listPicker.dataSource = self;
     self.listPicker.delegate = self;
+    
+    self.dueDateField.delegate = self;
     
 }
 
@@ -480,7 +483,7 @@
     [self hidePickerViews];
     
     self.detailPlaceholderIsShowing = NO;
-    self.detailFieldLine.hidden = YES;
+    self.detailFieldLine.hidden = NO;
     self.detailField.hidden = NO;
     
     
@@ -489,7 +492,6 @@
     
     [UIView animateWithDuration:0.25 animations:^{
         self.detailFieldPlaceholder.hidden = YES;
-        self.cancelDetails.hidden = NO;
 
     }];
 }
@@ -506,7 +508,6 @@
     
     [UIView animateWithDuration:0.25 animations:^{
         self.detailFieldPlaceholder.hidden = NO;
-        self.cancelDetails.hidden = YES;
     }];
 }
 
