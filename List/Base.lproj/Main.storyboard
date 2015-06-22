@@ -19,13 +19,6 @@
                         <color key="sectionIndexColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexBackgroundColor" red="0.051217322706461017" green="0.44825744493838127" blue="0.73001060956790131" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6rg-Oa-lpa">
-                            <rect key="frame" x="-23" y="-15" width="600" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Button">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                        </button>
                         <sections>
                             <tableViewSection id="4Fz-V1-2S7">
                                 <cells>
@@ -390,37 +383,57 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HBS-tP-PXx">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
                                                     <subviews>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="add list" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hng-4S-G4R">
-                                                            <rect key="frame" x="251" y="18" width="97" height="30"/>
-                                                            <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jj9-Gg-RL4" userLabel="AddListButton">
+                                                            <rect key="frame" x="435" y="24" width="20" height="20"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="jj9-Gg-RL4" secondAttribute="height" multiplier="1:1" id="HNN-Nv-8tl"/>
+                                                                <constraint firstAttribute="width" constant="20" id="X8K-Oj-0fo"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Button" image="Add">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="didAddList:" destination="i79-ie-8ko" eventType="touchUpInside" id="wzy-3p-llH"/>
+                                                            </connections>
+                                                        </button>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="add list" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hng-4S-G4R" userLabel="AddListField">
+                                                            <rect key="frame" x="60" y="0.0" width="360" height="66"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="hng-4S-G4R" secondAttribute="bottom" id="2jt-bG-OpQ"/>
+                                                        <constraint firstAttribute="bottom" secondItem="jj9-Gg-RL4" secondAttribute="bottom" id="ETf-Xw-1Io"/>
+                                                        <constraint firstAttribute="centerY" secondItem="jj9-Gg-RL4" secondAttribute="centerY" id="Oo6-ii-6bH"/>
                                                         <constraint firstItem="hng-4S-G4R" firstAttribute="top" secondItem="HBS-tP-PXx" secondAttribute="top" id="Tm9-ov-3IS"/>
-                                                        <constraint firstItem="hng-4S-G4R" firstAttribute="centerX" secondItem="HBS-tP-PXx" secondAttribute="centerX" id="avQ-SJ-7hz"/>
+                                                        <constraint firstItem="jj9-Gg-RL4" firstAttribute="top" secondItem="HBS-tP-PXx" secondAttribute="top" id="Trw-kH-dWL"/>
+                                                        <constraint firstItem="hng-4S-G4R" firstAttribute="centerX" secondItem="HBS-tP-PXx" secondAttribute="centerX" multiplier="0.8" id="avQ-SJ-7hz"/>
                                                         <constraint firstAttribute="centerY" secondItem="hng-4S-G4R" secondAttribute="centerY" id="ooL-z8-i6l"/>
-                                                        <constraint firstItem="hng-4S-G4R" firstAttribute="width" secondItem="HBS-tP-PXx" secondAttribute="width" multiplier="0.5" id="sZB-DW-fhC"/>
+                                                        <constraint firstItem="jj9-Gg-RL4" firstAttribute="leading" secondItem="hng-4S-G4R" secondAttribute="trailing" constant="15" id="pBi-nh-u53"/>
+                                                        <constraint firstItem="hng-4S-G4R" firstAttribute="width" secondItem="HBS-tP-PXx" secondAttribute="width" multiplier="0.6" id="sZB-DW-fhC"/>
                                                         <constraint firstAttribute="trailing" secondItem="hng-4S-G4R" secondAttribute="trailing" id="thU-aj-1xT"/>
                                                     </constraints>
                                                     <variation key="default">
                                                         <mask key="constraints">
                                                             <exclude reference="thU-aj-1xT"/>
+                                                            <exclude reference="ETf-Xw-1Io"/>
+                                                            <exclude reference="Trw-kH-dWL"/>
                                                         </mask>
                                                     </variation>
                                                 </view>
                                                 <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMH-rS-B6p" userLabel="ListPicker">
-                                                    <rect key="frame" x="0.0" y="66" width="600" height="180"/>
+                                                    <rect key="frame" x="60" y="66" width="480" height="180"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="180" id="mMY-Tn-UQg"/>
                                                     </constraints>
                                                 </pickerView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="fMH-rS-B6p" firstAttribute="width" secondItem="HBS-tP-PXx" secondAttribute="width" multiplier="0.8" id="AaD-ge-fGT"/>
                                                 <constraint firstItem="fMH-rS-B6p" firstAttribute="leading" secondItem="erE-Wj-4FN" secondAttribute="leading" id="D4i-WQ-NUa"/>
                                                 <constraint firstItem="fMH-rS-B6p" firstAttribute="trailing" secondItem="erE-Wj-4FN" secondAttribute="trailing" id="KOl-ic-uDG"/>
                                                 <constraint firstItem="fMH-rS-B6p" firstAttribute="top" secondItem="erE-Wj-4FN" secondAttribute="top" id="QAQ-dv-FSJ"/>
@@ -429,9 +442,12 @@
                                                 <constraint firstItem="HBS-tP-PXx" firstAttribute="top" secondItem="erE-Wj-4FN" secondAttribute="top" id="klU-1B-cc2"/>
                                                 <constraint firstItem="HBS-tP-PXx" firstAttribute="trailing" secondItem="erE-Wj-4FN" secondAttribute="trailing" id="qC2-aC-iqQ"/>
                                                 <constraint firstItem="HBS-tP-PXx" firstAttribute="leading" secondItem="erE-Wj-4FN" secondAttribute="leading" id="swC-ru-MFv"/>
+                                                <constraint firstAttribute="centerX" secondItem="fMH-rS-B6p" secondAttribute="centerX" id="x44-29-5MV"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
+                                                    <exclude reference="D4i-WQ-NUa"/>
+                                                    <exclude reference="KOl-ic-uDG"/>
                                                     <exclude reference="QAQ-dv-FSJ"/>
                                                 </mask>
                                             </variation>
@@ -665,6 +681,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addList" destination="jj9-Gg-RL4" id="4R2-ic-JkQ"/>
                         <outlet property="cancelDateDue" destination="cHJ-Fb-4jp" id="sjQ-DT-0As"/>
                         <outlet property="cancelList" destination="4fE-84-abb" id="zgq-gP-LvD"/>
                         <outlet property="cancelPriority" destination="Qd1-T8-a4m" id="hvL-ff-PE2"/>
@@ -867,6 +884,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Add" width="100" height="100"/>
         <image name="Cancel" width="33" height="33"/>
     </resources>
 </document>

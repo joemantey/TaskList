@@ -29,18 +29,18 @@
 
 
 - (IBAction)nameFieldDidChange:(id)sender;
-@property (weak, nonatomic) IBOutlet UIButton *cancelName;
-- (IBAction)didCancelName:(id)sender;
+
 @property (weak, nonatomic) IBOutlet UIButton *cancelDateDue;
 - (IBAction)didCancelDueDate:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *cancelReminder;
 - (IBAction)didCancelReminder:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *cancelList;
 - (IBAction)didCancelList:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *addList;
+- (IBAction)didAddList:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *cancelPriority;
 - (IBAction)didCancelPriority:(id)sender;
-@property (weak, nonatomic) IBOutlet UIButton *cancelDetails;
-- (IBAction)didCancelDetails:(id)sender;
+
 
 
 @property (strong,nonatomic) NSString *name;
@@ -110,6 +110,7 @@
     
     self.listPickerIsShowing =  NO;
     self.listPicker.hidden = YES;
+    self.addList.hidden = YES;
     
     self.priorityPickerIsShowing = NO;
     self.prioritySegmentedControl.hidden = YES;
@@ -151,9 +152,6 @@
 
 -(void)setUpButtonImages{
     
-    [self.cancelName setImage:[UIImage imageNamed:@"Cancel"] forState:normal];
-    self.cancelName.hidden = YES;
-    
     [self.cancelDateDue setImage:[UIImage imageNamed:@"Cancel"] forState:normal];
     self.cancelDateDue.hidden = YES;
     
@@ -166,8 +164,7 @@
     [self.cancelPriority setImage:[UIImage imageNamed:@"Cancel"] forState:normal];
     self.cancelPriority.hidden = YES;
     
-    [self.cancelDetails setImage:[UIImage imageNamed:@"Cancel"] forState:normal];
-    self.cancelDetails.hidden = YES;
+    
 }
 
 #pragma mark - Action Outlets
@@ -258,7 +255,7 @@
 
 #define fieldCellHeight 48
 #define pickerCellHeight 180
-#define pickerCellAndButtonHeight 220
+#define pickerCellAndButtonHeight 228
 #define segmentedCellHeight 96
 #define detailCellHeight  228
 
@@ -449,6 +446,7 @@
     [UIView animateWithDuration:0.25 animations:^{
                 self.listPicker.alpha = 1.0f;
                 self.listField.text = @"select list";
+                self.addList.hidden = NO;
     }];
 }
 
@@ -601,6 +599,8 @@
                              self.listPicker.alpha = 0.0f;
                              self.cancelList.alpha = 1.0f;
                              self.cancelList.hidden = NO;
+                             self.addList.hidden = YES;
+
 
                          }
                          completion:^(BOOL finished){
@@ -652,8 +652,6 @@
 }
 
 
-- (IBAction)didCancelName:(id)sender {
-}
 
 
 - (IBAction)didCancelDueDate:(id)sender {
@@ -751,39 +749,24 @@
 }
 
 
-- (IBAction)didCancelDetails:(id)sender {
-    [self collapseDetailCell];
-}
 
 
-//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-//    //hides keyboard when another part of layout was touched
-//    [self.view endEditing:YES];
-//    [super touchesBegan:touches withEvent:event];
-//}
 
 - (IBAction)nameFieldDidChange:(id)sender {
     self.title = self.nameField.text;
 }
 
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    //hides keyboard when another part of layout was touched
+    [self.view endEditing:YES];
+    [super touchesBegan:touches withEvent:event];
+}
+
+- (IBAction)didAddList:(id)sender {
+}
 @end
 
 
 
-
-/*
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
