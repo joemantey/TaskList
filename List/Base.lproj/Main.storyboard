@@ -396,8 +396,8 @@
                                                                 <action selector="didAddList:" destination="i79-ie-8ko" eventType="touchUpInside" id="wzy-3p-llH"/>
                                                             </connections>
                                                         </button>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="add list" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hng-4S-G4R" userLabel="AddListField">
-                                                            <rect key="frame" x="60" y="0.0" width="360" height="66"/>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="add list" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hng-4S-G4R" userLabel="AddListField">
+                                                            <rect key="frame" x="60" y="0.0" width="360" height="30"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
