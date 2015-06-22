@@ -258,6 +258,7 @@
 
 #define fieldCellHeight 48
 #define pickerCellHeight 180
+#define pickerCellAndButtonHeight 220
 #define segmentedCellHeight 96
 #define detailCellHeight  228
 
@@ -290,7 +291,7 @@
     else if (indexPath.row == listPickerIndex){
         
         if (self.listPickerIsShowing) {
-            height = pickerCellHeight;
+            height = pickerCellAndButtonHeight;
         }else{
             height = 0;
         }
