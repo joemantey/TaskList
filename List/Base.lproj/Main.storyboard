@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gL5-5E-T9Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OUG-wz-fCf">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -762,7 +762,6 @@
                                     <outlet property="detailLabel" destination="DBq-ox-Jdb" id="bEK-6f-cHX"/>
                                     <outlet property="nameLabel" destination="ctR-CO-Pbr" id="q48-cP-Woa"/>
                                     <outlet property="priorityLabel" destination="Vmu-JS-EWG" id="lh8-zf-lYb"/>
-                                    <segue destination="Ewc-ve-BlI" kind="presentation" id="51E-9v-NRd"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -783,24 +782,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I64-98-Tmk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2647" y="467"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Nng-jb-NIn">
-            <objects>
-                <viewController id="Ewc-ve-BlI" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="6MN-M5-hSK"/>
-                        <viewControllerLayoutGuide type="bottom" id="YgU-hD-FpH"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="1SM-FZ-igy">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ucK-mH-FeW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2647" y="1175"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2Ja-t3-ejq">
