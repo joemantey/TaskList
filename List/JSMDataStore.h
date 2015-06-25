@@ -13,12 +13,13 @@
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) NSArray *taskArray;
+@property (strong, nonatomic) NSArray *listArray;
 
 
 + (instancetype) sharedDataStore;
 
 - (void) saveContext;
 - (void) generateTestData;
-- (void) fetchData;
+- (void) fetchTasks;
 
 @end

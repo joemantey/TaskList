@@ -76,29 +76,40 @@
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
-- (void)fetchData
+- (void)fetchTasks
 {
-    NSFetchRequest *messagesRequest = [NSFetchRequest fetchRequestWithEntityName:@"Task"];
+    NSFetchRequest *taskRequest = [NSFetchRequest fetchRequestWithEntityName:@"Task"];
     
     NSSortDescriptor *cuurrentPrioritySorter = [NSSortDescriptor sortDescriptorWithKey:@"currentPriority" ascending:NO];
-    messagesRequest.sortDescriptors = @[cuurrentPrioritySorter];
     
-    self.taskArray = [self.managedObjectContext executeFetchRequest:messagesRequest error:nil];
+    taskRequest.sortDescriptors = @[cuurrentPrioritySorter];
+    
+    self.taskArray = [self.managedObjectContext executeFetchRequest:taskRequest error:nil];
     
     for (Task *eachTask in self.taskArray) {
         [eachTask setTaskPriorityWithTask:eachTask];
     }
-    
     if ([self.taskArray count]<3) {
         [self generateTestData];
     }
-    
     for (Task *eachTask in self.taskArray) {
         [eachTask setTaskPriorityWithTask:eachTask];
     }
     
     self.taskArray = [self.taskArray sortedArrayUsingDescriptors:@[cuurrentPrioritySorter]];
 }
+
+- (void)fetchLists{
+    NSFetchRequest *listRequest = [NSFetchRequest fetchRequestWithEntityName:@"Task"];
+    
+    NSSortDescriptor *dateCreatedSorter = [NSSortDescriptor sortDescriptorWithKey:@"dateCreated" ascending:NO];
+    
+    listRequest.sortDescriptors = @[dateCreatedSorter];
+    
+    self.listArray = [self.managedObjectContext executeFetchRequest:listRequest error:nil];
+
+}
+
 
 - (void)generateTestData
 {
@@ -144,7 +155,7 @@
     
     
     [self saveContext];
-    [self fetchData];
+    [self fetchTasks];
 }
 
 

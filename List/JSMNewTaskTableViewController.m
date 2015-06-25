@@ -96,7 +96,7 @@
     
     [super viewWillAppear:animated];
     
-    [self.store fetchData];
+    [self.store fetchTasks];
     [self populateCategoryArray];
 }
 
