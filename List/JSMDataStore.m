@@ -89,13 +89,15 @@
         [eachTask setTaskPriorityWithTask:eachTask];
     }
     
-    if ([self.taskArray count]<5) {
+    if ([self.taskArray count]<3) {
         [self generateTestData];
     }
     
     for (Task *eachTask in self.taskArray) {
         [eachTask setTaskPriorityWithTask:eachTask];
     }
+    
+    self.taskArray = [self.taskArray sortedArrayUsingDescriptors:@[cuurrentPrioritySorter]];
 }
 
 - (void)generateTestData

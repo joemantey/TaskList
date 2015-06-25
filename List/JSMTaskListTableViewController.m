@@ -37,6 +37,9 @@
     [super viewWillAppear:animated];
     
     [self.store fetchData];
+    
+    
+    
     [self.tableView reloadData];
 }
 
