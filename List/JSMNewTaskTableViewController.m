@@ -188,10 +188,7 @@
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
     return [self.store.listArray count];
-    
-    
 }
-
 
 - (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
@@ -362,8 +359,6 @@
     
     Task *newTask = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:self.store.managedObjectContext];
 
-    
-    
     if (self.prioritySegmentedControl.selectedSegmentIndex == -1) {
         self.userPriority = 0;
     }else{
@@ -375,8 +370,8 @@
     newTask.list = self.listField.text;
     newTask.details = self.detailField.text;
     
-    
     [self.store saveContext];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
@@ -589,10 +584,8 @@
     
     
     if (self.listPickerIsShowing == YES) {
-    
-    
+        
         self.listPickerIsShowing = NO;
-    
         [self.tableView beginUpdates];
         [self.tableView endUpdates];
     
@@ -601,6 +594,12 @@
             self.cancelList.hidden = NO;
             self.cancelList.alpha = 0.0f;
         }
+        
+        NSInteger row = [self.listPicker selectedRowInComponent:0];
+        List *selectedList= [self.store.listArray objectAtIndex:row];
+        
+        self.listField.text = selectedList.name;
+
     
         [UIView animateWithDuration:0.25
      
