@@ -360,18 +360,23 @@
     //set the properties equal to the inuputs
     
     
+    Task *newTask = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:self.store.managedObjectContext];
+
+    
+    
     if (self.prioritySegmentedControl.selectedSegmentIndex == -1) {
         self.userPriority = 0;
     }else{
         self.userPriority = self.prioritySegmentedControl.selectedSegmentIndex;
     }
-    self.name = self.nameField.text;
-    self.dueDate = self.dueDatePicker.date;
-    self.reminderDate = self.reminderDatePicker.date;
-    self.list = self.listField.text;
-    self.details = self.detailField.text;
+    newTask.name = self.nameField.text;
+    newTask.dueDate = self.dueDatePicker.date;
+    newTask.reminderDate = self.reminderDatePicker.date;
+    newTask.list = self.listField.text;
+    newTask.details = self.detailField.text;
     
     
+    [self.store saveContext];
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
@@ -768,6 +773,8 @@
 }
 
 - (IBAction)didAddList:(id)sender {
+    
+    
 }
 @end
 
