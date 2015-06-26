@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OUG-wz-fCf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14A379b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OUG-wz-fCf">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -393,7 +393,8 @@
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="didAddList:" destination="i79-ie-8ko" eventType="touchUpInside" id="wzy-3p-llH"/>
+                                                                <action selector="saveList:" destination="i79-ie-8ko" eventType="touchUpInside" id="c8u-Ga-oBX"/>
+                                                                <action selector="saveList:" destination="i79-ie-8ko" eventType="touchUpOutside" id="eJT-t0-PiQ"/>
                                                             </connections>
                                                         </button>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="add list" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hng-4S-G4R" userLabel="AddListField">
@@ -684,6 +685,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addList" destination="jj9-Gg-RL4" id="4R2-ic-JkQ"/>
+                        <outlet property="addListField" destination="hng-4S-G4R" id="VYD-tB-wVf"/>
                         <outlet property="cancelDateDue" destination="cHJ-Fb-4jp" id="sjQ-DT-0As"/>
                         <outlet property="cancelList" destination="4fE-84-abb" id="zgq-gP-LvD"/>
                         <outlet property="cancelPriority" destination="Qd1-T8-a4m" id="hvL-ff-PE2"/>
@@ -696,7 +698,7 @@
                         <outlet property="listField" destination="wxW-3f-JuZ" id="0H8-u8-cYR"/>
                         <outlet property="listPicker" destination="fMH-rS-B6p" id="QZ6-me-AQp"/>
                         <outlet property="nameField" destination="SO8-vq-zjS" id="wwX-Q8-XdN"/>
-                        <outlet property="priorityField" destination="6pL-K5-Onz" id="cKA-yj-gCe"/>
+                        <outlet property="priorityField" destination="6pL-K5-Onz" id="yHz-Vw-wQC"/>
                         <outlet property="prioritySegmentedControl" destination="cXr-eD-X1Z" id="w7t-dG-1Ag"/>
                         <outlet property="reminderDatePicker" destination="gDR-B1-ear" id="aUV-6R-xm3"/>
                         <outlet property="reminderField" destination="549-AQ-mfn" id="XUC-ah-jwH"/>

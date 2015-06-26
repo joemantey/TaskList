@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *reminderDatePicker;
 @property (weak, nonatomic) IBOutlet UITextField *listField;
 @property (weak, nonatomic) IBOutlet UIPickerView *listPicker;
+@property (weak, nonatomic) IBOutlet UITextField *addListField;
 @property (weak, nonatomic) IBOutlet UITextField *priorityField;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *prioritySegmentedControl;
 @property (weak, nonatomic) IBOutlet UITextView *detailField;
@@ -38,7 +39,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *cancelList;
 - (IBAction)didCancelList:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *addList;
-- (IBAction)didAddList:(id)sender;
+- (IBAction)saveList:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *cancelPriority;
 - (IBAction)didCancelPriority:(id)sender;
 
@@ -328,8 +329,6 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
-#pragma mark - textViewDelegate
-
 #pragma mark - Action Outlets
 
 
@@ -376,6 +375,18 @@
     
 }
 
+- (IBAction)saveList:(id)sender {
+    
+    List *newList = [NSEntityDescription insertNewObjectForEntityForName:@"List" inManagedObjectContext:self.store.managedObjectContext];
+    newList.name = self.addListField.text;
+    newList.dateCreated = [NSDate date];
+
+    [self.store saveContext];
+    [self.store fetchLists];
+    
+    [self.listPicker reloadAllComponents];
+    
+}
 
 
 
@@ -771,10 +782,7 @@
     [super touchesBegan:touches withEvent:event];
 }
 
-- (IBAction)didAddList:(id)sender {
-    
-    
-}
+
 @end
 
 

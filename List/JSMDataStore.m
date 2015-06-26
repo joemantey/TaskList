@@ -102,8 +102,8 @@
 - (void)fetchLists{
     NSFetchRequest *listRequest = [NSFetchRequest fetchRequestWithEntityName:@"List"];
     
-//    NSSortDescriptor *dateCreatedSorter = [NSSortDescriptor sortDescriptorWithKey:@"dateCreated" ascending:NO];
-//    listRequest.sortDescriptors = @[dateCreatedSorter];
+    NSSortDescriptor *dateCreatedSorter = [NSSortDescriptor sortDescriptorWithKey:@"dateCreated" ascending:NO];
+    listRequest.sortDescriptors = @[dateCreatedSorter];
     
     self.listArray = [self.managedObjectContext executeFetchRequest:listRequest error:nil];
     
