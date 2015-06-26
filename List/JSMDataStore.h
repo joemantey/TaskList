@@ -19,7 +19,8 @@
 + (instancetype) sharedDataStore;
 
 - (void) saveContext;
-- (void) generateTestData;
+- (void) generateTestTasks;
 - (void) fetchTasks;
+- (void) fetchLists;
 
 @end

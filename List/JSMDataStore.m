@@ -7,10 +7,12 @@
 //
 
 #import "JSMDataStore.h"
+
 #import "Task.h"
 #import "Task+Algorithm.h"
-#import <CoreData/CoreData.h>
+#import "List.h"
 
+#import <CoreData/CoreData.h>
 #import <DTTimePeriod.h>
 #import <NSDate+DateTools.h>
 
@@ -76,8 +78,7 @@
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
-- (void)fetchTasks
-{
+- (void)fetchTasks{
     NSFetchRequest *taskRequest = [NSFetchRequest fetchRequestWithEntityName:@"Task"];
     
     NSSortDescriptor *cuurrentPrioritySorter = [NSSortDescriptor sortDescriptorWithKey:@"currentPriority" ascending:NO];
@@ -86,32 +87,35 @@
     
     self.taskArray = [self.managedObjectContext executeFetchRequest:taskRequest error:nil];
     
-    for (Task *eachTask in self.taskArray) {
-        [eachTask setTaskPriorityWithTask:eachTask];
-    }
+    
     if ([self.taskArray count]<3) {
-        [self generateTestData];
+        [self generateTestTasks];
     }
     for (Task *eachTask in self.taskArray) {
         [eachTask setTaskPriorityWithTask:eachTask];
     }
     
     self.taskArray = [self.taskArray sortedArrayUsingDescriptors:@[cuurrentPrioritySorter]];
+    
 }
 
 - (void)fetchLists{
-    NSFetchRequest *listRequest = [NSFetchRequest fetchRequestWithEntityName:@"Task"];
+    NSFetchRequest *listRequest = [NSFetchRequest fetchRequestWithEntityName:@"List"];
     
-    NSSortDescriptor *dateCreatedSorter = [NSSortDescriptor sortDescriptorWithKey:@"dateCreated" ascending:NO];
-    
-    listRequest.sortDescriptors = @[dateCreatedSorter];
+//    NSSortDescriptor *dateCreatedSorter = [NSSortDescriptor sortDescriptorWithKey:@"dateCreated" ascending:NO];
+//    listRequest.sortDescriptors = @[dateCreatedSorter];
     
     self.listArray = [self.managedObjectContext executeFetchRequest:listRequest error:nil];
-
+    
+    
+    if ([self.listArray count]<3) {
+        [self generateTestLists];
+    }
+    
 }
 
 
-- (void)generateTestData
+- (void)generateTestTasks
 {
     Task *taskOne = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:self.managedObjectContext];
     
@@ -158,8 +162,30 @@
     [self fetchTasks];
 }
 
-
-#pragma mark - algorithm
+- (void)generateTestLists{
+    
+    List *listOne= [NSEntityDescription insertNewObjectForEntityForName:@"List" inManagedObjectContext:self.managedObjectContext];
+    listOne.name = @"To Do's";
+    listOne.dateCreated = [NSDate date];
+    
+    List *listTwo= [NSEntityDescription insertNewObjectForEntityForName:@"List" inManagedObjectContext:self.managedObjectContext];
+    listTwo.name = @"Shopping List";
+    listTwo.dateCreated = [NSDate date];
+    
+    
+    List *listThree= [NSEntityDescription insertNewObjectForEntityForName:@"List" inManagedObjectContext:self.managedObjectContext];
+    listThree.name = @"Assignments";
+    listThree.dateCreated = [NSDate date];
+    
+    
+    List *listFour= [NSEntityDescription insertNewObjectForEntityForName:@"List" inManagedObjectContext:self.managedObjectContext];
+    listFour.name = @"Goals";
+    listFour.dateCreated = [NSDate date];
+    
+    
+    [self saveContext];
+    [self fetchLists];
+}
 
 
 

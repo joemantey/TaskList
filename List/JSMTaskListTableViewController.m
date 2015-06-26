@@ -8,8 +8,8 @@
 
 #import "JSMTaskListTableViewController.h"
 #import "Task.h"
-#import "JSMTaskDataManager.h"
-
+#import "List.h"
+#import "JSMDataStore.h"
 #import "JSMTaskTableViewCell.h"
 
 
@@ -26,19 +26,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.store = [JSMDataStore sharedDataStore];
-    
     [self setUpTimeProperties];
-
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
     
+    self.store = [JSMDataStore sharedDataStore];
+
     [self.store fetchTasks];
-    
-    
+    [self.store fetchLists];
     
     [self.tableView reloadData];
 }
@@ -72,21 +70,17 @@
     JSMTaskTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"taskCell" forIndexPath:indexPath];
     
     Task *eachTask = self.store.taskArray[indexPath.row];
-    
    
     cell.nameLabel.text = eachTask.name;
     cell.priorityLabel.text = [NSString stringWithFormat:@"%@", eachTask.currentPriority ];
     
     if (eachTask.dueDate) {
-        
         cell.detailLabel.text = [NSString stringWithFormat:@"Due: %@", [self.dateFormatter stringFromDate:eachTask.dueDate] ];
-    }else{
-        
+    }
+    else {
         cell.detailLabel.text = [NSString stringWithFormat:@"Created: %@", [self.dateFormatter stringFromDate:eachTask.dateCreated]];
     }
                                  
-                                 
-    
     return cell;
 }
 

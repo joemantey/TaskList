@@ -11,8 +11,6 @@
 
 @interface JSMNewTaskTableViewController : UITableViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 
-
-@property (strong, nonatomic) NSArray *managedTaskObjects;
 @property (strong, nonatomic) JSMDataStore *store;
 
 @end

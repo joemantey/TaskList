@@ -9,6 +9,7 @@
 #import "JSMNewTaskTableViewController.h"
 #import "JSMDataStore.h"
 #import "Task.h"
+#import "List.h"
 
 
 @interface JSMNewTaskTableViewController () <UITextFieldDelegate>
@@ -73,11 +74,21 @@
 
 @implementation JSMNewTaskTableViewController
 
+
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    self.store = [JSMDataStore sharedDataStore];
+    
+    [self.store fetchTasks];
+    [self.store fetchLists];
+}
+
 - (void)viewDidLoad {
    
     [super viewDidLoad];
     
-    self.store = [JSMDataStore sharedDataStore];
     
     [self hidePickerViews];
     [self setUpTextInOutlets];
@@ -92,13 +103,7 @@
     
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    
-    [super viewWillAppear:animated];
-    
-    [self.store fetchTasks];
-    [self populateCategoryArray];
-}
+
 
 -(void)hidePickerViews{
     
@@ -167,48 +172,7 @@
     
 }
 
-#pragma mark - Action Outlets
 
-
-- (IBAction)nameFieldChanged:(id)sender {
-    [self setTitle:self.nameField.text];
-}
-
-
-- (IBAction)datePickerValueChanged:(id)sender {
-    self.dueDateField.text = [self.dateFormatter stringFromDate:[self.dueDatePicker date]];
-}
-
-
-- (IBAction)reminderPickerValueChanged:(id)sender {
-    self.reminderField.text = [self.dateFormatter stringFromDate:[self.reminderDatePicker date]];
-}
-
-
-- (IBAction)cancelButton:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-
-- (IBAction)saveButton:(id)sender {
-    //set the properties equal to the inuputs
-    
-    
-    if (self.prioritySegmentedControl.selectedSegmentIndex == -1) {
-        self.userPriority = 0;
-    }else{
-        self.userPriority = self.prioritySegmentedControl.selectedSegmentIndex;
-    }
-    self.name = self.nameField.text;
-    self.dueDate = self.dueDatePicker.date;
-    self.reminderDate = self.reminderDatePicker.date;
-    self.list = self.listField.text;
-    self.details = self.detailField.text;
-    
-
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-}
 
 #pragma mark - PickerViewDelegate
 
@@ -223,17 +187,16 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    return [self.categoryPickerItems count];
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    return [self.store.listArray count];
+    
+    
 }
 
 
 - (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    NSString *stringToDisplay = self.categoryPickerItems[row];
+    List *thisList = self.store.listArray[row];
+    NSString *stringToDisplay = thisList.name;
     NSAttributedString *attString = [[NSAttributedString alloc] initWithString:stringToDisplay attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
     return attString;
@@ -259,10 +222,13 @@
 #define segmentedCellHeight 96
 #define detailCellHeight  228
 
--(void)populateCategoryArray{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    self.categoryPickerItems = @[@"To Do's", @"Shopping List", @"Assignments", @"Goals"];
-    
+    return 10;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -311,10 +277,7 @@
     return height;
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
-    return 10;
-}
+
 
 
 
@@ -370,7 +333,48 @@
 
 #pragma mark - textViewDelegate
 
+#pragma mark - Action Outlets
 
+
+- (IBAction)nameFieldChanged:(id)sender {
+    [self setTitle:self.nameField.text];
+}
+
+
+- (IBAction)datePickerValueChanged:(id)sender {
+    self.dueDateField.text = [self.dateFormatter stringFromDate:[self.dueDatePicker date]];
+}
+
+
+- (IBAction)reminderPickerValueChanged:(id)sender {
+    self.reminderField.text = [self.dateFormatter stringFromDate:[self.reminderDatePicker date]];
+}
+
+
+- (IBAction)cancelButton:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (IBAction)saveButton:(id)sender {
+    //set the properties equal to the inuputs
+    
+    
+    if (self.prioritySegmentedControl.selectedSegmentIndex == -1) {
+        self.userPriority = 0;
+    }else{
+        self.userPriority = self.prioritySegmentedControl.selectedSegmentIndex;
+    }
+    self.name = self.nameField.text;
+    self.dueDate = self.dueDatePicker.date;
+    self.reminderDate = self.reminderDatePicker.date;
+    self.list = self.listField.text;
+    self.details = self.detailField.text;
+    
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
 
 
 
