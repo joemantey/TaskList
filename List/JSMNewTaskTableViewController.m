@@ -474,6 +474,7 @@
                 self.listPicker.alpha = 1.0f;
                 self.listField.text = @"select list";
                 self.addList.hidden = NO;
+                self.removeList.hidden = NO;
         
         [self fillListField];
     }];
@@ -631,6 +632,7 @@
                              self.cancelList.alpha = 1.0f;
                              self.cancelList.hidden = NO;
                              self.addList.hidden = YES;
+                             self.removeList.hidden = YES;
 
 
                          }
