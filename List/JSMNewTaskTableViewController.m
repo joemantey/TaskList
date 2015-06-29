@@ -119,6 +119,7 @@
     self.listPickerIsShowing =  NO;
     self.listPicker.hidden = YES;
     self.addList.hidden = YES;
+    self.removeList.hidden = YES;
     
     self.priorityPickerIsShowing = NO;
     self.prioritySegmentedControl.hidden = YES;
