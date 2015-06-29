@@ -397,6 +397,19 @@
                                                                 <action selector="saveList:" destination="i79-ie-8ko" eventType="touchUpOutside" id="eJT-t0-PiQ"/>
                                                             </connections>
                                                         </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TTd-nE-bE5" userLabel="RemoveListButton">
+                                                            <rect key="frame" x="445" y="34" width="20" height="20"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="20" id="8Ze-gH-ewA"/>
+                                                                <constraint firstAttribute="width" secondItem="TTd-nE-bE5" secondAttribute="height" multiplier="1:1" id="lYv-ti-gJS"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Button" image="Minus">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="didRemoveList:" destination="i79-ie-8ko" eventType="touchUpInside" id="Uz6-Wz-t3Y"/>
+                                                            </connections>
+                                                        </button>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="add list" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hng-4S-G4R" userLabel="AddListField">
                                                             <rect key="frame" x="60" y="0.0" width="360" height="30"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -410,8 +423,11 @@
                                                         <constraint firstAttribute="bottom" secondItem="hng-4S-G4R" secondAttribute="bottom" id="2jt-bG-OpQ"/>
                                                         <constraint firstAttribute="bottom" secondItem="jj9-Gg-RL4" secondAttribute="bottom" id="ETf-Xw-1Io"/>
                                                         <constraint firstAttribute="centerY" secondItem="jj9-Gg-RL4" secondAttribute="centerY" id="Oo6-ii-6bH"/>
+                                                        <constraint firstItem="TTd-nE-bE5" firstAttribute="leading" secondItem="jj9-Gg-RL4" secondAttribute="trailing" constant="10" id="QwB-Uw-Ve8"/>
+                                                        <constraint firstItem="jj9-Gg-RL4" firstAttribute="centerY" secondItem="TTd-nE-bE5" secondAttribute="centerY" id="SeQ-Bj-6Xr"/>
                                                         <constraint firstItem="hng-4S-G4R" firstAttribute="top" secondItem="HBS-tP-PXx" secondAttribute="top" id="Tm9-ov-3IS"/>
                                                         <constraint firstItem="jj9-Gg-RL4" firstAttribute="top" secondItem="HBS-tP-PXx" secondAttribute="top" id="Trw-kH-dWL"/>
+                                                        <constraint firstItem="TTd-nE-bE5" firstAttribute="width" secondItem="TTd-nE-bE5" secondAttribute="height" multiplier="1:1" id="Ua9-WH-2WQ"/>
                                                         <constraint firstItem="hng-4S-G4R" firstAttribute="centerX" secondItem="HBS-tP-PXx" secondAttribute="centerX" multiplier="0.8" id="avQ-SJ-7hz"/>
                                                         <constraint firstAttribute="centerY" secondItem="hng-4S-G4R" secondAttribute="centerY" id="ooL-z8-i6l"/>
                                                         <constraint firstItem="jj9-Gg-RL4" firstAttribute="leading" secondItem="hng-4S-G4R" secondAttribute="trailing" constant="15" id="pBi-nh-u53"/>
@@ -702,6 +718,7 @@
                         <outlet property="prioritySegmentedControl" destination="cXr-eD-X1Z" id="w7t-dG-1Ag"/>
                         <outlet property="reminderDatePicker" destination="gDR-B1-ear" id="aUV-6R-xm3"/>
                         <outlet property="reminderField" destination="549-AQ-mfn" id="XUC-ah-jwH"/>
+                        <outlet property="removeList" destination="TTd-nE-bE5" id="J9O-rw-9JB"/>
                         <outlet property="tableView" destination="GxG-iu-U0M" id="4e8-qy-aJK"/>
                     </connections>
                 </tableViewController>
@@ -896,5 +913,6 @@
     <resources>
         <image name="Add" width="100" height="100"/>
         <image name="Cancel" width="33" height="33"/>
+        <image name="Minus" width="100" height="100"/>
     </resources>
 </document>

@@ -40,6 +40,8 @@
 - (IBAction)didCancelList:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *addList;
 - (IBAction)saveList:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *removeList;
+- (IBAction)didRemoveList:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *cancelPriority;
 - (IBAction)didCancelPriority:(id)sender;
 
@@ -389,6 +391,15 @@
 }
 
 
+- (IBAction)didRemoveList:(id)sender {
+    
+    NSInteger row = [self.listPicker selectedRowInComponent:0];
+    List *selectedList= [self.store.listArray objectAtIndex:row];
+    
+    self.listField.text = selectedList.name;
+    
+}
+
 
 #pragma mark - helper methods
 
@@ -462,7 +473,12 @@
                 self.listPicker.alpha = 1.0f;
                 self.listField.text = @"select list";
                 self.addList.hidden = NO;
+        
+        [self fillListField];
     }];
+    
+    
+    
 }
 
 
@@ -594,6 +610,7 @@
 - (void)hideListPicker{
     
     
+    
     if (self.listPickerIsShowing == YES) {
         
         self.listPickerIsShowing = NO;
@@ -606,12 +623,6 @@
             self.cancelList.alpha = 0.0f;
         }
         
-        NSInteger row = [self.listPicker selectedRowInComponent:0];
-        List *selectedList= [self.store.listArray objectAtIndex:row];
-        
-        self.listField.text = selectedList.name;
-
-    
         [UIView animateWithDuration:0.25
      
                          animations:^{
@@ -624,13 +635,16 @@
                          }
                          completion:^(BOOL finished){
                              self.listPicker.hidden = YES;
+                             [self fillListField];
                      }];
     }
 }
 
 - (void)fillListField{
     NSInteger row = [self.listPicker selectedRowInComponent:0];
-    self.listField.text = [self.categoryPickerItems objectAtIndex:row];
+    List *selectedList= [self.store.listArray objectAtIndex:row];
+    
+    self.listField.text = selectedList.name;
 }
 
 
