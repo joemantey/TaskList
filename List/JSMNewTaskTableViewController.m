@@ -397,6 +397,13 @@
     NSInteger row = [self.listPicker selectedRowInComponent:0];
     List *selectedList= [self.store.listArray objectAtIndex:row];
     
+    [self.store.managedObjectContext deleteObject:selectedList];
+    
+    [self.store saveContext];
+    [self.store fetchLists];
+    
+    [self.listPicker reloadAllComponents];
+    
     self.listField.text = selectedList.name;
     
 }
